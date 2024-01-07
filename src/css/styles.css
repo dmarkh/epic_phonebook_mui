@@ -1,0 +1,48 @@
+@import "normalize.css" print, screen;
+
+* {
+	-webkit-text-size-adjust: none;
+	-moz-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	font-size-adjust: none;
+	scrollbar-width: thin;
+	-webkit-tap-highlight-color: transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+:root {
+	font-family: Roboto, helvetica, verdana, arial;
+	font-size: 100%;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	-webkit-tap-highlight-color: transparent;
+	user-drag: none;
+	-webkit-user-drag: none;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+
+html, body {
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+#app-container {
+  position: absolute;
+  top:  0;
+  left: 0;
+  width:  100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+

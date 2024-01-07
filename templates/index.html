@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no'>
+	<title>ePIC Collaboration</title>
+	<script>
+		window.pnb = {
+			"title": "ePIC COLLABORATION",
+			"basepath": "/phonebook-mui/client",
+			"router": "hash",
+			"service": "service/",
+			"institutions": [
+				{ "title": "FULL NAME OF THE INSTITUTION", "field": "name_full", "align": "left", "width": "55%" },
+				{ "title": "SHORT NAME", "field": "name_short", "align": "left", "width": "15%" },
+				{ "title": "COUNTRY", "field": "country", "align": "left", "width": "15%" },
+				{ "title": "REGION", "field": "region", "align": "left", "width": "15%" }
+			],
+			"members": [
+				{ "title": "FIRST NAME", "field": "name_first", "align": "right", "width": "20%" },
+				{ "title": "LAST NAME", "field": "name_last", "align": "left", "width": "20%" },
+				{ "title": "EMAIL", "field": "email", "align": "left", "width": "20%" },
+				{ "title": "INSTITUTION", "field": "institution__name_full", "align": "left", "width": "20%" },
+				{ "title": "COUNTRY", "field": "institution__country", "align": "left", "width": "20%" }
+			],
+			"filter-institutions": {
+				"display-fields": [ "name_full", "name_short", "country", "region" ],
+				"sort-fields": [ "region", "country", "name_full" ]
+			},
+			"filter-members": {
+				"display-fields": [ "name_first", "name_last" ],
+				"sort-fields": [ "name_last", "name_first" ]
+			},
+			"allow-guest-access": 1
+		};
+		Object.seal(window.pnb);
+	</script>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Material+Icons&Roboto+Mono:ital@0;1&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"/>
+	<style></style>
+	<link id="page_favicon" href="favicon.ico" rel="icon" type="image/x-icon" />
+	<style id="dynamic-style"></style>
+</head>
+<body tabindex=-1>
+	<div id="app-container"></div>
+</body>
+</html>

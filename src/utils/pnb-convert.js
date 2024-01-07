@@ -1,0 +1,119 @@
+
+import { getInstitutions, getInstitutionFields, getMemberFields } from './pnb-api.js';
+
+export const convertInstitutions = async ( data, ifields = false ) => {
+	if ( !ifields) {
+		ifields = await getInstitutionFields();
+	}
+	let items = [], item = {}, opt, tmp1, tmp2;
+    for ( const [k,v] of Object.entries( data ) ) {
+		item = { id: parseInt(k) };
+		for ( const [k2,v2] of Object.entries(v.fields) ) {
+			if ( ifields[k2].options.length ) {
+				opt = {};
+				tmp1 = ifields[k2].options.split(',');
+				tmp1.forEach( e => { tmp2 = e.split(':'); opt[tmp2[0]] = tmp2[1]; });
+				item[ ifields[k2].name_fixed.toLowerCase() ] = opt[v2];
+			} else {
+				item[ ifields[k2].name_fixed.toLowerCase() ] = v2;
+			}
+		}
+		items.push( item );
+    }
+	return items;
+}
+
+export const convertInstitution = async ( data, ifields = false ) => {
+	if ( !ifields) {
+		ifields = await getInstitutionFields();
+	}
+	let opt, tmp1, tmp2;
+	let item = { id: data.institution ? parseInt(data.institution.id) : false };
+	for ( const [k2,v2] of Object.entries(data.fields) ) {
+		if ( ifields[k2].options.length ) {
+			opt = {};
+			tmp1 = ifields[k2].options.split(',');
+			tmp1.forEach( e => { tmp2 = e.split(':'); opt[tmp2[0]] = tmp2[1]; });
+			item[ ifields[k2].name_fixed.toLowerCase() ] = opt[v2];
+		} else {
+			item[ ifields[k2].name_fixed.toLowerCase() ] = v2;
+		}
+	}
+	return item;
+}
+
+export const convertMembers = async ( data, mfields = false ) => {
+	if ( !mfields) {
+		mfields = await getMemberFields();
+	}
+	let items = [], item = {}, opt, tmp1, tmp2;
+    for ( const [k,v] of Object.entries( data ) ) {
+		item = { id: parseInt(k) };
+		for ( const [k2,v2] of Object.entries(v.fields) ) {
+			if ( mfields[k2].options.length ) {
+				opt = {};
+				tmp1 = mfields[k2].options.split(',');
+				tmp1.forEach( e => { tmp2 = e.split(':'); opt[tmp2[0]] = tmp2[1]; });
+				item[ mfields[k2].name_fixed.toLowerCase() ] = opt[v2];
+			} else {
+				item[ mfields[k2].name_fixed.toLowerCase() ] = v2;
+			}
+		}
+		items.push( item );
+    }
+	return items;
+}
+
+export const convertField = ( field_descriptor, val ) => {
+	if ( !field_descriptor.options ) { return val; }
+	let opt = {}, tmp1, tmp2;
+	tmp1 = field_descriptor.options.split(',');
+	tmp1.forEach( e => { tmp2 = e.split(':'); opt[ tmp2[0] ] = tmp2[1]; });
+	return opt[val] ? opt[val] : '';
+}
+
+export const convertMember = async ( data, mfields = false ) => {
+	if ( !mfields ) {
+		mfields = await getMemberFields();
+	}
+	let opt, tmp1, tmp2;
+	let item = { id: data.member ? parseInt(data.member.id) : false };
+	for ( const [k2,v2] of Object.entries(data.fields) ) {
+		if ( mfields[k2].options.length ) {
+			opt = {};
+			tmp1 = mfields[k2].options.split(',');
+			tmp1.forEach( e => { tmp2 = e.split(':'); opt[tmp2[0]] = tmp2[1]; });
+			item[ mfields[k2].name_fixed.toLowerCase() ] = opt[v2];
+		} else {
+			item[ mfields[k2].name_fixed.toLowerCase() ] = v2;
+		}
+	}
+	return item;
+}
+
+export const addInstitutionsToConvertedMembers = async ( data, ifields = false ) => {
+	let inst = await getInstitutions();
+	if ( !ifields ) {
+		ifields = await getInstitutionFields();
+	}
+	let cinst = await convertInstitutions( inst, ifields );
+	for ( const member of data ) {
+		let idata = cinst.find( e => e.id == member['institution_id'] ) || {};
+		for ( const [ k, v ] of Object.entries( idata ) ) {
+			member['institution__' + k.toLowerCase() ] = v;
+		}
+	}
+	return data;
+}
+
+export const addInstitutionToConvertedMember = async ( data, ifields = false ) => {
+	let inst  = await getInstitution( data.institution_id );
+	if ( !ifields ) {
+		ifields = await getInstitutionFields();
+	}
+	let cinst = await convertInstitution( inst, ifields );
+	for ( const [ k, v ] of Object.entries( cinst ) ) {
+		data['institution__' + k.toLowerCase() ] = v;
+	}
+	return data;
+}
