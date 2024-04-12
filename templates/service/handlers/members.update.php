@@ -76,13 +76,20 @@ function members_update_handler($params) {
 				$db->Query($query);
 				break;
 
+			case 'text':
+				$query = 'INSERT INTO `'.$db_name.'`.`members_data_texts` (`members_id`, `members_fields_id`, `value`) VALUES ('.intval($member_id).', '.intval($field_id).', "'.$db->Escape($field_value).'") ON DUPLICATE KEY UPDATE `value` = "'.$db->Escape($field_value).'"';
+				$db->Query($query);
+				break;
+
 			default:
 				break;
 		}
-		// history support:
-		$query = 'INSERT INTO `'.$db_name.'`.`members_history` (`members_id`, `members_fields_id`, date, `value_from_'.$history_field.'`, `value_to_'.$history_field.'`,`ip`,`user`) 
-			VALUES ('.intval($member_id).', '.intval($field_id).', NOW(), '.$history_from_value.', '.$history_to_value.', "'.$db->Escape( get_client_ip() ).'", "'.$db->Escape( get_client_user() ).'")';
-		$db->Query($query);
+		if ( !empty($history_field) ) {
+			// history support:
+			$query = 'INSERT INTO `'.$db_name.'`.`members_history` (`members_id`, `members_fields_id`, date, `value_from_'.$history_field.'`, `value_to_'.$history_field.'`,`ip`,`user`) 
+				VALUES ('.intval($member_id).', '.intval($field_id).', NOW(), '.$history_from_value.', '.$history_to_value.', "'.$db->Escape( get_client_ip() ).'", "'.$db->Escape( get_client_user() ).'")';
+			$db->Query($query);
+		}
 	}
   }
 

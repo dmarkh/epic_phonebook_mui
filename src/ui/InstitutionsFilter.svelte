@@ -18,12 +18,17 @@ import { convertInstitutions } from '../utils/pnb-convert.js';
 import { orderKeys } from '../utils/pnb-download.js';
 import { find_field_id } from '../utils/pnb-search.js';
 
+import FileSaver from '../utils/FileSaver.js';
+import { s2ab } from '../utils/s2ab.js';
+import * as XLSX from 'xlsx';
+
 import { screen, institution_id } from '../store.js';
 
-let showfiltered = false;
+let showFiltered = false, showSpinner = false;
 let allany = 'all';
 
 let institutions = false,
+	converted_institutions = false,
 	filtered_institutions = false,
 	fields = false,
 	fieldgroups = false,
@@ -89,41 +94,42 @@ const add_sort_field = (idx) => {
 }
 
 const apply_filters = async () => {
-	filtered_institutions = {};
-	for ( const [k,v] of Object.entries( institutions ) ) {
-		let pass = false, cpass,
-			flds = v.fields;
+	showSpinner = true;
+	showFiltered = true;
+	filtered_institutions = [];
+	for ( const i of converted_institutions ) {
+		let pass = false, cpass;
 		for ( const f of filters ) {
 			switch( f.op ) {
 				case 'empty':
-					cpass = ( flds[f.field] && typeof flds[f.field] === 'string' && flds[f.field].length == 0 ) || flds[f.field] === undefined;
+					cpass = i[f.field] === undefined || ( i[f.field] && typeof i[f.field] === 'string' && i[f.field].length == 0 );
 					break;
 				case 'notempty':
-					cpass =  ( flds[f.field] && typeof flds[f.field] === 'string' && flds[f.field].length == 0 ) || flds[f.field] === undefined;
+					cpass =  i[f.field] !== undefined && typeof i[f.field] === 'string' && i[f.field].length != 0;
 					break;
 				case 'equals':
-					cpass = flds[f.field] && (
-						( typeof flds[f.field] !== 'string' && flds[f.field] == f.value )
+					cpass = i[f.field] !== undefined && (
+						( typeof i[f.field] !== 'string' && i[f.field] == f.value )
 							||
-						( typeof flds[f.field] === 'string' && flds[f.field].toLowerCase() == f.value.toLowerCase() ) );
+						( typeof i[f.field] === 'string' && i[f.field].toLowerCase() == f.value.toLowerCase() ) );
 					break;
 				case 'notequals':
-					cpass = flds[f.field] && (
-						( typeof flds[f.field] !== 'string' && flds[f.field] != f.value )
+					cpass = i[f.field] !== undefined && (
+						( typeof i[f.field] !== 'string' && i[f.field] != f.value )
 							||
-						( typeof flds[f.field] === 'string' && flds[f.field].toLowerCase() != f.value.toLowerCase() ) );
+						( typeof i[f.field] === 'string' && i[f.field].toLowerCase() != f.value.toLowerCase() ) );
 					break;
 				case 'contains':
-					cpass = flds[f.field] && typeof flds[f.field] === 'string' && flds[f.field].toLowerCase().includes( f.value.toLowerCase() );
+					cpass = i[f.field] !== undefined && typeof i[f.field] === 'string' && i[f.field].toLowerCase().includes( f.value.toLowerCase() );
 					break;
 				case 'notcontains':
-					cpass = flds[f.field] && typeof flds[f.field] === 'string' && !flds[f.field].toLowerCase().includes( f.value.toLowerCase() );
+					cpass = i[f.field] !== undefined && typeof i[f.field] === 'string' && !i[f.field].toLowerCase().includes( f.value.toLowerCase() );
 					break;
 				case 'startswith':
-					cpass = flds[f.field] && typeof flds[f.field] === 'string' && flds[f.field].toLowerCase().startsWith( f.value.toLowerCase() );
+					cpass = i[f.field] !== undefined && typeof i[f.field] === 'string' && i[f.field].toLowerCase().startsWith( f.value.toLowerCase() );
 					break;
 				case 'endswith':
-					cpass = flds[f.field] && typeof flds[f.field] === 'string' && flds[f.field].toLowerCase().endsWith( f.value.toLowerCase() );
+					cpass = i[f.field] !== undefined && typeof i[f.field] === 'string' && i[f.field].toLowerCase().endsWith( f.value.toLowerCase() );
 					break;
 				default:
 					console.log('ERROR, unknown filter: ' + f.op );
@@ -138,16 +144,22 @@ const apply_filters = async () => {
 			}
 		}
 		if ( pass === true ) {
-			filtered_institutions[ k ] = v;
+			filtered_institutions.push(i);
 		}
 	}
-	filtered_institutions = await convertInstitutions( filtered_institutions, fields );
 
-	console.log( 'fields', fields, field_ids );
+	filtered_institutions.sort( function (a,b) {
+		for ( const f of sort_fields ) {
+			if ( a[f] === undefined && b[f] !== undefined ) { return 1; }
+			else if ( b[f] === undefined && a[f] !== undefined ) { return -1; }
+			else if ( a[f] === undefined && b[f] === undefined ) { return 0; }
+			if ( a[f].toLowerCase() < b[f].toLowerCase() ) { return -1; }
+			else if ( a[f].toLowerCase() > b[f].toLowerCase() ) { return 1; }
+		}
+		return 0;
+	});
 
-	// TODO: sort institutions by sort_fields
-
-	showfiltered = true;
+	showSpinner = false;
 }
 
 let init = async () => {
@@ -159,6 +171,7 @@ let init = async () => {
 		field_names[ v.id ] = v.name_fixed;
 	}
 	fields_ordered = orderKeys( fields, (a,b) => a.group == b.group ? ( a.weight - b.weight ) : fieldgroups[a.group].weight - fieldgroups[b.group].weight );
+	converted_institutions = await convertInstitutions( institutions, fields );
 }
 
 const handleRowClick = ( e ) => {
@@ -167,9 +180,32 @@ const handleRowClick = ( e ) => {
     router.goto('/institution/' + $institution_id + '/view');
 }
 
+
+const exportToExcel = ( data ) => {
+	var ws = XLSX.utils.aoa_to_sheet( data ),
+		ws_name = window.pnb.xlsx['institutions-export'];
+	var wb = XLSX.utils.book_new();
+	wb.SheetNames.push(ws_name);
+	wb.Sheets[ws_name] = ws;
+	var wbout = XLSX.write(wb, {bookType:'xlsx', bookSST:true, type: 'binary'});
+	saveAs( new Blob([s2ab(wbout)],{type:"application/octet-stream"}), ws_name + '-' + ( Date.now() / 1000 | 0 )+".xlsx" );
+}
+
+const prepareForExcel = () => {
+	let data = [];
+	for( const v of filtered_institutions ) {
+		let row = [];
+		for ( const f of display_fields ) {
+			row.push( v[ f ] );
+		}
+		data.push( row );
+	}
+	return exportToExcel( data );
+}
+
 </script>
 
-{#if showfiltered == false}
+{#if showFiltered == false}
 
 {#await init()}
 	<LinearProgress indeterminate />
@@ -193,7 +229,7 @@ const handleRowClick = ( e ) => {
 <td>
     <Select bind:value={filters[i].field} label="FIELD" variant="outlined" style="width: 100%;">
       {#each fields_ordered as field_id}
-        <Option value={fields[field_id].id}>{fields[field_id].name_desc}</Option>
+        <Option value={fields[field_id].name_fixed}>{fields[field_id].name_desc}</Option>
       {/each}
     </Select>
 </td>
@@ -230,6 +266,7 @@ const handleRowClick = ( e ) => {
 <tr>
 <td>
     <Select bind:value={field} label="FIELD" variant="outlined" style="width: 100%;">
+        <Option value="id">ID</Option>
       {#each fields_ordered as field_id}
         <Option value={fields[field_id].name_fixed}>{fields[field_id].name_desc}</Option>
       {/each}
@@ -253,6 +290,7 @@ const handleRowClick = ( e ) => {
 <tr>
 <td>
     <Select bind:value={field} label="FIELD" variant="outlined" style="width: 100%;">
+      <Option value="id">ID</Option>
       {#each fields_ordered as field_id}
         <Option value={fields[field_id].name_fixed}>{fields[field_id].name_desc}</Option>
       {/each}
@@ -284,6 +322,11 @@ const handleRowClick = ( e ) => {
 {/await}
 
 {:else}
+
+{#if showSpinner == true}
+	<LinearProgress indeterminate />
+{:else}
+
 	<div style="text-align: center;" class="mdc-typography--headline4">FILTERED INSTITUTIONS:</div>
 
 <Paper>
@@ -293,7 +336,12 @@ const handleRowClick = ( e ) => {
 >
     <Head>
         <Row>
-            {#each display_fields.map( df => { return { "title": fields[ field_ids[df] ].name_desc, "field": df, "align": "left", "width": "unset" }; }) as inst}
+            {#each display_fields.map( df => { 
+				if ( df === 'id' ) {
+					return {"title": "ID", field: df, "align": "left", "width": "unset" };
+				} else {
+					return { "title": fields[ field_ids[df] ].name_desc, "field": df, "align": "left", "width": "unset" };
+				}}) as inst }
             <Cell columnId="name_full" style="text-align: {inst.align}; width: {inst.width};">
                 <Label>{inst.title}</Label>
                 <IconButton class="material-icons">arrow_upward</IconButton>
@@ -304,7 +352,9 @@ const handleRowClick = ( e ) => {
     <Body>
     {#each filtered_institutions as item (item.id)}
       <Row data-entry-id="{item.id}">
-        {#each display_fields.map( df => { return { "title": df, "field": df, "align": "left", "width": "unset" }; }) as inst }
+        {#each display_fields.map( df => {
+			 return { "title": df, "field": df, "align": "left", "width": "unset" }; 
+			}) as inst }
         <Cell style="text-align: {inst.align}; width: {inst.width};">
             {#if inst.field === 'country' && item['country_code']}
             <img src="images/flags_iso_3166/24/{item['country_code'].toLowerCase()}.png" style="vertical-align: text-bottom;"/>
@@ -317,12 +367,37 @@ const handleRowClick = ( e ) => {
     </Body>
 </DataTable>
 </Paper>
+
+<div class="save-button">
+	<Fab color="primary" on:click={() => { prepareForExcel(); }} extended>
+		<FabIcon class="material-icons">save</FabIcon>
+		<FabLabel>EXPORT TO EXCEL</FabLabel>
+	</Fab>
+</div>
+<div class="clear-button">
+	<Fab color="primary" on:click={() => { showFiltered = false; }} extended>
+		<FabIcon class="material-icons">arrow_back</FabIcon>
+		<FabLabel>BACK TO FILTERS</FabLabel>
+	</Fab>
+</div>
+
+{/if}
 {/if}
 
 <style>
 .apply-filters-button {
     position: absolute;
     bottom: 2vmin;
+    right: 2vmin;
+}
+.save-button {
+    position: absolute;
+    bottom: 2vmin;
+    right: 2vmin;
+}
+.clear-button {
+    position: absolute;
+    bottom: 10vmin;
     right: 2vmin;
 }
 </style>

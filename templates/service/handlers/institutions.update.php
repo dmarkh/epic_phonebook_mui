@@ -80,13 +80,21 @@ function institutions_update_handler($params) {
 				$query = 'INSERT INTO `'.$db_name.'`.`institutions_data_ints` (`institutions_id`, `institutions_fields_id`, `value`) VALUES ('.intval($institution_id).', '.intval($field_id).', '.intval($field_value).') ON DUPLICATE KEY UPDATE `value` = '.intval($field_value);
 				$db->Query($query);
 				break;
+
+			case 'text':
+				$query = 'INSERT INTO `'.$db_name.'`.`institutions_data_texts` (`institutions_id`, `institutions_fields_id`, `value`) VALUES ('.intval($institution_id).', '.intval($field_id).', "'.$db->Escape($field_value).'") ON DUPLICATE KEY UPDATE `value` = "'.$db->Escape($field_value).'"';
+				$db->Query($query);
+				break;
+
 			default:
 				break;
 		}
-        // history support:
-        $query = 'INSERT INTO `'.$db_name.'`.`institutions_history` (`institutions_id`, `institutions_fields_id`, date, `value_from_'.$history_field.'`, `value_to_'.$history_field.'`,`ip`,`user`) 
-            VALUES ('.intval($institution_id).', '.intval($field_id).', NOW(), '.$history_from_value.', '.$history_to_value.', "'.$db->Escape( get_client_ip() ).'", "'.$db->Escape( get_client_user() ).'")';
-        $db->Query($query);
+		if ( !empty( $history_field ) ) {
+	        // history support:
+    	    $query = 'INSERT INTO `'.$db_name.'`.`institutions_history` (`institutions_id`, `institutions_fields_id`, date, `value_from_'.$history_field.'`, `value_to_'.$history_field.'`,`ip`,`user`) 
+        	    VALUES ('.intval($institution_id).', '.intval($field_id).', NOW(), '.$history_from_value.', '.$history_to_value.', "'.$db->Escape( get_client_ip() ).'", "'.$db->Escape( get_client_user() ).'")';
+	        $db->Query($query);
+		}
 	}
   }
 

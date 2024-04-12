@@ -2,13 +2,25 @@
 import { auth, serviceURI } from '../store.js';
 import { get } from 'svelte/store';
 
+export const keepalive = async () => {
+	const url = window.pnb.service + 'keepalive.php';
+	const response = await fetch( url, {
+		method: "GET",
+		cache: "no-cache",
+		credentials: "include",
+		redirect: "follow"
+	});
+	return await response.json();
+}
+
 export const getInstitution = async ( id ) => {
 	const token = get(auth)['token'];
 	const url = serviceURI + '?q=/institutions/get/id:' + id;
 	const response = await fetch( url, {
 		method: "GET",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
         headers: {
             "Authorization": ( token ? "Bearer " + token : "" )
@@ -23,7 +35,8 @@ export const getMember = async ( id ) => {
 	const response = await fetch( url, {
 		method: "GET",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
         headers: {
             "Authorization": ( token ? "Bearer " + token : "" )
@@ -38,7 +51,8 @@ export const getInstitutionHistory = async ( id ) => {
 	const response = await fetch( url, {
 		method: "GET",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
         headers: {
             "Authorization": ( token ? "Bearer " + token : "" )
@@ -53,7 +67,8 @@ export const getMemberHistory = async ( id ) => {
 	const response = await fetch( url, {
 		method: "GET",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
         headers: {
             "Authorization": ( token ? "Bearer " + token : "" )
@@ -69,7 +84,8 @@ export const getInstitutions = async ( details = 'full' ) => {
 	const response = await fetch( url, {
 		method: "GET",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
         headers: {
             "Authorization": ( token ? "Bearer " + token : "" )
@@ -85,7 +101,8 @@ export const getMembers = async ( details = 'full' ) => {
 	const response = await fetch( url, {
 		method: "GET",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
         headers: {
             "Authorization": ( token ? "Bearer " + token : "" )
@@ -100,7 +117,8 @@ export const getInstitutionFields = async () => {
 	const response = await fetch( url, {
 		method: "GET",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
         headers: {
             "Authorization": ( token ? "Bearer " + token : "" )
@@ -115,7 +133,8 @@ export const getMemberFields = async () => {
 	const response = await fetch( url, {
 		method: "GET",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
         headers: {
             "Authorization": ( token ? "Bearer " + token : "" )
@@ -130,7 +149,8 @@ export const getInstitutionFieldgroups = async () => {
 	const response = await fetch( url, {
 		method: "GET",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
 		headers: window.pnb && token ? { 'Authorization': 'Bearer ' + token } : {}
 	});
@@ -143,7 +163,8 @@ export const getMemberFieldgroups = async () => {
 	const response = await fetch( url, {
 		method: "GET",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
         headers: {
             "Authorization": ( token ? "Bearer " + token : "" )
@@ -158,7 +179,8 @@ export const getCountries = async () => {
 	const response = await fetch( url, {
 		method: "GET",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
         headers: {
             "Authorization": ( token ? "Bearer " + token : "" )
@@ -174,7 +196,8 @@ export const createMemberField = async ( data = false ) => {
 	const response = await fetch( url, {
 		method: "POST",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
 		headers: {
 			"Content-Type": "application/json; charset=utf-8",
@@ -192,7 +215,8 @@ export const createInstitutionField = async ( data = false ) => {
 	const response = await fetch( url, {
 		method: "POST",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
 		headers: {
 			"Content-Type": "application/json; charset=utf-8",
@@ -210,7 +234,8 @@ export const createMemberFieldgroup = async ( data = false ) => {
 	const response = await fetch( url, {
 		method: "POST",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
 		headers: {
 			"Content-Type": "application/json; charset=utf-8",
@@ -228,7 +253,8 @@ export const createInstitutionFieldgroup = async ( data = false ) => {
 	const response = await fetch( url, {
 		method: "POST",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
 		headers: {
 			"Content-Type": "application/json; charset=utf-8",
@@ -246,7 +272,8 @@ export const updateMemberFields = async ( data = false ) => {
 	const response = await fetch( url, {
 		method: "POST",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
 		headers: {
 			"Content-Type": "application/json; charset=utf-8",
@@ -264,7 +291,8 @@ export const updateMemberFieldgroups = async ( data = false ) => {
 	const response = await fetch( url, {
 		method: "POST",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
 		headers: {
 			"Content-Type": "application/json; charset=utf-8",
@@ -282,7 +310,8 @@ export const updateInstitutionFields = async ( data = false ) => {
 	const response = await fetch( url, {
 		method: "POST",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
 		headers: {
 			"Content-Type": "application/json; charset=utf-8",
@@ -300,7 +329,8 @@ export const updateInstitutionFieldgroups = async ( data = false ) => {
 	const response = await fetch( url, {
 		method: "POST",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
 		headers: {
 			"Content-Type": "application/json; charset=utf-8",
@@ -318,7 +348,8 @@ export const updateMember = async ( data = false ) => {
 	const response = await fetch( url, {
 		method: "POST",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
 		headers: {
 			"Content-Type": "application/json; charset=utf-8",
@@ -336,7 +367,8 @@ export const updateInstitution = async ( data = false ) => {
 	const response = await fetch( url, {
 		method: "POST",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
 		headers: {
 			"Content-Type": "application/json; charset=utf-8",
@@ -354,7 +386,8 @@ export const createMember = async ( data = false ) => {
 	const response = await fetch( url, {
 		method: "POST",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
 		headers: {
 			"Content-Type": "application/json; charset=utf-8",
@@ -372,7 +405,8 @@ export const createInstitution = async ( data = false ) => {
 	const response = await fetch( url, {
 		method: "POST",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
 		headers: {
 			"Content-Type": "application/json; charset=utf-8",
@@ -390,7 +424,8 @@ export const toggleMember = async ( id = false ) => {
 	const response = await fetch( url, {
 		method: "GET",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
         headers: {
             "Authorization": ( token ? "Bearer " + token : "" )
@@ -406,7 +441,8 @@ export const toggleInstitution = async ( id = false ) => {
 	const response = await fetch( url, {
 		method: "GET",
 		cache: "no-cache",
-		credentials: "same-origin",
+		credentials: "include",
+		redirect: "follow",
 		mode: "cors",
         headers: {
             "Authorization": ( token ? "Bearer " + token : "" )

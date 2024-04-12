@@ -52,6 +52,9 @@ function institutions_create_handler($params) {
 			case 'date':
 				$query = 'INSERT INTO `'.$db_name.'`.`institutions_data_dates` (`institutions_id`, `institutions_fields_id`, `value`) VALUES ('.intval($id).', '.intval($k).', "'.$db->Escape($v).'")';
 				break;
+			case 'text':
+				$query = 'INSERT INTO `'.$db_name.'`.`institutions_data_texts` (`institutions_id`, `institutions_fields_id`, `value`) VALUES ('.intval($id).', '.intval($k).', "'.$db->Escape($v).'")';
+				break;
 			default:
 				break;
 		}

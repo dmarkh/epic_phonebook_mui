@@ -158,6 +158,7 @@ const getStats = async () => {
 				</Button>
 			</td>
 		</tr>
+<!--
 		<tr>
 			<td style="width: 25%;">
 				<Button color="secondary" variant="unelevated" style="width: 95%;">
@@ -180,6 +181,7 @@ const getStats = async () => {
 				</Button>
 			</td>
 		</tr>
+//-->
 	</table>
 </Paper>
 <br />

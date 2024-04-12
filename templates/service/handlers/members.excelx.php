@@ -49,7 +49,7 @@ function members_excelx_handler($params) {
   $mem = $db->Query($query);
 
   $inst_fields = array();
-  foreach(array('string','int','date') as $k => $v) {
+  foreach(array('string','int','date','text') as $k => $v) {
     $query = 'SELECT * FROM `'.$db_name.'`.`institutions_data_'.$v.'s`';
     $res = $db->Query($query);
     if (empty($res)) continue;
@@ -60,7 +60,7 @@ function members_excelx_handler($params) {
   }
 
   $mem_fields = array();
-  foreach(array('string','int','date') as $k => $v) {
+  foreach(array('string','int','date','text') as $k => $v) {
     $query = 'SELECT * FROM `'.$db_name.'`.`members_data_'.$v.'s`';
     $res = $db->Query($query);
     if (empty($res)) continue;

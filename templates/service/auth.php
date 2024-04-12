@@ -6,13 +6,30 @@ function get_roles() {
             'access-phonebook' => 1,
             'authorlists-view' => 1,
             'institutions-view' => 1,
+            'representatives-view' => 1,
             'members-view' => 1,
             'descriptors-view' => 1,
             'fields-public-view' => 1
         ],
+        'EDITOR' => [
+            'access-phonebook' => 1,
+            'authorlists-view' => 1,
+            'representatives-view' => 1,
+            'members-view' => 1,
+            'members-create' => 1,
+            'members-edit' => 1,
+            'members-history' => 1,
+            'institutions-view' => 1,
+            'institutions-create' => 1,
+            'institutions-edit' => 1,
+            'institutions-history' => 1,
+            'fields-public-view' => 1,
+            'fields-private-view' => 1
+        ],
         'ADMIN' => [
             'access-phonebook' => 1,
             'authorlists-view' => 1,
+            'representatives-view' => 1,
             'members-view' => 1,
             'members-create' => 1,
             'members-edit' => 1,
@@ -33,6 +50,7 @@ function get_roles() {
         ],
 		'CLI' => [
             'access-phonebook' => 1,
+            'representatives-view' => 1,
             'members-view' => 1,
             'members-create' => 1,
             'members-edit' => 1,
@@ -52,19 +70,19 @@ function get_roles() {
 function get_accounts() {
     return [
         'guest' => [
-            'pass' => '',
+            'pass' => '###',
             'role' => 'GUEST',
-            'token' => ''
+            'token' => '###'
         ],
         'admin' => [
-            'pass' => '',
+            'pass' => '###',
             'role' => 'ADMIN',
-            'token' => ''
+            'token' => '###'
         ],
         'cli' => [
-            'pass' => '',
+            'pass' => '###',
             'role' => 'CLI',
-            'token' => ''
+            'token' => '###'
         ]
     ];
 }
@@ -94,7 +112,7 @@ function authenticate() {
 	$roles = get_roles();
 	$auth = get_accounts();
 	$login = $_POST['login'];
-	$pass = $_POST['pass'];
+	$pass  = $_POST['pass'];
 
 	if ( !empty($token) ) {
 

@@ -28,7 +28,7 @@ function members_get_handler($params) {
   }
 
   $memb_fields = array();
-  foreach(array('string','int','date') as $k => $v) {
+  foreach(array('string','int','date','text') as $k => $v) {
   	$query = 'SELECT members_fields_id as field_id, value as field_value FROM `'.$db_name.'`.`members_data_'.$v.'s` WHERE members_id = '.$id;
 	$res = $db->Query($query);
 	if (empty($res)) continue;

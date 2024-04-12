@@ -43,15 +43,26 @@ const getMarkerDescription = ( id ) => {
 {:then data}
 
 <LeafletMap>
-
-{#each data as marker (marker.id)}
-	<LeafletMarker lat={marker.geo_lattitude} lng={marker.geo_longitude} desc={getMarkerDescription( marker.id )}></LeafletMarker>
-{/each}
-
+	{#each data as marker (marker.id)}
+		<LeafletMarker lat={marker.geo_lattitude} lng={marker.geo_longitude} desc={getMarkerDescription( marker.id )}></LeafletMarker>
+	{/each}
+	<div id="epic-logo"></div>
 </LeafletMap>
 
 {/await}
 
 <style>
+
+#epic-logo {
+	position: absolute;
+	top: 2vmin;
+	left: 2vmin;
+	width: 30vmin;
+	height: 20vmin;
+	background-position: center;
+	background-size: cover;
+	background-image: url(images/EPIC-logo_black.svg);
+	z-index: 1000;
+}
 
 </style>

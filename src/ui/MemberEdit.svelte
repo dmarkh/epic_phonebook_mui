@@ -1,5 +1,6 @@
 <script>
 
+import {meta, router, Route} from 'tinro';
 import { screen, member_id } from '../store.js';
 
 import MemberEditComponent from './MemberEditComponent.svelte';
@@ -16,6 +17,7 @@ const recordUpdated = async ( memberId, changes, field_values ) => {
 	pleaseWait = 'UPDATING MEMBER DATA, PLEASE WAIT';
 
 	let data = { [memberId]: changes.reduce( (acc,cv) => { acc[cv.field_id] = cv.post; return acc; }, {} ) };
+
 	let rc = await updateMember( data );
 	await sleep(1000);
 

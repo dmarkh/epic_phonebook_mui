@@ -15,7 +15,7 @@ import AccessDenied from './AccessDenied.svelte';
 import readXlsxFile from 'read-excel-file';
 
 import { auth } from '../store.js';
-import { getInstitutionFields, getInstitutionFieldgroups } from '../utils/pnb-api.js';
+import { updateInstitution, getInstitutions, getInstitutionFields, getInstitutionFieldgroups } from '../utils/pnb-api.js';
 import { orderKeys } from '../utils/pnb-download.js';
 
 let valueTypeFiles = null,
@@ -24,7 +24,31 @@ let valueTypeFiles = null,
 	fieldData = false,
 	fieldValues = [];
 
+let uploading_institutions = false,
+    upload_errors = [],
+    inst_uploading = false,
+    inst_total = false;
+
 let skipFirstRow = false;
+
+const getFieldId = ( name, fields ) => {
+    let field = Object.values( fields ).find( f => f.name_fixed == name );
+    if ( field ) { return field.id; }
+    return false;
+}
+
+const checkRORIDexists = ( rorid, inst, fields ) => {
+    let rorid_field_id = getFieldId( 'ror_id', fields );
+    console.log('checking rorid: ' + rorid );
+    console.log('rorid_field_id: ' + rorid_field_id );
+    console.log('fields', fields );
+    for( const [k,v] of Object.entries( inst ) ) {
+        if ( v.fields[rorid_field_id] == rorid ) {
+            return k;
+        }
+    }
+    return false;
+}
 
 const importNewData = async () => {
 	console.log('...importing new data...');
@@ -32,6 +56,77 @@ const importNewData = async () => {
 	console.log( 'field data', fieldData );
 	console.log( 'skipFirstRow', skipFirstRow );
 	console.log( 'file data', fileData );
+
+    let inst = await getInstitutions();
+
+    inst_uploading = 0;
+    inst_total = fileData.length;
+    uploading_institutions = true;
+
+    let db_id_idx = false,
+		ror_id_idx = false;
+
+	console.log( 'fieldValues', fieldValues );
+
+    for ( let i = 0, ilen = fieldValues.length; i < ilen; i++ ) {
+		switch( fieldValues[i] ) {
+			case 'id':
+				db_id_idx = i;
+				break;
+			case 'ror_id':
+				ror_id_idx = i;
+				break;
+			default:
+				break;
+		}
+    }
+
+    if ( db_id_idx === false && ror_id_idx === false ) {
+        upload_errors = [ ...upload_errors, 'Either DB ID or ROR ID should be selected'];
+        return false;
+    }
+
+	let inst_id = false;
+
+    for ( let i = 0, ilen = fileData.length; i < ilen; i++ ) {
+        inst_uploading = i + 1;
+        let fields = {}, fid = false, skip = false;
+
+        inst_id = false;
+		if ( db_id_idx !== false ) {
+			inst_id = fileData[i][ db_id_idx ];
+		} else if ( ror_id_idx !== false ) {
+			inst_id = checkRORIDexists( fileData[i][ ror_id_idx ], inst, fieldData.fields );
+		}
+
+        if ( !inst_id ) {
+			console.log('db_id_idx: ' + db_id_idx + ', ror_id_idx: ' + ror_id_idx );
+        	upload_errors = [ ...upload_errors, 'Institution not found: bad ID! skipping entry ' + i ];
+            continue;
+        }
+
+        for ( let j = 0, jlen = fieldValues.length; j < jlen; j++ ) {
+            if ( fieldValues[j] === 'ror_id' || fieldValues[j] === 'id' || !fieldValues[j] ) { continue; }
+            fid = getFieldId( fieldValues[j], fieldData.fields );
+   	        if ( fid ) {
+				if ( inst[ inst_id ].fields[ fid ] != fileData[i][j] ) {
+        	        fields[ fid ] = fileData[i][j];
+				}
+           	} else {
+               	upload_errors = [ ...upload_errors, 'Unknown field: ' + fieldValues[j] + ' - skipping entry ' + i ];
+                skip = true;
+   	            break;
+       	    }
+        }
+
+        if ( inst_id && !skip && Object.keys( fields ).length ) {
+            let data = {
+                [ inst_id ]: fields
+            };
+            let rc = await updateInstitution( data );
+        }
+    }
+
 }
 
 const fetchFields = async () => {
@@ -50,6 +145,12 @@ const processUploadedFile = async () => {
 	for( let i = 0, ilen = rows[0].length; i < ilen; i++ ) {
 		fieldValues[i] = "";
 	}
+
+    uploading_institutions = false;
+    upload_errors = [];
+    inst_uploading = false;
+    inst_total = false;
+
 	fileIsBeingParsed = false;
 	fileData = rows;
 }
@@ -78,13 +179,34 @@ $: if (valueTypeFiles != null && valueTypeFiles.length) {
 	{/if}
 </div>
 
+{#if uploading_institutions}
+
+    <p>Uploading institutions: {inst_uploading} / {inst_total}</p>
+
+    {#if upload_errors.length}
+        <p><span style="color: #900;">UPLOAD ERRORS:</span></p>
+        {#each upload_errors as val, id}
+        <p>{val}</p>
+        {/each}
+    {/if}
+
+    {#if inst_uploading == inst_total}
+        {#if !upload_errors.length}
+            <p>ALL INSTITUTIONS WERE UPLOADED SUCCESSFULLY</p>
+        {:else} 
+            <p>INSTITUTIONS WERE UPLOADED, PLEASE CHECK ERROR MESSAGES ABOVE</p>
+        {/if}
+    {/if}
+
+{:else}
+
 {#if fileIsBeingParsed}
 	<LinearProgress indeterminate />
 {/if}
 
 {#if fileData}
 <Paper>
-<p>PLEASE SELECT AN APPROPRIATE FIELD NAME FOR EACH COLUMN. NOTE THAT AT LEAST ONE COLUMN SHOULD BE EITHER "ID" (db ID) OR "ROR ID".</p>
+<p>PLEASE SELECT AN APPROPRIATE FIELD NAME FOR EACH COLUMN. NOTE THAT AT LEAST ONE COLUMN SHOULD BE ASSIGNED TO "ROR ID".</p>
 <DataTable table$aria-label="Imported Data" style="width: 100%;">
     <Head>
         <Row>
@@ -92,7 +214,7 @@ $: if (valueTypeFiles != null && valueTypeFiles.length) {
             <Cell columnId="{idx}">
 				<select bind:value={fieldValues[ idx ]} style="width: 20vmin;">
 					<option value="">NOT SET</option>
-					<option value="__id">ID</option>
+					<option value="id">ID</option>
 				{#each fieldData.fields_ordered as id (id) }
 					<option value="{fieldData.fields[id].name_fixed}">{fieldData.fields[id].name_desc}</option>
 				{/each}
@@ -107,7 +229,7 @@ $: if (valueTypeFiles != null && valueTypeFiles.length) {
 		<Row>
 		{#each row as row_data, row_idx ( row_idx ) }
 			<Cell>
-				{row_data}
+				{row_data || ''}
 			</Cell>
 		{/each}
 		</Row>
@@ -123,6 +245,8 @@ $: if (valueTypeFiles != null && valueTypeFiles.length) {
 	<FabLabel>UPDATE EXISTING INSTITUTIONS</FabLabel>
 </Fab>
 </div>
+
+{/if}
 
 {/if}
 

@@ -22,7 +22,7 @@ const useGuestAccess = async () => {
 	logging_in = true;
 
 	let data = await authenticate('guest', 'guest');
-	if ( data.token && data.grants && data.role ) {
+	if ( data && data.token && data.grants && data.role ) {
 		$auth = { ...data, user: 'guest' };
 	} else {
 		snackbarError.open()
@@ -40,7 +40,7 @@ const doLogin = async () => {
 	logging_in = true;
 
 	let data = await authenticate( login, pass );
-	if ( data.token && data.grants && data.role ) {
+	if ( data && data.token && data.grants && data.role ) {
 		$auth = { ...data, user: login };
 	} else {
 		snackbarError.open()
@@ -49,7 +49,31 @@ const doLogin = async () => {
 	logging_in = false;
 }
 
+const checkPreLogin = async() => {
+	if ( window.pnb && window.pnb.audata && window.pnb.audata.id ) {
+		let data = await authenticate( window.pnb.audata.id, window.pnb.audata.tk );
+		if ( data.token && data.grants && data.role ) {
+			$auth = { ...data, user: window.pnb.audata.id };
+		} else {
+			await useGuestAccess();
+		}
+	}
+}
+
 </script>
+
+{#await checkPreLogin()}
+
+	<div class="pnb-auth-container">
+		<Paper color="primary" style="text-align: center;" elevation={8}>
+			<div style="text-align: center; padding: 5vmin;" class="mdc-typography--headline5">
+				PLEASE WAIT
+			</div>
+			<LinearProgress indeterminate />
+		</Paper>
+	</div>
+
+{:then res}
 
 <div class="pnb-auth-wrapper">
 	{#if !logging_in}
@@ -114,6 +138,8 @@ const doLogin = async () => {
 </Snackbar>
 
 </div>
+
+{/await}
 
 <style>
 .pnb-auth-wrapper {

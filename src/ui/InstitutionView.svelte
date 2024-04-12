@@ -9,7 +9,7 @@ import Paper from '@smui/paper';
 import { getInstitution, getInstitutionFields, getInstitutionFieldgroups } from '../utils/pnb-api.js';
 import { convertInstitution } from '../utils/pnb-convert.js';
 
-import { institution_id } from '../store.js';
+import { institution_id, auth } from '../store.js';
 import { downloadInstitution } from '../utils/pnb-download.js';
 
 let title = '', subtitle = '';
@@ -25,8 +25,11 @@ const fetchInstitution = async ( id ) => {
     }
 
 	for ( const id of i.institution_fields_ordered ) {
-        data.push({
-            id: parseInt(id),
+		if ( i.institution_fields[ id ].is_enabled != 'y' ) { continue; }
+		if ( i.institution_fields[ id ].privacy !== 'public' && !( $auth['role'] == 'ADMIN' || $auth['role'] == 'EDITOR' ) ) { continue; }
+
+       	data.push({
+           	id: parseInt(id),
             desc: i.institution_fields[id].name_desc,
             value: i.cinstitution[ i.institution_fields[id].name_fixed ] || '',
             group: i.institution_groups[ i.institution_fields[id].group ].name_full

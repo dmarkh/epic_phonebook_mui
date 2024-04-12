@@ -25,7 +25,7 @@ const fetchData = async() => {
 		{ 'name': 'name_fixed', 'editable': 1, 'value': '' },
 		{ 'name': 'name_desc', 'editable': 1, 'value': '' },
 		{ 'name': 'weight', 'editable': 1, 'value': '1' },
-		{ 'name': 'type', 'editable': 1, 'value': 'string', 'options': [ ['string','STRING'], ['int','INTEGER'], ['date', 'DATE'] ] },
+		{ 'name': 'type', 'editable': 1, 'value': 'string', 'options': [ ['string','STRING'], ['int','INTEGER'], ['date', 'DATE'], ['text', 'TEXT'] ] },
 		{ 'name': 'options', 'editable': 1, 'value': '' },
 		{ 'name': 'size_min', 'editable': 1, 'value': '1' },
 		{ 'name': 'size_max', 'editable': 1, 'value': '255' },
@@ -47,6 +47,7 @@ const fetchData = async() => {
 	}
 	let fieldgroup_options = [];
 	for ( const [k,v] of Object.entries( fieldgroups ) ) {
+		if ( v.is_enabled !== 'y' ) { continue; }
 		fieldgroup_options.push([ v.id, v.name_full ]);
 	}
 	let name = names.find( n => n.name == 'group');

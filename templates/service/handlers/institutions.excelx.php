@@ -46,7 +46,7 @@ function institutions_excelx_handler($params) {
   $inst = $db->Query($query);
 
   $inst_fields = array();
-  foreach(array('string','int','date') as $k => $v) {
+  foreach(array('string','int','date','text') as $k => $v) {
     $query = 'SELECT * FROM `'.$db_name.'`.`institutions_data_'.$v.'s`';
     $res = $db->Query($query);
     if (empty($res)) continue;

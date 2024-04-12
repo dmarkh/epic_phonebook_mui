@@ -19,8 +19,9 @@ const recordUpdated = async ( memberId, changes, field_values ) => {
 
     let data = {
         "status": "active",
-        "fields": Object.fromEntries(Object.entries( field_values ).filter(([_, v]) => v !== '' && v !== undefined && v !== null ))
+        "fields": changes.reduce( (acc,cv) => { acc[cv.field_id] = cv.post; return acc; }, {} )
     };
+
     let rc = await createMember( data );
     await sleep(1000);
     $screen = 'members';

@@ -26,6 +26,8 @@ import IconButton from '@smui/icon-button';
 import Menu from '@smui/menu';
 import Button, { Label } from '@smui/button';
 
+import Representatives from './Representatives.svelte';
+
 import Institution from './Institution.svelte';
 import Institutions from './Institutions.svelte';
 import InstitutionNew from './InstitutionNew.svelte';
@@ -69,7 +71,11 @@ import AuthorLists from './AuthorLists.svelte';
 import AuthLogin from './AuthLogin.svelte';
 import NotFound from './NotFound.svelte';
 
+import { keepalive } from '../utils/pnb-api.js';
+
 let account_menu;
+
+let keepalive_id = false;
 
 const toggleTheme = () => {
 	if ( $themeMode === 'light' ) {
@@ -79,13 +85,20 @@ const toggleTheme = () => {
 	}
 }
 
-// cpath = window.location.pathname.replace( window.pnb.basepath, "" )
-
 let descriptors_open = false;
 
 const doLogout = () => {
 	$auth = { token: "", role: "", grants: {} };
 }
+
+onMount(() => {
+	if ( !keepalive_id ) {
+		keepalive_id = setInterval( async () => {
+			let data = await keepalive();
+			console.log( 'keepalive: ' + JSON.stringify(data) );
+		}, window.pnb['keepalive-interval']*1000 );
+	}
+});
 
 </script>
 
@@ -152,6 +165,10 @@ const doLogout = () => {
 						<Item href="/stats" on:click={() => { $screen = 'stats'; }} activated={$screen === 'stats'}>
 								<Graphic class="material-icons" aria-hidden="true">query_stats</Graphic>
 								<Text>STATISTICS</Text>
+						</Item>
+						<Item href="/representatives" on:click={() => { $screen = 'representatives'; }} activated={$screen === 'representatives'}>
+								<Graphic class="material-icons" aria-hidden="true">group</Graphic>
+								<Text>REPRESENTATIVES</Text>
 						</Item>
 						<Item href="/worldmap" on:click={() => { $screen = 'worldmap'; }} activated={$screen === 'worldmap'}>
 							<Graphic class="material-icons" aria-hidden="true">map</Graphic>
@@ -241,6 +258,7 @@ const doLogout = () => {
 				<main class="main-content">
 					<Route path="/"> <Stats /> </Route>
 					<Route path="/stats"> <Stats /> </Route>
+					<Route path="/representatives"> <Representatives /> </Route>
 					<Route path="/worldmap"> <WorldMap /> </Route>
 					<Route path="/authorlists/*" let:meta> <AuthorLists {meta} /> </Route>
 					<Route path="/new-institution"> <InstitutionNew /> </Route>

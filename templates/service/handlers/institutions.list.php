@@ -43,7 +43,7 @@ function institutions_list_handler($params) {
 	$institutions[$v['id']]['status_change_reason'] = $v['status_change_reason'];
 	$institutions[$v['id']]['last_update'] = $v['last_update'];
 	$institutions[$v['id']]['join_date'] = $v['join_date'];
-	foreach(array('string', 'int', 'date') as $k2 => $v2) {
+	foreach(array('string', 'int', 'date','text') as $k2 => $v2) {
 		$query = 'SELECT * FROM `'.$db_name.'`.`institutions_data_'.$v2.'s` WHERE `institutions_id` = '.intval($v['id']);
 		$fields = $db->Query($query);
 		foreach($fields as $k3 => $v3) {

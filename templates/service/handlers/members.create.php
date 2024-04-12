@@ -55,6 +55,9 @@ function members_create_handler($params) {
 			case 'date':
 				$query = 'INSERT INTO `'.$db_name.'`.`members_data_dates` (`members_id`, `members_fields_id`, `value`) VALUES ('.intval($id).', '.intval($k).', "'.$db->Escape($v).'")';
 				break;
+			case 'text':
+				$query = 'INSERT INTO `'.$db_name.'`.`members_data_texts` (`members_id`, `members_fields_id`, `value`) VALUES ('.intval($id).', '.intval($k).', "'.$db->Escape($v).'")';
+				break;
 			default:
 				break;
 		}

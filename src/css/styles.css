@@ -22,9 +22,6 @@
 	-webkit-tap-highlight-color: transparent;
 	user-drag: none;
 	-webkit-user-drag: none;
-	user-select: none;
-	-moz-user-select: none;
-	-webkit-user-select: none;
 }
 
 html, body {
@@ -46,3 +43,13 @@ html, body {
   overflow: hidden;
 }
 
+.photoedit-image {
+    display: block;
+    width: 300px;
+    height: 300px;
+    margin: 1vmin;
+    margin-top: 2vmin;
+    border-radius: 1vmin;
+    border: 0.5vmin solid #DDD;
+    outline: 0.5vmin solid #777;
+}

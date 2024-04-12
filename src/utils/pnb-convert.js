@@ -46,17 +46,24 @@ export const convertMembers = async ( data, mfields = false ) => {
 	if ( !mfields) {
 		mfields = await getMemberFields();
 	}
-	let items = [], item = {}, opt, tmp1, tmp2;
-    for ( const [k,v] of Object.entries( data ) ) {
+	let items = [], item = {}, opt, tmp1, tmp2, first_option = false;
+
+    for ( const [k,v] of Object.entries( data ) ) { // iterate over members
 		item = { id: parseInt(k) };
-		for ( const [k2,v2] of Object.entries(v.fields) ) {
+
+		for ( const [k2,v2] of Object.entries( mfields ) ) { // iterate over mfield data [id, field descriptor]
 			if ( mfields[k2].options.length ) {
+				first_option = false;
 				opt = {};
 				tmp1 = mfields[k2].options.split(',');
-				tmp1.forEach( e => { tmp2 = e.split(':'); opt[tmp2[0]] = tmp2[1]; });
-				item[ mfields[k2].name_fixed.toLowerCase() ] = opt[v2];
-			} else {
-				item[ mfields[k2].name_fixed.toLowerCase() ] = v2;
+				tmp1.forEach( e => {
+					tmp2 = e.split(':');
+					opt[tmp2[0]] = tmp2[1];
+					if ( first_option == false ) { first_option = tmp2[1]; }
+				});
+				item[ mfields[k2].name_fixed.toLowerCase() ] = opt[ v.fields[k2] ] ? opt[ v.fields[k2] ] : first_option;
+			} else if ( v.fields[k2] ) {
+				item[ mfields[k2].name_fixed.toLowerCase() ] = v.fields[k2];
 			}
 		}
 		items.push( item );

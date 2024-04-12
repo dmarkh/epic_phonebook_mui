@@ -1,5 +1,7 @@
 <script>
 
+import {meta, router, Route} from 'tinro';
+
 import DataTable, { Head, Body, Row, Cell, Label, SortValue, Pagination } from '@smui/data-table';
 import IconButton from '@smui/icon-button';
 import Select, { Option } from '@smui/select';
@@ -58,13 +60,16 @@ const handleRowClick = ( e ) => {
 >
     <Head>
         <Row>
-            <Cell columnId="name_first" style="width: 20%; text-align: right;">
+            <Cell columnId="member_role" style="width: 25%; text-align: center;">
+                <Label>MEMBER ROLE</Label>
+            </Cell>
+            <Cell columnId="name_first" style="width: 25%; text-align: right;">
                 <Label>FIRST NAME</Label>
             </Cell>
-            <Cell columnId="name_last" style="width: 20%; text-align: left;">
+            <Cell columnId="name_last" style="width: 25%; text-align: left;">
                 <Label>LAST NAME</Label>
             </Cell>
-            <Cell columnId="email" style="width: 20%; text-align: center;">
+            <Cell columnId="email" style="width: 25%; text-align: center;">
                 <Label>EMAIL</Label>
             </Cell>
         </Row>
@@ -72,9 +77,10 @@ const handleRowClick = ( e ) => {
     <Body>
     {#each data as item (item.id)}
       <Row data-entry-id="{item.id}">
-        <Cell style="width: 20%; text-align: right;">{item.name_first || ''}</Cell>
-        <Cell style="width: 20%; text-align: left;">{item.name_last || ''}</Cell>
-        <Cell style="width: 20%; text-align: center;">{item.email || ''}</Cell>
+        <Cell style="width: 25%; text-align: center;">{item.member_role || ''}</Cell>
+        <Cell style="width: 25%; text-align: right;">{item.name_first || ''}</Cell>
+        <Cell style="width: 25%; text-align: left;">{item.name_last || ''}</Cell>
+        <Cell style="width: 25%; text-align: center;">{item.email || ''}</Cell>
       </Row>
     {/each}
     </Body>
