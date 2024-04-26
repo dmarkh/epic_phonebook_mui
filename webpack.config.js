@@ -21,7 +21,7 @@ module.exports = {
 		},
 		extensions: ['.mjs', '.js', '.svelte'],
 		mainFields: ['svelte', 'browser', 'module', 'main'],
-		conditionNames: ['svelte']
+		conditionNames: ['svelte','require']
 	},
 	output: {
 		path: path.join(__dirname, '/public'),
@@ -109,16 +109,6 @@ module.exports = {
 			patterns: [
 				{
 					from: "**/*",
-					to: path.join(__dirname, '/public/'),
-					context: 'templates/',
-		            globOptions: {
-            			ignore: [
-			              "**/index.php"
-            			],
-          			}
-        		},
-				{
-					from: "**/.htaccess",
 					to: path.join(__dirname, '/public/'),
 					context: 'templates/',
 		            globOptions: {
