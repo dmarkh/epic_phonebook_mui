@@ -11,6 +11,22 @@ function get_resolvers() {
 			},
 			'institutions' => function( $root, $args, $context, $info ) {
 				return get_filters( $context['institutions'], ( $context['variables'] && $context['variables']['filters'] ) ? $context['variables']['filters'] : [] );
+			},
+			'member' => function( $root, $args, $context, $info ) {
+				foreach($context['members'] as $k => $v ) {
+					if ( isset($v['orcid_id']) && $v['orcid_id'] == $args['orcid'] ) {
+						return $v;
+					}
+				}
+				return NULL;
+			},
+			'institution' => function( $root, $args, $context, $info ) {
+				foreach($context['institutions'] as $k => $v ) {
+					if ( isset($v['ror_id']) && $v['ror_id'] == $args['rorid'] ) {
+						return $v;
+					}
+				}
+				return NULL;
 			}
         ],
 		'Institution' => [

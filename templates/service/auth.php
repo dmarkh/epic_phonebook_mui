@@ -70,19 +70,19 @@ function get_roles() {
 function get_accounts() {
     return [
         'guest' => [
-            'pass' => '###',
+            'pass' => 'guest',
             'role' => 'GUEST',
-            'token' => '###'
+            'token' => ''
         ],
         'admin' => [
-            'pass' => '###',
+            'pass' => '',
             'role' => 'ADMIN',
-            'token' => '###'
+            'token' => ''
         ],
         'cli' => [
-            'pass' => '###',
+            'pass' => '',
             'role' => 'CLI',
-            'token' => '###'
+            'token' => ''
         ]
     ];
 }

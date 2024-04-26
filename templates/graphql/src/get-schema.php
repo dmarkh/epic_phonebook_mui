@@ -11,6 +11,8 @@ type Query {
 	echo(message: String!): String!
 	members: [Member]
 	institutions: [Institution]
+	member(orcid: String!): Member
+	institution(rorid: String!): Institution
 }
 
 type Institution {

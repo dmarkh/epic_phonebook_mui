@@ -1,4 +1,5 @@
-const webpack = require('webpack');
+let webpack = require('webpack');
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
@@ -19,7 +20,8 @@ module.exports = {
 			svelte: path.dirname(require.resolve('svelte/package.json'))
 		},
 		extensions: ['.mjs', '.js', '.svelte'],
-		mainFields: ['svelte', 'browser', 'module', 'main']
+		mainFields: ['svelte', 'browser', 'module', 'main'],
+		conditionNames: ['svelte']
 	},
 	output: {
 		path: path.join(__dirname, '/public'),
@@ -29,6 +31,12 @@ module.exports = {
 	},
 	module: {
 		rules: [
+			{
+			  test: /\.m?js/,
+			  resolve: {
+			    fullySpecified: false,
+			  },
+			},
 			{
 				test: /\.svelte$/,
 				use: {
@@ -105,7 +113,7 @@ module.exports = {
 					context: 'templates/',
 		            globOptions: {
             			ignore: [
-			              "**/index.html"
+			              "**/index.php"
             			],
           			}
         		},
@@ -115,14 +123,25 @@ module.exports = {
 					context: 'templates/',
 		            globOptions: {
             			ignore: [
-			              "**/index.html"
+			              "**/index.php"
             			],
           			}
+        		},
+				{
+					from: "*service/index.php",
+					to: path.join(__dirname, '/public/service/index.php'),
+					context: 'templates/'
+        		},
+				{
+					from: "*graphql/index.php",
+					to: path.join(__dirname, '/public/graphql/index.php'),
+					context: 'templates/'
         		}
 			]
 		}),
         new HTMLWebpackPlugin({
-        	template: path.join(__dirname, './templates/index.html'),
+        	template: path.join(__dirname, './templates/index.php'),
+			filename: path.join(__dirname, './public/index.php'),
 			minify: false,
 			inject: 'head'
         })

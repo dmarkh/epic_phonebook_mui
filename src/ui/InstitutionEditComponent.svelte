@@ -15,6 +15,7 @@ import Dialog, { Title as DialogTitle, Content as DialogContent, Actions as Dial
 import Button, { Label as ButtonLabel } from '@smui/button';
 
 import { downloadInstitution } from '../utils/pnb-download.js';
+import { toggleInstitution } from '../utils/pnb-api.js';
 import { find_field_id } from '../utils/pnb-search.js';
 import { geocode_locate_address } from '../utils/geocode.js';
 
@@ -25,7 +26,7 @@ let geocode_open = false,
 	new_lat = '',
 	new_lon = '';
 
-let i_data = false, title = false, subtitle = false;
+let i_data = false, title = false, subtitle = false, i_status = '';
 let	country_ids_sorted = [],
 	country_codes_sorted = [];
 let preedit_field_values  = {},
@@ -36,6 +37,8 @@ let required_fields = false;
 const fetchInstitution = async () => {
     let data = [];
     let i = await downloadInstitution( institutionId );
+	i_status = i.institution.institution.status;
+
 	ifields = i.institution_fields;
    	country_ids_sorted = i.country_ids_sorted;
 	country_codes_sorted = i.country_codes_sorted;
@@ -70,6 +73,11 @@ const fetchInstitution = async () => {
 
 	i_data = data;
 	return data;
+}
+
+const toggleRecord = async () => {
+    await toggleInstitution( institutionId );
+    router.goto('/institutions');
 }
 
 const updateRecord = () => {
@@ -212,6 +220,9 @@ const apply_new_coordinates = async () => {
 {#if subtitle}
     <div style="text-align: center;" class="mdc-typography--subtitle1">{subtitle}</div>
 {/if}
+{#if i_status === 'inactive'}
+    <div style="text-align: center; color: #900;" class="mdc-typography--subtitle1">INACTIVE INSTITUTION</div>
+{/if}
 
 <Paper>
 
@@ -297,6 +308,16 @@ const apply_new_coordinates = async () => {
 
 </div>
 {/each}
+
+<br />
+<hr>
+<br />
+<div class="toggle-button">
+    <Fab color="primary" on:click={() => { toggleRecord(); }} extended>
+      <FabIcon class="material-icons">history_toggle_off</FabIcon>
+      <FabLabel>TOGGLE STATUS (ACTIVE/INACTIVE)</FabLabel>
+    </Fab>
+</div>
 
 <div class="geocode-button">
     <Fab color="primary" on:click={() => { get_geocode_information(); geocode_open = true; }} extended>

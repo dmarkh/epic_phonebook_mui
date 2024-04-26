@@ -1,5 +1,6 @@
 <script>
 
+import {meta, router, Route} from 'tinro';
 import LinearProgress from '@smui/linear-progress';
 import Paper, { Content } from '@smui/paper';
 import Select, { Option } from '@smui/select';
@@ -16,6 +17,7 @@ import Croppie from 'croppie';
 import 'croppie/croppie.css';
 
 import { downloadMember } from '../utils/pnb-download.js';
+import { toggleMember } from '../utils/pnb-api.js';
 
 export let memberId;
 export let institutionId;
@@ -66,7 +68,7 @@ $: if ( valueTypeFiles != null && valueTypeFiles.length && photo_field_id ) {
 }
 
 
-let m_data = false, title = false, subtitle = false;
+let m_data = false, title = false, subtitle = false, m_status = '';
 let institution_ids_sorted = [],
 	country_ids_sorted = [];
 let preedit_field_values  = {},
@@ -85,10 +87,16 @@ let on_apply_croppie = async () => {
 	postedit_field_values[ photo_field_id ] = cropresult;
 }
 
+const toggleRecord = async () => {
+	await toggleMember( memberId );
+	router.goto('/members');
+}
+
 const fetchMember = async () => {
     let data = [];
 
     let m = await downloadMember( memberId, institutionId );
+	m_status = m.member.member.status;
 
 	photo_field_id = Object.values(m.member_fields).find( mf => mf.name_fixed === 'photo');
 	if ( photo_field_id ) {
@@ -254,6 +262,9 @@ const updateRecord = () => {
 {#if subtitle}
     <div style="text-align: center;" class="mdc-typography--subtitle1">{subtitle}</div>
 {/if}
+{#if m_status === 'inactive'}
+    <div style="text-align: center; color: #900;" class="mdc-typography--subtitle1">INACTIVE MEMBER</div>
+{/if}
 
 <Paper>
 
@@ -352,10 +363,20 @@ const updateRecord = () => {
         </Textfield>
     {/if}
 
+
 {/if}
 
 </div>
 {/each}
+<br />
+<hr>
+<br />
+<div class="toggle-button">
+    <Fab color="primary" on:click={() => { toggleRecord(); }} extended>
+      <Icon class="material-icons">history_toggle_off</Icon>
+   	  <Label>TOGGLE STATUS (ACTIVE/INACTIVE)</Label>
+    </Fab>
+</div>
 
 <div class="save-button">
     <Fab color="primary" on:click={() => { updateRecord(); }} extended>

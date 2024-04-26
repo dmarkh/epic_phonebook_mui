@@ -16,7 +16,7 @@ switch ( window.pnb.router ) {
 
 import { onMount } from 'svelte';
 import { fade } from 'svelte/transition';
-import { auth, screen, themeMode } from '../store.js';
+import { auth, status, screen, themeMode } from '../store.js';
 
 import Drawer, { AppContent, Content, Subtitle } from '@smui/drawer';
 import List, { Item, Text, Graphic, Separator, Subheader } from '@smui/list';
@@ -91,6 +91,10 @@ const doLogout = () => {
 	$auth = { token: "", role: "", grants: {} };
 }
 
+const toggleStatus = () => {
+	$status = $status == 'active' ? 'inactive' : 'active';
+}
+
 onMount(() => {
 	if ( !keepalive_id ) {
 		keepalive_id = setInterval( async () => {
@@ -150,6 +154,19 @@ onMount(() => {
 									<Graphic class="material-icons" aria-hidden="true">logout</Graphic>
 									<Text>LOGOUT</Text>
 								</Item>
+								{#if $auth['grants']['members-edit']}
+									{#if $status === 'active'}
+										<Item on:SMUI:action={() => ( toggleStatus() )}>
+											<Graphic class="material-icons" aria-hidden="true">toggle_on</Graphic>
+											<Text>SHOW INACTIVE RECORDS</Text>
+										</Item>
+									{:else}
+										<Item on:SMUI:action={() => ( toggleStatus() )}>
+											<Graphic class="material-icons" aria-hidden="true">toggle_off</Graphic>
+											<Text>SHOW ACTIVE RECORDS</Text>
+										</Item>
+									{/if}
+								{/if}
 							</List>
 						</Menu>
 					</IconButton>
@@ -256,6 +273,7 @@ onMount(() => {
 			</Drawer>
 			<AppContent class="app-content">
 				<main class="main-content">
+					{#key $status}
 					<Route path="/"> <Stats /> </Route>
 					<Route path="/stats"> <Stats /> </Route>
 					<Route path="/representatives"> <Representatives /> </Route>
@@ -290,6 +308,7 @@ onMount(() => {
 					<Route path="/institution-field/:id/*" let:meta> <InstitutionField {meta} /> </Route>
 					<Route path="/member-fieldgroup/:id/*" let:meta> <MemberFieldgroup {meta} /> </Route>
 					<Route path="/institution-fieldgroup/:id/*" let:meta> <InstitutionFieldgroup {meta} /> </Route>
+					{/key}
 				</main>
 			</AppContent>
 		</div>

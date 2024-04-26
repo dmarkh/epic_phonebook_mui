@@ -10,6 +10,8 @@ export const serviceURI = window.pnb.service; // 'https://127.0.0.1/phonebook-mu
 export const member_id = writable(false);
 export const institution_id = writable(false);
 
+export const status = writable('active'); // active, inactive
+
 export const institution_mode = writable('view'); // view, history, edit
 export const member_mode = writable('view'); // view, history, edit
 

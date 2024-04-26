@@ -1,5 +1,5 @@
 
-import { auth, serviceURI } from '../store.js';
+import { auth, status, serviceURI } from '../store.js';
 import { get } from 'svelte/store';
 
 export const keepalive = async () => {
@@ -80,7 +80,7 @@ export const getMemberHistory = async ( id ) => {
 export const getInstitutions = async ( details = 'full' ) => {
 	// details: name, compact, full - TBD
 	const token = get(auth)['token'];
-	const url = serviceURI + '?q=/institutions/list/status:active/details:' + details;
+	const url = serviceURI + '?q=/institutions/list/status:' + get(status) + '/details:' + details;
 	const response = await fetch( url, {
 		method: "GET",
 		cache: "no-cache",
@@ -97,7 +97,7 @@ export const getInstitutions = async ( details = 'full' ) => {
 export const getMembers = async ( details = 'full' ) => {
 	// details: name, compact, full
 	const token = get(auth)['token'];
-	const url = serviceURI + '?q=/members/list/status:active/details:' + details;
+	const url = serviceURI + '?q=/members/list/status:' + get(status) + '/details:' + details;
 	const response = await fetch( url, {
 		method: "GET",
 		cache: "no-cache",

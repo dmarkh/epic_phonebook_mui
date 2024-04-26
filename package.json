@@ -28,14 +28,17 @@
   },
   "dependencies": {
     "@smui/button": "6.1.4",
+    "croppie": "^2.6.5",
     "leaflet": "^1.9.4",
     "read-excel-file": "^5.7.1",
-	"tinro": "0.6.12",
     "smui-theme": "^6.1.4",
     "svelte-chartjs": "^3.1.2",
     "svelte-hash-router": "^1.0.1",
     "svelte-material-ui": "^6.1.4",
     "svelte-scrollto": "^0.2.0",
-    "svelte-scrollto-element": "^0.7.0"
+    "svelte-scrollto-element": "^0.7.0",
+    "svelte-select": "^5.8.3",
+    "tinro": "^0.6.12",
+    "xlsx": "^0.18.5"
   }
 }
