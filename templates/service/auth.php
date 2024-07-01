@@ -3,6 +3,7 @@
 function get_roles() {
 	return [
         'GUEST' => [
+			'groups-view' => 1,
             'access-phonebook' => 1,
             'authorlists-view' => 1,
             'institutions-view' => 1,
@@ -27,9 +28,20 @@ function get_roles() {
             'fields-private-view' => 1
         ],
         'ADMIN' => [
+			'documents-view' => 1,
+			'events-view' => 1,
+			'documents-create' => 1,
+			'events-create' => 1,
+			'documents-edit' => 1,
+			'events-edit' => 1,
+			'documents-history' => 1,
+			'events-history' => 1,
             'access-phonebook' => 1,
             'authorlists-view' => 1,
             'representatives-view' => 1,
+            'groups-view' => 1,
+            'groups-create' => 1,
+            'groups-edit' => 1,
             'members-view' => 1,
             'members-create' => 1,
             'members-edit' => 1,
@@ -72,16 +84,11 @@ function get_accounts() {
         'guest' => [
             'pass' => 'guest',
             'role' => 'GUEST',
-            'token' => ''
+            'token' => '4IQxk9eOLHrdRay8Zor5'
         ],
         'admin' => [
             'pass' => '',
             'role' => 'ADMIN',
-            'token' => ''
-        ],
-        'cli' => [
-            'pass' => '',
-            'role' => 'CLI',
             'token' => ''
         ]
     ];

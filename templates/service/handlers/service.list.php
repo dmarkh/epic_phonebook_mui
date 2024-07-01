@@ -3,7 +3,7 @@
 #
 # Get fields list
 #
-# /service/list/object:fields/type:[institutions,members]
+# /service/list/object:fields/type:[institutions,members,documents,events]
 #
 # or group list
 #
@@ -18,6 +18,12 @@ function service_list_handler($params) {
 	switch ($params['object']) {
 		case 'fields':
 			switch ($params['type']) {
+				case 'events':
+					return json_encode(get_events_fields());
+					break;
+				case 'documents':
+					return json_encode(get_documents_fields());
+					break;
 				case 'members':
 					return json_encode(get_members_fields());
 					break;

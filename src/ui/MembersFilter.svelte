@@ -161,8 +161,8 @@ const apply_filters = async () => {
 				if ( a[f] < b[f] ) { return -1; }
 				else if ( a[f] > b[f] ) { return 1; }
 			} else if ( typeof a[f] === 'string' ) {
-				if ( a[f].toLowerCase() < b[f].toLowerCase() ) { return -1; }
-				else if ( a[f].toLowerCase() > b[f].toLowerCase() ) { return 1; }
+				if ( a[f].toString().toLowerCase() < b[f].toString().toLowerCase() ) { return -1; }
+				else if ( a[f].toString().toLowerCase() > b[f].toString().toLowerCase() ) { return 1; }
 			}
         }
         return 0;

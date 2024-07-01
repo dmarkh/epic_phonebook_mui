@@ -15,6 +15,7 @@ switch ( window.pnb.router ) {
 }
 
 import { onMount } from 'svelte';
+import { get } from 'svelte/store';
 import { fade } from 'svelte/transition';
 import { auth, status, screen, themeMode } from '../store.js';
 
@@ -24,13 +25,18 @@ import TopAppBar, { Row, Section, Title } from '@smui/top-app-bar';
 import IconButton from '@smui/icon-button';
 
 import Menu from '@smui/menu';
-import Button, { Label } from '@smui/button';
+import Button, { Label as ButtonLabel } from '@smui/button';
 
 import Representatives from './Representatives.svelte';
+
+import Group from './Group.svelte';
+import Groups from './Groups.svelte';
+import GroupNew from './GroupNew.svelte';
 
 import Institution from './Institution.svelte';
 import Institutions from './Institutions.svelte';
 import InstitutionNew from './InstitutionNew.svelte';
+import InstitutionsHistory from './InstitutionsHistory.svelte';
 
 import InstitutionsFilter from './InstitutionsFilter.svelte';
 import InstitutionsBulkImport from './InstitutionsBulkImport.svelte';
@@ -39,6 +45,7 @@ import InstitutionsBulkUpdate from './InstitutionsBulkUpdate.svelte';
 import Member from './Member.svelte';
 import Members from './Members.svelte';
 import MemberNew from './MemberNew.svelte';
+import MembersHistory from './MembersHistory.svelte';
 
 import MembersFilter from './MembersFilter.svelte';
 import MembersBulkImport from './MembersBulkImport.svelte';
@@ -49,18 +56,36 @@ import MemberFieldgroup from './MemberFieldgroup.svelte';
 import MemberFields from './MemberFields.svelte';
 import MemberFieldgroups from './MemberFieldgroups.svelte';
 
-import InstitutionField from './InstitutionField.svelte';
-import InstitutionFieldgroup from './InstitutionFieldgroup.svelte';
-import InstitutionFields from './InstitutionFields.svelte';
-import InstitutionFieldgroups from './InstitutionFieldgroups.svelte';
+import Document from './Document.svelte';
+import Documents from './Documents.svelte';
+import DocumentField from './DocumentField.svelte';
+import DocumentFields from './DocumentFields.svelte';
+import DocumentNewField from './DocumentNewField.svelte';
+import DocumentEditField from './DocumentEditField.svelte';
+import DocumentNew from './DocumentNew.svelte';
+import DocumentsFilter from './DocumentsFilter.svelte';
 
+import Event from './Event.svelte';
+import Events from './Events.svelte';
+import EventField from './EventField.svelte';
+import EventFields from './EventFields.svelte';
+import EventNewField from './EventNewField.svelte';
+import EventEditField from './EventEditField.svelte';
+import EventNew from './EventNew.svelte';
+import EventsFilter from './EventsFilter.svelte';
+
+import InstitutionField from './InstitutionField.svelte';
+import InstitutionFields from './InstitutionFields.svelte';
 import InstitutionNewField from './InstitutionNewField.svelte';
+import InstitutionEditField from './InstitutionEditField.svelte';
+
+import InstitutionFieldgroup from './InstitutionFieldgroup.svelte';
+import InstitutionFieldgroups from './InstitutionFieldgroups.svelte';
 import InstitutionNewFieldgroup from './InstitutionNewFieldgroup.svelte';
+import InstitutionEditFieldgroup from './InstitutionEditFieldgroup.svelte';
+
 import MemberNewField from './MemberNewField.svelte';
 import MemberNewFieldgroup from './MemberNewFieldgroup.svelte';
-
-import InstitutionEditField from './InstitutionEditField.svelte';
-import InstitutionEditFieldgroup from './InstitutionEditFieldgroup.svelte';
 import MemberEditField from './MemberEditField.svelte';
 import MemberEditFieldgroup from './MemberEditFieldgroup.svelte';
 
@@ -72,10 +97,17 @@ import AuthLogin from './AuthLogin.svelte';
 import NotFound from './NotFound.svelte';
 
 import { keepalive } from '../utils/pnb-api.js';
+import { show_stop_and_warn } from '../store.js';
 
 let account_menu;
-
 let keepalive_id = false;
+
+show_stop_and_warn.subscribe( (val) => {
+	if ( val === true ) {
+		clearInterval(keepalive_id);
+		keepalive_id = false;
+	}
+});
 
 const toggleTheme = () => {
 	if ( $themeMode === 'light' ) {
@@ -98,13 +130,16 @@ const toggleStatus = () => {
 onMount(() => {
 	if ( !keepalive_id ) {
 		keepalive_id = setInterval( async () => {
-			let data = await keepalive();
-			console.log( 'keepalive: ' + JSON.stringify(data) );
+			if ( !$show_stop_and_warn ) {
+				let data = await keepalive();
+				console.log( 'keepalive: ' + JSON.stringify(data) );
+			}
 		}, window.pnb['keepalive-interval']*1000 );
 	}
 });
 
 </script>
+
 
 <svelte:head>
   {#if $themeMode === 'dark'}
@@ -113,6 +148,20 @@ onMount(() => {
     <link rel="stylesheet" href="smui.css" />
   {/if}
 </svelte:head>
+
+{#if $show_stop_and_warn}
+
+<div class="dimmer"></div>
+<div class="stop-and-warn flex-center">
+	<p>PHONEBOOK: SESSION EXPIRED</p>
+	<p>
+		<Button on:click={() => { window.location.reload(); }} color="secondary" variant="raised">
+        	<ButtonLabel>RELOAD PAGE</ButtonLabel>
+    	</Button>
+	</p>
+</div>
+
+{:else}
 
 	<div id="viewport">
 
@@ -217,8 +266,12 @@ onMount(() => {
 							<Text>ADD NEW INSTITUTION</Text>
 						</Item>
 	{/if}
-						<Separator />
+						<Item href="/institutions-history" on:click={() => { $screen = 'institutionshistory'; }} activated={$screen === 'institutionshistory' }>
+							<Graphic class="material-icons" aria-hidden="true">view_list</Graphic>
+							<Text>INSTITUTIONS HISTORY</Text>
+						</Item>
 						</details>
+						<Separator />
 {/if}
 
 {#if $auth['grants']['members-view']}
@@ -238,6 +291,75 @@ onMount(() => {
 						<Item href="/new-member" on:click={() => { $screen = 'membernew'; }} activated={$screen === 'membernew'}>
 							<Graphic class="material-icons" aria-hidden="true">add_circle</Graphic>
 							<Text>ADD NEW MEMBER</Text>
+						</Item>
+	{/if}
+						<Item href="/members-history" on:click={() => { $screen = 'membershistory'; }} activated={$screen === 'membershistory'}>
+							<Graphic class="material-icons" aria-hidden="true">view_list</Graphic>
+							<Text>MEMBERS HISTORY</Text>
+						</Item>
+						</details>
+						<Separator />
+{/if}
+
+{#if $auth['grants']['groups-view']}
+						<details open>
+						<summary class="mdc-deprecated-list-group__subheader">
+							GROUPS
+						</summary>
+						<Item href="/groups" on:click={() => { $screen = 'groups'; }} activated={$screen === 'groups' || $screen === 'group' }>
+							<Graphic class="material-icons" aria-hidden="true">group</Graphic>
+							<Text>GROUPS</Text>
+						</Item>
+	{#if $auth['grants']['groups-create']}
+						<Item href="/new-group" on:click={() => { $screen = 'groupnew'; }} activated={$screen === 'groupnew'}>
+							<Graphic class="material-icons" aria-hidden="true">add_circle</Graphic>
+							<Text>ADD NEW GROUP</Text>
+						</Item>
+	{/if}
+						</details>
+						<Separator />
+{/if}
+
+{#if $auth['grants']['documents-view']}
+						<details open>
+						<summary class="mdc-deprecated-list-group__subheader">
+							DOCUMENTS
+						</summary>
+						<Item href="/documents" on:click={() => { $screen = 'documents'; }} activated={$screen === 'documents' || $screen === 'documents' }>
+							<Graphic class="material-icons" aria-hidden="true">group</Graphic>
+							<Text>DOCUMENTS</Text>
+						</Item>
+						<Item href="/filter-documents" on:click={() => { $screen = 'documentsfilter'; }} activated={$screen === 'documentsfilter'}>
+							<Graphic class="material-icons" aria-hidden="true">view_list</Graphic>
+							<Text>FILTER DOCUMENTS</Text>
+						</Item>
+	{#if $auth['grants']['documents-create']}
+						<Item href="/new-document" on:click={() => { $screen = 'documentnew'; }} activated={$screen === 'documentnew'}>
+							<Graphic class="material-icons" aria-hidden="true">add_circle</Graphic>
+							<Text>ADD NEW DOCUMENT</Text>
+						</Item>
+	{/if}
+						</details>
+						<Separator />
+{/if}
+
+{#if $auth['grants']['events-view']}
+						<details open>
+						<summary class="mdc-deprecated-list-group__subheader">
+							EVENTS
+						</summary>
+						<Item href="/events" on:click={() => { $screen = 'events'; }} activated={$screen === 'events' || $screen === 'events' }>
+							<Graphic class="material-icons" aria-hidden="true">group</Graphic>
+							<Text>EVENTS</Text>
+						</Item>
+						<Item href="/filter-events" on:click={() => { $screen = 'eventsfilter'; }} activated={$screen === 'eventsfilter'}>
+							<Graphic class="material-icons" aria-hidden="true">view_list</Graphic>
+							<Text>FILTER EVENTS</Text>
+						</Item>
+	{#if $auth['grants']['events-create']}
+						<Item href="/new-event" on:click={() => { $screen = 'eventnew'; }} activated={$screen === 'eventnew'}>
+							<Graphic class="material-icons" aria-hidden="true">add_circle</Graphic>
+							<Text>ADD NEW EVENT</Text>
 						</Item>
 	{/if}
 						</details>
@@ -265,6 +387,14 @@ onMount(() => {
 							<Graphic class="material-icons" aria-hidden="true">add</Graphic>
 							<Text>MEMBER FIELDGROUPS</Text>
 						</Item>
+						<Item href="/document-fields" on:click={() => { $screen = 'documentfields'; }} activated={$screen === 'documentfields'}>
+							<Graphic class="material-icons" aria-hidden="true">add</Graphic>
+							<Text>DOCUMENT FIELDS</Text>
+						</Item>
+						<Item href="/event-fields" on:click={() => { $screen = 'eventfields'; }} activated={$screen === 'eventfields'}>
+							<Graphic class="material-icons" aria-hidden="true">add</Graphic>
+							<Text>EVENT FIELDS</Text>
+						</Item>
 						</details>
 						<Separator />
 {/if}
@@ -279,21 +409,47 @@ onMount(() => {
 					<Route path="/representatives"> <Representatives /> </Route>
 					<Route path="/worldmap"> <WorldMap /> </Route>
 					<Route path="/authorlists/*" let:meta> <AuthorLists {meta} /> </Route>
+
+					<Route path="/documents"> <Documents /> </Route>
+					<Route path="/document/:id/*" let:meta> <Document {meta} /> </Route>
+					<Route path="/new-document"> <DocumentNew /> </Route>
+					<Route path="/document-field/:id/*" let:meta> <DocumentField {meta} /> </Route>
+					<Route path="/document-fields"> <DocumentFields /> </Route>
+					<Route path="/document-new-field"> <DocumentNewField /> </Route>
+					<Route path="/document-edit-field/:id/*" let:meta> <DocumentEditField {meta} /> </Route>
+					<Route path="/filter-documents"> <DocumentsFilter /> </Route>
+
+					<Route path="/events"> <Events /> </Route>
+					<Route path="/event/:id/*" let:meta> <Event {meta} /> </Route>
+					<Route path="/new-event"> <EventNew /> </Route>
+					<Route path="/event-field/:id/*" let:meta> <EventField {meta} /> </Route>
+					<Route path="/event-fields"> <EventFields /> </Route>
+					<Route path="/event-new-field"> <EventNewField /> </Route>
+					<Route path="/event-edit-field/:id/*" let:meta> <EventEditField {meta} /> </Route>
+					<Route path="/filter-events"> <EventsFilter /> </Route>
+
 					<Route path="/new-institution"> <InstitutionNew /> </Route>
 					<Route path="/institution/:id/*" let:meta> <Institution {meta} /> </Route>
 					<Route path="/institution-edit-field/:id/*" let:meta> <InstitutionEditField {meta} /> </Route>
 					<Route path="/institution-edit-fieldgroup/:id/*" let:meta> <InstitutionEditFieldgroup {meta} /> </Route>
 					<Route path="/institutions"> <Institutions /> </Route>
+					<Route path="/institutions-history"> <InstitutionsHistory /> </Route>
 					<Route path="/institutions-bulk-import"> <InstitutionsBulkImport /> </Route>
 					<Route path="/institutions-bulk-update"> <InstitutionsBulkUpdate /> </Route>
 					<Route path="/filter-institutions"> <InstitutionsFilter /> </Route>
 					<Route path="/institution-fields"> <InstitutionFields /> </Route>
 					<Route path="/institution-field-groups"> <InstitutionFieldgroups /> </Route>
+					<Route path="/institution-new-field"> <InstitutionNewField /> </Route>
+					<Route path="/institution-new-fieldgroup"> <InstitutionNewFieldgroup /> </Route>
+					<Route path="/institution-field/:id/*" let:meta> <InstitutionField {meta} /> </Route>
+					<Route path="/institution-fieldgroup/:id/*" let:meta> <InstitutionFieldgroup {meta} /> </Route>
+
 					<Route path="/new-member"> <MemberNew /> </Route>
 					<Route path="/member/:id/*" let:meta> <Member {meta} /> </Route>
 					<Route path="/member-edit-field/:id/*" let:meta> <MemberEditField {meta} /> </Route>
 					<Route path="/member-edit-fieldgroup/:id/*" let:meta> <MemberEditFieldgroup {meta} /> </Route>
 					<Route path="/members"> <Members /> </Route>
+					<Route path="/members-history"> <MembersHistory /> </Route>
 					<Route path="/members-bulk-import"> <MembersBulkImport /> </Route>
 					<Route path="/members-bulk-update"> <MembersBulkUpdate /> </Route>
 					<Route path="/filter-members"> <MembersFilter /> </Route>
@@ -301,13 +457,13 @@ onMount(() => {
 					<Route path="/member-field-groups"> <MemberFieldgroups /> </Route>
 					<Route path="/member-new-field"> <MemberNewField /> </Route>
 					<Route path="/member-new-fieldgroup"> <MemberNewFieldgroup /> </Route>
-					<Route path="/institution-new-field"> <InstitutionNewField /> </Route>
-					<Route path="/institution-new-fieldgroup"> <InstitutionNewFieldgroup /> </Route>
-
 					<Route path="/member-field/:id/*" let:meta> <MemberField {meta} /> </Route>
-					<Route path="/institution-field/:id/*" let:meta> <InstitutionField {meta} /> </Route>
 					<Route path="/member-fieldgroup/:id/*" let:meta> <MemberFieldgroup {meta} /> </Route>
-					<Route path="/institution-fieldgroup/:id/*" let:meta> <InstitutionFieldgroup {meta} /> </Route>
+
+					<Route path="/groups"> <Groups /> </Route>
+					<Route path="/new-group"> <GroupNew /> </Route>
+					<Route path="/group/:id/*" let:meta> <Group {meta} /> </Route>
+
 					{/key}
 				</main>
 			</AppContent>
@@ -319,6 +475,7 @@ onMount(() => {
 {/if}
 	</div>
 
+{/if}
 
 <style>
 
@@ -366,5 +523,39 @@ onMount(() => {
     height: 100%;
     box-sizing: border-box;
   }
+
+  .dimmer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000C;
+  }
+
+  .stop-and-warn {
+	position: absolute;
+	width: 50vmin;
+	height: 30vmin;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	background-color: #F99;
+	color: #000;
+	font-size: 2vmin;
+	padding: 2vmin;
+	border-radius: 2vmin;
+	outline: 0.5vmin solid #FFF;
+  }
+
+ .flex-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+ }
 
 </style>

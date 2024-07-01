@@ -96,7 +96,7 @@ const fetchMember = async () => {
     let data = [];
 
     let m = await downloadMember( memberId, institutionId );
-	m_status = m.member.member.status;
+	m_status = m.member.member ? m.member.member.status : 'active';
 
 	photo_field_id = Object.values(m.member_fields).find( mf => mf.name_fixed === 'photo');
 	if ( photo_field_id ) {
@@ -371,12 +371,14 @@ const updateRecord = () => {
 <br />
 <hr>
 <br />
+{#if memberId}
 <div class="toggle-button">
     <Fab color="primary" on:click={() => { toggleRecord(); }} extended>
       <Icon class="material-icons">history_toggle_off</Icon>
    	  <Label>TOGGLE STATUS (ACTIVE/INACTIVE)</Label>
     </Fab>
 </div>
+{/if}
 
 <div class="save-button">
     <Fab color="primary" on:click={() => { updateRecord(); }} extended>

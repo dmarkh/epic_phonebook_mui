@@ -37,7 +37,8 @@ let required_fields = false;
 const fetchInstitution = async () => {
     let data = [];
     let i = await downloadInstitution( institutionId );
-	i_status = i.institution.institution.status;
+
+	i_status = i.institution.institution ? i.institution.institution.status : 'active';
 
 	ifields = i.institution_fields;
    	country_ids_sorted = i.country_ids_sorted;
@@ -312,6 +313,8 @@ const apply_new_coordinates = async () => {
 <br />
 <hr>
 <br />
+
+{#if institutionId}
 <div class="toggle-button">
     <Fab color="primary" on:click={() => { toggleRecord(); }} extended>
       <FabIcon class="material-icons">history_toggle_off</FabIcon>
@@ -325,6 +328,7 @@ const apply_new_coordinates = async () => {
 	  <FabLabel>GEOCODE</FabLabel>
     </Fab>
 </div>
+{/if}
 
 <div class="save-button">
     <Fab color="primary" on:click={() => { updateRecord(); }} extended>

@@ -1,5 +1,272 @@
 <?php
 
+function get_groups() {
+  $cnf =& ServiceConfig::Instance();
+  $db =& ServiceDb::Instance('phonebook_api');
+  $db_name = $cnf->Get('phonebook_api','database');
+
+  $query = 'SELECT * FROM `'.$db_name.'`.`groups` WHERE `status` = "active"';
+  $grp = $db->Query($query);
+
+  $groups = array();
+  foreach( $grp as $k => $v ) {
+    $group = [ ...$v ];
+
+    $query = 'SELECT COUNT(*) AS mcnt FROM `'.$db_name.'`.`groups_members` WHERE `group_id` = '.intval( $v['id'] );
+    $mcnt = $db->Query($query);
+    $group['member-count'] = $mcnt['mcnt'][0];
+
+    $query = 'SELECT COUNT(*) as gcnt FROM `'.$db_name.'`.`groups` WHERE `parent` = '.intval( $v['id'] );
+    $gcnt = $db->Query($query);
+    $group['group-count'] = $gcnt['gcnt'][0];
+
+    $groups[ $v['id'] ] = $group;
+  }
+  return $groups;
+}
+
+function get_groups_members_roles() {
+  $cnf =& ServiceConfig::Instance();
+  $db =& ServiceDb::Instance('phonebook_api');
+  $db_name = $cnf->Get('phonebook_api','database');
+
+  $members = [];
+  $groups  = [];
+
+  $query = 'SELECT group_id, member_id, role_id FROM `'.$db_name.'`.`groups_members`';
+  $map = $db->Query($query);
+  foreach( $map as $k => $v ) {
+	if ( !isset($members[ $v['member_id'] ]) ) { $members[ $v['member_id'] ] = []; }
+	$members[ $v['member_id'] ][] = [ 'group_id' => $v['group_id'], 'role_id' => $v['role_id'] ];
+	if ( !isset( $groups[ $v['group_id'] ] ) ) { $groups[ $v['group_id'] ] = []; }
+	$groups[ $v['group_id'] ][] = $v['member_id'];
+  }
+
+  return [ 'members' => $members, 'groups' => $groups ];
+}
+
+function get_groups_roles() {
+  $cnf =& ServiceConfig::Instance();
+  $db =& ServiceDb::Instance('phonebook_api');
+  $db_name = $cnf->Get('phonebook_api','database');
+
+  $query = 'SELECT * FROM `'.$db_name.'`.`groups_roles` WHERE 1';
+  $res = $db->Query($query);
+
+  $roles = [];
+
+  // group_id, role_id => role_name
+  foreach( $res as $k => $v ) {
+	if ( !isset( $roles[ $v['group_id'] ] ) ) { $roles[ $v['group_id'] ] = []; }
+	$roles[ $v['group_id'] ][ $v['id'] ] = $v['role'];
+  }
+  return $roles;
+}
+
+function get_events() {
+	$cnf =& ServiceConfig::Instance();
+	$db =& ServiceDb::Instance('phonebook_api');
+	$db_name = $cnf->Get('phonebook_api','database');
+
+	$query = 'SELECT * FROM `'.$db_name.'`.`events` WHERE `status` = "active"';
+	$evt = $db->Query($query);
+
+	$events = array();
+	foreach($evt as $k => $v) {
+		$events[$v['id']]['status'] = isset($v['status']) ? $v['status'] : '';
+		$events[$v['id']]['status_change_date'] = isset($v['status_change_date']) ? $v['status_change_date'] : '';
+		$events[$v['id']]['status_change_reason'] = isset($v['status_change_reason']) ? $v['status_change_reason'] : '';
+		$events[$v['id']]['last_update'] = isset($v['last_update']) ? $v['last_update'] : '';
+	}
+
+	$query = 'SELECT * FROM `'.$db_name.'`.`events_fields`';
+	$fields_res = $db->Query($query);
+	$fields = array();
+	$fields_fn = array();
+	$fields_map = array();
+	$evt_field_id = 0;
+	foreach($fields_res as $k => $v) {
+		$fields_map[ $v['id'] ] = $v['name_fixed'];
+
+		if ( !empty( $v['options'] ) ) {
+			$tmp = explode(',', $v['options']);
+			$tmp3 = [];
+			foreach ($tmp as $k2 => $v2 ) {
+				$tmp2 = explode(':', $v2);
+				$tmp3[ $tmp2[0] ] = trim( $tmp2[1] );
+			}
+			if ( !empty($tmp3) ) {
+				$v['options'] = $tmp3;
+			}
+		}
+
+		$fields[ $v['id'] ] = $v;
+		$fields_fn[ $v['name_fixed'] ] = $v;
+	}
+
+	$events_fields = array();
+
+	foreach( array('string','int','date','text') as $k => $v) {
+		$query = 'SELECT * FROM `'.$db_name.'`.`events_data_'.$v.'s`';
+		$res = $db->Query($query);
+		if ( empty($res) ) { continue; }
+ 		foreach($res as $k2 => $v2) {
+			if ($v == 'int') { $v2['value'] = intval($v2['value']); }
+			if ( !isset( $events_fields[ $v2['events_id'] ]['encoded'] ) ) { $events_fields[ $v2['events_id'] ]['encoded'] = []; }
+			if ( !isset( $events_fields[ $v2['events_id'] ]['decoded'] ) ) { $events_fields[ $v2['events_id'] ]['decoded'] = []; }
+			if ( is_array( $fields[ $v2['events_fields_id'] ]['options'] ) ) {
+				$events_fields[ $v2['events_id'] ]['encoded'][ $v2['events_fields_id'] ] = $fields[ $v2['events_fields_id'] ]['options'][ $v2['value'] ];
+				$events_fields[ $v2['events_id'] ]['decoded'][ $fields_map[ $v2['events_fields_id'] ] ] = $fields[ $v2['events_fields_id'] ]['options'][ $v2['value'] ];
+			} else {
+				$events_fields[ $v2['events_id'] ]['encoded'][ $v2['events_fields_id'] ] = $v2['value'];
+				$events_fields[ $v2['events_id'] ]['decoded'][ $fields_map[ $v2['events_fields_id'] ] ] = $v2['value'];
+			}
+			if ( !isset( $events_fields[ $v2['events_id'] ]['decoded'][ 'id' ] ) ) {
+				$events_fields[ $v2['events_id'] ]['decoded'][ 'id' ] = $v2['events_id'];
+			}
+		}
+	}
+
+	foreach( $events_fields as $k => $v ) { // $k = event_id
+		foreach( $fields as $k2 => $v2 ) { // $k2 = field id, $v2 = field descriptor
+			if ( isset( $v['encoded'][ $k2 ] ) ) { continue; }
+			if ( is_array( $v2['options'] ) ) {
+				$events_fields[$k]['encoded'][ $k2 ] = $v2['options'][ ( array_keys($v2['options']) )[0] ];
+				$events_fields[$k]['decoded'][ $fields_map[$k2] ] = $v2['options'][ ( array_keys($v2['options']) )[0] ];
+			} else {
+				$defval = false;
+				switch( $v2['type'] ) {
+					case 'int':
+						$defval = 0;
+						break;
+					case 'string':
+					case 'text':
+						$defval = '';
+						break;
+					case 'date':
+						$defval = '0000-00-00';
+						break;
+					default:
+						$defval = '';
+						break;
+				}
+				$events_fields[$k]['encoded'][ $k2 ] = $defval;
+				$events_fields[$k]['decoded'][ $fields_map[$k2] ] = $defval;
+			}
+		}
+	}
+
+	foreach( $events_fields as $k => $v ) {
+		if ( !isset( $events[$k] ) ) { continue; }
+		$events[$k]['fields_encoded'] = $v['encoded'];
+		$events[$k]['fields_decoded'] = $v['decoded'];
+	}
+
+	return $events;
+}
+
+function get_documents() {
+	$cnf =& ServiceConfig::Instance();
+	$db =& ServiceDb::Instance('phonebook_api');
+	$db_name = $cnf->Get('phonebook_api','database');
+
+	$query = 'SELECT * FROM `'.$db_name.'`.`documents` WHERE `status` = "active"';
+	$doc = $db->Query($query);
+
+	$documents = array();
+	foreach($doc as $k => $v) {
+		$documents[$v['id']]['status'] = isset($v['status']) ? $v['status'] : '';
+		$documents[$v['id']]['status_change_date'] = isset($v['status_change_date']) ? $v['status_change_date'] : '';
+		$documents[$v['id']]['status_change_reason'] = isset($v['status_change_reason']) ? $v['status_change_reason'] : '';
+		$documents[$v['id']]['last_update'] = isset($v['last_update']) ? $v['last_update'] : '';
+	}
+
+	$query = 'SELECT * FROM `'.$db_name.'`.`documents_fields`';
+	$fields_res = $db->Query($query);
+	$fields = array();
+	$fields_fn = array();
+	$fields_map = array();
+	$doc_field_id = 0;
+	foreach($fields_res as $k => $v) {
+		$fields_map[ $v['id'] ] = $v['name_fixed'];
+
+		if ( !empty( $v['options'] ) ) {
+			$tmp = explode(',', $v['options']);
+			$tmp3 = [];
+			foreach ($tmp as $k2 => $v2 ) {
+				$tmp2 = explode(':', $v2);
+				$tmp3[ $tmp2[0] ] = trim( $tmp2[1] );
+			}
+			if ( !empty($tmp3) ) {
+				$v['options'] = $tmp3;
+			}
+		}
+
+		$fields[ $v['id'] ] = $v;
+		$fields_fn[ $v['name_fixed'] ] = $v;
+	}
+
+	$documents_fields = array();
+
+	foreach( array('string','int','date','text') as $k => $v) {
+		$query = 'SELECT * FROM `'.$db_name.'`.`documents_data_'.$v.'s`';
+		$res = $db->Query($query);
+		if ( empty($res) ) { continue; }
+ 		foreach($res as $k2 => $v2) {
+			if ($v == 'int') { $v2['value'] = intval($v2['value']); }
+			if ( !isset( $documents_fields[ $v2['documents_id'] ]['encoded'] ) ) { $documents_fields[ $v2['documents_id'] ]['encoded'] = []; }
+			if ( !isset( $documents_fields[ $v2['documents_id'] ]['decoded'] ) ) { $documents_fields[ $v2['documents_id'] ]['decoded'] = []; }
+			if ( is_array( $fields[ $v2['documents_fields_id'] ]['options'] ) ) {
+				$documents_fields[ $v2['documents_id'] ]['encoded'][ $v2['documents_fields_id'] ] = $fields[ $v2['documents_fields_id'] ]['options'][ $v2['value'] ];
+				$documents_fields[ $v2['documents_id'] ]['decoded'][ $fields_map[ $v2['documents_fields_id'] ] ] = $fields[ $v2['documents_fields_id'] ]['options'][ $v2['value'] ];
+			} else {
+				$documents_fields[ $v2['documents_id'] ]['encoded'][ $v2['documents_fields_id'] ] = $v2['value'];
+				$documents_fields[ $v2['documents_id'] ]['decoded'][ $fields_map[ $v2['documents_fields_id'] ] ] = $v2['value'];
+			}
+			if ( !isset( $documents_fields[ $v2['documents_id'] ]['decoded'][ 'id' ] ) ) {
+				$documents_fields[ $v2['documents_id'] ]['decoded'][ 'id' ] = $v2['documents_id'];
+			}
+		}
+	}
+
+	foreach( $documents_fields as $k => $v ) { // $k = document_id
+		foreach( $fields as $k2 => $v2 ) { // $k2 = field id, $v2 = field descriptor
+			if ( isset( $v['encoded'][ $k2 ] ) ) { continue; }
+			if ( is_array( $v2['options'] ) ) {
+				$documents_fields[$k]['encoded'][ $k2 ] = $v2['options'][ ( array_keys($v2['options']) )[0] ];
+				$documents_fields[$k]['decoded'][ $fields_map[$k2] ] = $v2['options'][ ( array_keys($v2['options']) )[0] ];
+			} else {
+				$defval = false;
+				switch( $v2['type'] ) {
+					case 'int':
+						$defval = 0;
+						break;
+					case 'string':
+					case 'text':
+						$defval = '';
+						break;
+					case 'date':
+						$defval = '0000-00-00';
+						break;
+					default:
+						$defval = '';
+						break;
+				}
+				$documents_fields[$k]['encoded'][ $k2 ] = $defval;
+				$documents_fields[$k]['decoded'][ $fields_map[$k2] ] = $defval;
+			}
+		}
+	}
+
+	foreach( $documents_fields as $k => $v ) {
+		if ( !isset( $documents[$k] ) ) { continue; }
+		$documents[$k]['fields_encoded'] = $v['encoded'];
+		$documents[$k]['fields_decoded'] = $v['decoded'];
+	}
+
+	return $documents;
+}
+
 function get_institutions() {
 	$cnf =& ServiceConfig::Instance();
 	$db =& ServiceDb::Instance('phonebook_api');
@@ -102,6 +369,7 @@ function get_institutions() {
 
 	return $institutions;
 }
+
 
 function get_members() {
 	$cnf =& ServiceConfig::Instance();
@@ -207,6 +475,64 @@ function get_members() {
 	}
 
 	return $members;
+}
+
+function get_events_fields() {
+    $cnf =& ServiceConfig::Instance();
+    $db =& ServiceDb::Instance('phonebook_api');
+    $db_name = $cnf->Get('phonebook_api','database');
+    $query = 'SELECT * FROM `'.$db_name.'`.`events_fields` WHERE 1  ORDER BY `weight` ASC';
+
+    $res = $db->Query($query);
+    $fields = array();
+
+    foreach($res as $k => $v) {
+
+		if ( !empty( $v['options'] ) ) {
+			$tmp = explode(',', $v['options']);
+			$tmp3 = [];
+			foreach ($tmp as $k2 => $v2 ) {
+				$tmp2 = explode(':', $v2);
+				$tmp3[ $tmp2[0] ] = trim( $tmp2[1] );
+			}
+			if ( !empty($tmp3) ) {
+				$v['options'] = $tmp3;
+			}
+		}
+
+        $fields[$v['id']] = $v;
+    }
+
+    return $fields;
+}
+
+function get_documents_fields() {
+    $cnf =& ServiceConfig::Instance();
+    $db =& ServiceDb::Instance('phonebook_api');
+    $db_name = $cnf->Get('phonebook_api','database');
+    $query = 'SELECT * FROM `'.$db_name.'`.`documents_fields` WHERE 1  ORDER BY `weight` ASC';
+
+    $res = $db->Query($query);
+    $fields = array();
+
+    foreach($res as $k => $v) {
+
+		if ( !empty( $v['options'] ) ) {
+			$tmp = explode(',', $v['options']);
+			$tmp3 = [];
+			foreach ($tmp as $k2 => $v2 ) {
+				$tmp2 = explode(':', $v2);
+				$tmp3[ $tmp2[0] ] = trim( $tmp2[1] );
+			}
+			if ( !empty($tmp3) ) {
+				$v['options'] = $tmp3;
+			}
+		}
+
+        $fields[$v['id']] = $v;
+    }
+
+    return $fields;
 }
 
 function get_institutions_fields() {

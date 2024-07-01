@@ -1,9 +1,7 @@
 
-import { getMember, getMemberFields, getMemberFieldgroups } from './pnb-api.js';
-import { convertMember } from './pnb-convert.js';
-
+import { getMember, getMemberFields, getMemberFieldgroups, getDocument, getEvent, getDocumentFields, getEventFields } from './pnb-api.js';
 import { getInstitutions, getInstitution, getInstitutionFields, getInstitutionFieldgroups } from './pnb-api.js';
-import { convertInstitution } from './pnb-convert.js';
+import { convertInstitution, convertMember, convertDocument, convertEvent } from './pnb-convert.js';
 import { getCountries } from './pnb-api.js';
 import { find_field_id } from './pnb-search.js';
 
@@ -30,6 +28,83 @@ export const listInstitutions = async() => {
 export const listCountries = async() => {
 	let c = await getCountries();
 	return Object.entries(c).sort( (a,b) => a[1].localeCompare(b[1]) );
+}
+
+export const downloadEvent = async ( id = false ) => {
+    let ifields = await getEventFields();
+
+	for( const [k,v] of Object.entries(ifields) ) {
+		if ( v.options.length ) {
+			ifields[k].decoded_options = {};
+			v.options.split(',')
+				.map( t => { const tmp = t.split(':'); return [ [tmp[0].trim()], tmp[1].trim() ]; })
+				.reduce( (acc,cval) => { acc[ cval[0] ] = cval[1]; return acc; }, ifields[k].decoded_options );
+		}
+	}
+
+    let idata = id ? await getEvent( id ) : { "fields": {} };
+
+/*
+	for( const [k,v] of Object.entries(idata.fields) ) {
+		if ( ifields[k].type === 'date' && v && v.length ) {
+            let tmp = v.split(' ');
+            if ( tmp.length > 1 ) {
+                idata.fields[k] = tmp[0];
+            } else {
+				tmp  = v.split('T');
+	            if ( tmp.length > 1 ) {
+    	            idata.fields[k] = tmp[0];
+				}
+			}
+		}
+	}
+*/
+    let cidata = await convertEvent( idata, ifields );
+
+    return {
+		event: idata,
+		cevent: cidata,
+		event_fields: ifields,
+		event_fields_ordered: orderKeys( ifields, (a,b) => ( a.weight - b.weight ) )
+	};
+}
+
+export const downloadDocument = async ( id = false ) => {
+    let ifields = await getDocumentFields();
+
+	for( const [k,v] of Object.entries(ifields) ) {
+		if ( v.options.length ) {
+			ifields[k].decoded_options = {};
+			v.options.split(',')
+				.map( t => { const tmp = t.split(':'); return [ [tmp[0].trim()], tmp[1].trim() ]; })
+				.reduce( (acc,cval) => { acc[ cval[0] ] = cval[1]; return acc; }, ifields[k].decoded_options );
+		}
+	}
+
+    let idata = id ? await getDocument( id ) : { "fields": {} };
+
+	for( const [k,v] of Object.entries(idata.fields) ) {
+		if ( ifields[k].type === 'date' && v && v.length ) {
+            let tmp = v.split(' ');
+            if ( tmp.length > 1 ) {
+                idata.fields[k] = tmp[0];
+            } else {
+				tmp  = v.split('T');
+	            if ( tmp.length > 1 ) {
+    	            idata.fields[k] = tmp[0];
+				}
+			}
+		}
+	}
+
+    let cidata = await convertDocument( idata, ifields );
+
+    return {
+		document: idata,
+		cdocument: cidata,
+		document_fields: ifields,
+		document_fields_ordered: orderKeys( ifields, (a,b) => ( a.weight - b.weight ) )
+	};
 }
 
 export const downloadInstitution = async ( id = false ) => {

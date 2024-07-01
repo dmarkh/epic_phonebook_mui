@@ -26,6 +26,32 @@ function get_members_fields() {
     return $fields;
 }
 
+function get_documents_fields() {
+    $cnf =& ServiceConfig::Instance();
+    $db =& ServiceDb::Instance('phonebook_api');
+    $db_name = $cnf->Get('phonebook_api','database');
+    $query = 'SELECT * FROM `'.$db_name.'`.`documents_fields` WHERE 1 ORDER BY `weight` ASC';
+    $res = $db->Query($query);
+    $fields = array();
+    foreach($res as $k => $v) {
+        $fields[$v['id']] = $v;
+    }
+    return $fields;
+}
+
+function get_events_fields() {
+    $cnf =& ServiceConfig::Instance();
+    $db =& ServiceDb::Instance('phonebook_api');
+    $db_name = $cnf->Get('phonebook_api','database');
+    $query = 'SELECT * FROM `'.$db_name.'`.`events_fields` WHERE 1 ORDER BY `weight` ASC';
+    $res = $db->Query($query);
+    $fields = array();
+    foreach( $res as $k => $v ) {
+        $fields[$v['id']] = $v;
+    }
+    return $fields;
+}
+
 function get_institutions_fieldgroups() {
     $cnf =& ServiceConfig::Instance();
     $db =& ServiceDb::Instance('phonebook_api');

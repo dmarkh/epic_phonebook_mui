@@ -34,6 +34,17 @@ if ( !empty($headers['OIDC_CLAIM_email'] ) ) {
 				{ "title": "COUNTRY", "field": "country", "align": "left", "width": "15%" },
 				{ "title": "REGION", "field": "region", "align": "left", "width": "15%" }
 			],
+			"documents": [
+				{ "title": "ID", "field": "id", "align": "center", "width": "5%" },
+				{ "title": "CAT", "field": "category", "align": "center", "width": "20%" },
+				{ "title": "TITLE", "field": "title", "align": "center", "width": "75%" }
+			],
+			"events": [
+				{ "title": "START TIME", "field": "start_time", "align": "center", "width": "10%" },
+				{ "title": "END TIME", "field": "end_time", "align": "center", "width": "10%" },
+				{ "title": "NAME", "field": "name", "align": "center", "width": "70%" },
+				{ "title": "LOCATION", "field": "location", "align": "center", "width": "10%" }
+			],
 			"members": [
 				{ "title": "FIRST NAME", "field": "name_first", "align": "right", "width": "20%" },
 				{ "title": "LAST NAME", "field": "name_last", "align": "left", "width": "20%" },
@@ -56,6 +67,14 @@ if ( !empty($headers['OIDC_CLAIM_email'] ) ) {
 			"filter-members": {
 				"display-fields": [ "id", "orcid_id", "name_first", "name_last", "email", "institution__name_full" ],
 				"sort-fields": [ "institution__name_full", "name_last", "name_first" ]
+			},
+			"filter-documents": {
+				"display-fields": [ "id", "title" ],
+				"sort-fields": [ "title" ]
+			},
+			"filter-events": {
+				"display-fields": [ "id", "name" ],
+				"sort-fields": [ "name" ]
 			},
 			"filter-representatives": {
 				"display-fields": [ "id", "orcid_id", "member_role", "name_first", "name_last", "email", "institution__name_full", "country" ],

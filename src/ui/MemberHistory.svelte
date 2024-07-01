@@ -82,7 +82,7 @@ const downloadMember = async ( id ) => {
 		if ( mfields[ v['members_fields_id'] ]['name_fixed'] === 'institution_id' ) {
 			// convert id to the Institution Name Full
 			let inst_field_id = getFieldId('name_full', ifields );
-			if ( inst_field_id ) {
+			if ( inst_field_id && inst[ Number(v['old_value']) ] && inst[ Number(v['new_value']) ] ) {
 				v['old_value'] = Number(v['old_value']) ? inst[ Number(v['old_value']) ].fields[inst_field_id] : '';
 				v['new_value'] = Number(v['new_value']) ? inst[ Number(v['new_value']) ].fields[inst_field_id] : '';
 			}

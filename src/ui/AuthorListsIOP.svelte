@@ -84,9 +84,11 @@ const getAuthorListIOP = async () => {
                     // construct name from full institution name and address
                     inst_full_name = ifield[ f_inst_full_name ];
                     country_name = ifield[ f_inst_country ];
-                    country_name.charAt(0).toUpperCase() + country_name.slice(1).toLowerCase();
-                    affiliation = inst_full_name + ', ' + ifield[ f_inst_city ] + ', ' +
-                        ifield[ f_inst_postcode ] + ', ' + country_name;
+					if ( country_name ) {
+	                 	country_name = country_name.charAt(0).toUpperCase() + country_name.slice(1).toLowerCase();
+					}
+                    affiliation = inst_full_name + ', ' + ifield[ f_inst_city ] || '' + ', ' +
+                        ifield[ f_inst_postcode ] || '' + ', ' + country_name || '';
                 }
                 affiliations[ inst_id ] = affiliation;
                 inst_list.push( affiliation );

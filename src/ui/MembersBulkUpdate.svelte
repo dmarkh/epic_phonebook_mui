@@ -96,7 +96,7 @@ const importNewData = async () => {
     }
 
     if ( db_id_idx === false && orcid_id_idx === false ) {
-        upload_errors = [ ...upload_errors, 'Either DB ID or ORCID should be selected' ];
+        upload_errors = [ ...upload_errors, 'Either ID (DB) or ORCID should be selected' ];
         return false;
     }
 
@@ -132,9 +132,9 @@ const importNewData = async () => {
                 } else {
                     fields[ inst_field_id ] = inst_id;
                 }
-            } else if ( fieldValues[j] === 'orcid_id' || fieldValues[j] === 'id' ) {
+            } else if ( ( db_id_idx === false && fieldValues[j] === 'orcid_id' ) || fieldValues[j] === 'id' ) {
 
-				// noop: that's the ID that can't be updated
+				// noop: DB ID or ORCID ID without DB ID cannot be updated
 
             } else {
                 let member_field_id = getFieldId( fieldValues[j], fieldData.fields );
@@ -242,7 +242,7 @@ $: if (valueTypeFiles != null && valueTypeFiles.length) {
 
 {#if fileData}
 <Paper>
-<p>PLEASE SELECT AN APPROPRIATE FIELD NAME FOR EACH COLUMN. NOTE THAT "ROR ID" AND "ORCID" COLUMNS ARE REQUIRED.</p>
+<p>PLEASE SELECT AN APPROPRIATE FIELD NAME FOR EACH COLUMN. NOTE THAT EITHER "ID" (DB ID) OR "ORCID" COLUMNS ARE REQUIRED.</p>
 <DataTable table$aria-label="Imported Data" style="width: 100%;">
     <Head>
         <Row>

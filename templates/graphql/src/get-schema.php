@@ -11,9 +11,53 @@ type Query {
 	echo(message: String!): String!
 	members: [Member]
 	institutions: [Institution]
+	documents: [Document]
+	events: [Event]
 	member(orcid: String!): Member
 	institution(rorid: String!): Institution
+	groups: [Group]
+	memberGroups(orcid: String!): [Group]
 }
+
+type Event {
+	id: ID!'."\n";
+	foreach( $metadata['event_fields'] as $k => $v ) {
+		switch( $v['type'] ) {
+			case 'int':
+				$schema .= "\t".$v['name_fixed'].': Int'."\n";
+				break;
+			case 'string':
+			case 'text':
+				$schema .= "\t".$v['name_fixed'].': String'."\n";
+				break;
+			case 'date':
+				$schema .= "\t".$v['name_fixed'].': String'."\n";
+				break;
+			default:
+				break;
+		}
+	}
+$schema .= '}
+
+type Document {
+	id: ID!'."\n";
+	foreach( $metadata['document_fields'] as $k => $v ) {
+		switch( $v['type'] ) {
+			case 'int':
+				$schema .= "\t".$v['name_fixed'].': Int'."\n";
+				break;
+			case 'string':
+			case 'text':
+				$schema .= "\t".$v['name_fixed'].': String'."\n";
+				break;
+			case 'date':
+				$schema .= "\t".$v['name_fixed'].': String'."\n";
+				break;
+			default:
+				break;
+		}
+	}
+$schema .= '}
 
 type Institution {
 	id: ID!
@@ -38,7 +82,8 @@ $schema .= '}
 
 type Member {
 	id: ID!
-	institution: Institution!'."\n";
+	institution: Institution!
+	groups: [Group]'."\n";
 
 	foreach( $metadata['member_fields'] as $k => $v ) {
 		switch( $v['type'] ) {
@@ -57,7 +102,17 @@ type Member {
 		}
 	}
 
-$schema .= '}'."\n";
+$schema .= '}
+
+type Group {
+	id: ID!
+	name: String!
+	category: String
+	role: String
+	roles: [String]
+}'."\n";
+
+$schema .= "\n";
 
 	return $schema;
 }
