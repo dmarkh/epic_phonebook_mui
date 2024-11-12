@@ -3,7 +3,7 @@
 function invenio_create_community( $community_name, $community_identifier ) {
 
     $url = 'https://inv-container.sdcc.bnl.gov';
-    $api_token = 'i1p1ea69RlybxhFXwZHX2KEomQsxQzwpyQdU5Mzd78D4fzRtXasuaZ2VSDSw';
+    $api_token = '***';
 
     $headers = [
         "Accept: application/json",
