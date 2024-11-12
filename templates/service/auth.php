@@ -88,23 +88,18 @@ function get_accounts() {
         'guest' => [
             'pass' => 'guest',
             'role' => 'GUEST',
-            'token' => '4IQxk9eOLHrdRay8Zor5'
+            'token' => '***'
         ],
         'admin' => [
             'pass' => 'epic2030',
             'role' => 'ADMIN',
-            'token' => '0fFUQmCWIaAzFcpjR2Hw'
+            'token' => '***'
         ],
         'cli' => [
             'pass' => 'cli2030',
             'role' => 'CLI',
-            'token' => 'cli-J1r7xJuCpwLNeimfzaIC'
-        ],
-		'arkhipkin@bnl.gov' => [
-			'role' => 'ADMIN',
-			'pass' => '415ae036-2ee9-40ff-a6c6-c63fb12349b5',
-			'token'=> 'ddc34a52-a10c-4be0-bbf7-6a78ad4ebfc4'
-		]
+            'token' => '***'
+        ]
     ];
 }
 
