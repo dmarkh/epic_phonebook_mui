@@ -27,6 +27,8 @@
     "smui-theme-dark": "smui-theme compile templates/smui-dark.css -i src/theme/dark"
   },
   "dependencies": {
+    "@dagrejs/dagre": "^1.1.4",
+    "@xyflow/svelte": "^0.1.19",
     "@smui/button": "6.1.4",
     "croppie": "^2.6.5",
     "leaflet": "^1.9.4",

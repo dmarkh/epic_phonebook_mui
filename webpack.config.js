@@ -17,11 +17,12 @@ module.exports = {
 	},
 	resolve: {
 		alias: {
-			svelte: path.dirname(require.resolve('svelte/package.json'))
+			svelte: path.resolve('node_modules', 'svelte/src/runtime', path.dirname(require.resolve('svelte/package.json')) )
 		},
-		extensions: ['.mjs', '.js', '.svelte'],
+		extensions: ['.mjs', '.js', '.jsx', '.svelte'],
+		modules: [path.resolve('./node_modules'), path.resolve('.')],
 		mainFields: ['svelte', 'browser', 'module', 'main'],
-		conditionNames: ['svelte','require']
+		conditionNames: ['require', 'node', 'svelte','browser']
 	},
 	output: {
 		path: path.join(__dirname, '/public'),
