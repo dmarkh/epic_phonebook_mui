@@ -53,3 +53,7 @@ html, body {
     border: 0.5vmin solid #DDD;
     outline: 0.5vmin solid #777;
 }
+
+.inst-autocomplete, .inst-autocomplete .mdc-text-field {
+    width: 100% !important;
+}

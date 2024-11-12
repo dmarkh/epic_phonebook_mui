@@ -14,7 +14,7 @@ import CharacterCounter from '@smui/textfield/character-counter';
 import Dialog, { Title as DialogTitle, Content as DialogContent, Actions as DialogActions, InitialFocus as DialogInitialFocus } from '@smui/dialog';
 import Button, { Label as ButtonLabel } from '@smui/button';
 
-import { downloadInstitution } from '../utils/pnb-download.js';
+import { downloadInstitution, listInstitutions } from '../utils/pnb-download.js';
 import { toggleInstitution } from '../utils/pnb-api.js';
 import { find_field_id } from '../utils/pnb-search.js';
 import { geocode_locate_address } from '../utils/geocode.js';
@@ -27,12 +27,15 @@ let geocode_open = false,
 	new_lon = '';
 
 let i_data = false, title = false, subtitle = false, i_status = '';
+let institution_ids_sorted = [];
 let	country_ids_sorted = [],
 	country_codes_sorted = [];
 let preedit_field_values  = {},
 	postedit_field_values = {};
 let ifields = {};
 let required_fields = false;
+
+let virtual_fid = false, virtual_val = false;
 
 const fetchInstitution = async () => {
     let data = [];
@@ -43,6 +46,9 @@ const fetchInstitution = async () => {
 	ifields = i.institution_fields;
    	country_ids_sorted = i.country_ids_sorted;
 	country_codes_sorted = i.country_codes_sorted;
+
+    virtual_fid = find_field_id( ifields, 'is_virtual' );
+    virtual_val = virtual_fid ? postedit_field_values[ virtual_fid ] : false;
 
 	if ( institutionId && i.cinstitution ) {
 		title = i.cinstitution.name_full;
@@ -72,6 +78,9 @@ const fetchInstitution = async () => {
     let fid = find_field_id( ifields, 'country' );
     preedit_field_values[ fid ] = postedit_field_values[ fid ];
 
+	institution_ids_sorted = await listInstitutions();
+
+
 	i_data = data;
 	return data;
 }
@@ -83,6 +92,9 @@ const toggleRecord = async () => {
 
 const updateRecord = () => {
 
+	let virtual_fid = find_field_id( ifields, 'is_virtual' );
+	let virtual_val = postedit_field_values[ virtual_fid ];
+
     let missing = [];
     for ( let i = 0, ilen = i_data.length; i < ilen; i++ ) {
         if ( i_data[i].field.is_required === 'y' && !postedit_field_values[ i_data[i].id ] ) {
@@ -90,7 +102,7 @@ const updateRecord = () => {
         }
     } 
 
-    if ( missing.length ) {
+    if ( virtual_val !== 'y' && missing.length ) {
         required_fields = missing;
         return;
     }
@@ -240,6 +252,19 @@ const apply_new_coordinates = async () => {
     >
       {#each Object.entries(item.field.decoded_options) as [opt_key, opt_val] }
         <Option value={opt_key}>{opt_val}</Option>
+      {/each}
+    </Select>
+{:else if item.field.name_fixed == 'associated_id'}
+    <Select
+        key={(id) => `${id ? id : ''}`}
+        bind:value={postedit_field_values[ item.id ]}
+        style="width: 100%;"
+        label="{item.field.name_desc}"
+        required={item.field.is_required === 'y'}
+    >
+      <Option value="0">No Parent Institution</Option>
+      {#each institution_ids_sorted as inst (inst[0]) }
+        <Option value={inst[0]}>{inst[1]}</Option>
       {/each}
     </Select>
 

@@ -66,7 +66,7 @@ const updateRecord = async () => {
 
 {:then}
 
-	<div style="text-align: center;" class="mdc-typography--headline4">EDIT GROUP</div>
+	<div style="text-align: center;" class="mdc-typography--headline4">Edit Group: {data.name}</div>
 
 	<!-- PARENT //-->
 
@@ -127,6 +127,17 @@ const updateRecord = async () => {
         >
           <svelte:fragment slot="helper">
             <HelperText>EMAIL / MAILING LIST OF THE GROUP</HelperText>
+          </svelte:fragment>
+        </Textfield>
+
+	<!-- URL //-->
+        <Textfield bind:value={data.url}
+            style="width: 100%;"
+            helperLine$style="width: 100%;"
+            label="GROUP URL"
+        >
+          <svelte:fragment slot="helper">
+            <HelperText>GROUP WEBSITE LINK</HelperText>
           </svelte:fragment>
         </Textfield>
 

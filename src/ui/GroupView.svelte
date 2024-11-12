@@ -1,5 +1,7 @@
 <script>
 
+import {router, Route} from 'tinro';
+
 import DataTable, { Head, Body, Row, Cell, Label, SortValue, Pagination } from '@smui/data-table';
 import IconButton from '@smui/icon-button';
 import Select, { Option } from '@smui/select';
@@ -11,8 +13,9 @@ import { getGroup, getGroups } from '../utils/pnb-api.js';
 import { getMembers, getMemberFields, getGroupRoles } from '../utils/pnb-api.js';
 import { convertMembers, addInstitutionsToConvertedMembers } from '../utils/pnb-convert.js';
 import { sortConvertedMembers } from '../utils/pnb-sort.js';
+import { invenio_search_community, invenio_create_community } from '../utils/pnb-graphql.js';
 
-import { group_id, auth } from '../store.js';
+import { group_id, auth, member_mode, member_id, screen } from '../store.js';
 
 let title = '';
 let data = {};
@@ -22,6 +25,22 @@ let roles = false;
 
 let members_cache = {};
 let groups_cache = {};
+
+const handleRowClick = ( e ) => {
+    $member_mode = 'view';
+    $member_id = e.target.dataset.entryId;
+    $screen = 'member';
+    router.goto('/member/' + $member_id + '/view');
+}
+
+const findRoleWeight = ( id ) => {
+    for ( const role of roles ) {
+        if ( role.id == id ) {
+            return parseInt(role.weight);
+        }
+    }
+    return 20;
+}
 
 const findRole = ( id ) => {
     for ( const role of roles ) {
@@ -79,6 +98,32 @@ const fetchGroup = async () => {
 	    sortConvertedMembers( members );
 	}
 	roles = await getGroupRoles( $group_id );
+	data.members.sort( (a,b) => {
+		const wa = findRoleWeight(a.role_id);
+		const wb = findRoleWeight(b.role_id);
+		if ( wa < wb ) {
+			return -1;
+		} else if ( wa > wb ) {
+			return 1;
+		} else {
+			const na = findMember(a.member_id);
+			const nb = findMember(b.member_id);
+			if ( na && nb ) {
+				if ( na.name_last < nb.name_last ) {
+					return -1;
+				} else if ( na.name_last > nb.name_last ) {
+					return 1;
+				} else {
+					if ( na.name_first < nb.name_first ) {
+						return -1;
+					} else if ( na.name_first > na.name_first ) {
+						return 1;
+					}
+				}
+			}
+		}
+		return 20;
+	});
 	return data;
 }
 
@@ -90,7 +135,7 @@ const fetchGroup = async () => {
 
 {:then data}
 
-<div style="text-align: center;" class="mdc-typography--headline4">GROUP: {title}</div>
+<div style="text-align: center;" class="mdc-typography--headline4">Group: {data.name}</div>
 <Paper>
 
 <DataTable table$aria-label="Group Data" style="width: 100%;">
@@ -98,7 +143,7 @@ const fetchGroup = async () => {
 	{#if findParentGroup( data.parent )}
       <Row data-entry-id="group-parent">
    	    <Cell style="width: 30%; font-weight: bold;">PARENT GROUP</Cell>
-       	<Cell style="width: 70%;">{findParentGroup( data.parent )}</Cell>
+       	<Cell style="width: 70%; ">{findParentGroup( data.parent )}</Cell>
    	  </Row>
 	{/if}
       <Row data-entry-id="group-name">
@@ -107,12 +152,34 @@ const fetchGroup = async () => {
    	  </Row>
       <Row data-entry-id="group-desc">
    	    <Cell style="width: 30%; font-weight: bold;">DESCRIPTION</Cell>
-       	<Cell style="width: 70%;">{data.desc}</Cell>
+       	<Cell style="width: 70%; white-space: normal;">{data.desc}</Cell>
    	  </Row>
       <Row data-entry-id="group-desc">
    	    <Cell style="width: 30%; font-weight: bold;">EMAIL</Cell>
        	<Cell style="width: 70%;">{data.email}</Cell>
    	  </Row>
+      <Row data-entry-id="group-desc">
+   	    <Cell style="width: 30%; font-weight: bold;">URL</Cell>
+       	<Cell style="width: 70%;">{@html data.url ? ( '<a href="' + (data.url) + '">' + data.url + '</a>' ) : '' }</Cell>
+   	  </Row>
+	  <Row data-entry-id="group-invenio">
+   	    <Cell style="width: 30%; font-weight: bold;">INVENIO</Cell>
+       	<Cell style="width: 70%;">
+		{#await invenio_search_community(data.name)}
+			LOOKING UP COMMUNITY IN INVENIO, PLEASE WAIT
+		{:then idata}
+			{#if idata.invenioSearchCommunity == ''}
+				{#await invenio_create_community(data.name)}
+					CREATING COMMUNITY IN INVENIO, PLEASE WAIT
+				{:then iidata}
+					<a href="{iidata.invenioCreateCommunity}">{iidata.invenioCreateCommunity}</a>
+				{/await}
+			{:else}
+				<a href="{idata.invenioSearchCommunity}">{idata.invenioSearchCommunity}</a>
+			{/if}
+		{/await}
+		</Cell>
+	  </Row>
       <Row data-entry-id="group-privacy">
    	    <Cell style="width: 30%; font-weight: bold;">PRIVACY</Cell>
        	<Cell style="width: 70%;">{data.private == 'yes' ? 'PRIVATE' : 'PUBLIC'}</Cell>
@@ -121,7 +188,7 @@ const fetchGroup = async () => {
 </DataTable>
 
 {#if data.groups.length}
-<div style="text-align: center;" class="mdc-typography--headline4">SUB-GROUPS</div>
+<div style="text-align: center;" class="mdc-typography--headline4">Sub-Groups</div>
 <DataTable table$aria-label="Subgroup Data" style="width: 100%;">
     <Head>
         <Row>
@@ -148,7 +215,7 @@ const fetchGroup = async () => {
 </DataTable>
 {/if}
 
-{#if roles && roles.length}
+{#if false && roles && roles.length}
 <div style="text-align: center;" class="mdc-typography--headline4">GROUP ROLES</div>
 <DataTable table$aria-label="Role Data" style="width: 100%;">
     <Head>
@@ -169,8 +236,8 @@ const fetchGroup = async () => {
 {/if}
 
 {#if data.members.length}
-<div style="text-align: center;" class="mdc-typography--headline4">MEMBERS</div>
-<DataTable table$aria-label="Member Data" style="width: 100%;">
+<div style="text-align: center;" class="mdc-typography--headline4">Members</div>
+<DataTable table$aria-label="Member Data" style="width: 100%;" on:SMUIDataTableRow:click={handleRowClick}>
     <Head>
         <Row>
             <Cell columnId="value" style="text-align: center;">
@@ -189,11 +256,11 @@ const fetchGroup = async () => {
     </Head>
     <Body>
 	{#each data.members as member (member.member_id)}
-      <Row data-entry-id="member">
-   	    <Cell style="text-align: center;">{findRole(member.role_id)}</Cell>
+      <Row data-entry-id="{member.member_id}">
+   	    <Cell style="text-align: center;">{findRole(member.role_id) || ''}</Cell>
    	    <Cell style="text-align: center;">{findMember(member.member_id).name_first} {findMember(member.member_id).name_last}</Cell>
-       	<Cell style="text-align: center;">{findMember(member.member_id).email}</Cell>
-       	<Cell style="text-align: center;">{findMember(member.member_id).institution__name_full}</Cell>
+       	<Cell style="text-align: center;">{findMember(member.member_id).email || ''}</Cell>
+       	<Cell style="text-align: center;">{findMember(member.member_id).institution__name_full || ''}</Cell>
    	  </Row>
 	{/each}
     </Body>

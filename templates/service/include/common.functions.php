@@ -39,6 +39,19 @@ function get_documents_fields() {
     return $fields;
 }
 
+function get_tasks_fields() {
+    $cnf =& ServiceConfig::Instance();
+    $db =& ServiceDb::Instance('phonebook_api');
+    $db_name = $cnf->Get('phonebook_api','database');
+    $query = 'SELECT * FROM `'.$db_name.'`.`tasks_fields` WHERE 1 ORDER BY `weight` ASC';
+    $res = $db->Query($query);
+    $fields = array();
+    foreach($res as $k => $v) {
+        $fields[$v['id']] = $v;
+    }
+    return $fields;
+}
+
 function get_events_fields() {
     $cnf =& ServiceConfig::Instance();
     $db =& ServiceDb::Instance('phonebook_api');

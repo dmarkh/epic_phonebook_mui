@@ -65,6 +65,15 @@ import DocumentEditField from './DocumentEditField.svelte';
 import DocumentNew from './DocumentNew.svelte';
 import DocumentsFilter from './DocumentsFilter.svelte';
 
+import Task from './Task.svelte';
+import Tasks from './Tasks.svelte';
+import TaskField from './TaskField.svelte';
+import TaskFields from './TaskFields.svelte';
+import TaskNewField from './TaskNewField.svelte';
+import TaskEditField from './TaskEditField.svelte';
+import TaskNew from './TaskNew.svelte';
+import TasksFilter from './TasksFilter.svelte';
+
 import Event from './Event.svelte';
 import Events from './Events.svelte';
 import EventField from './EventField.svelte';
@@ -121,6 +130,7 @@ let descriptors_open = false;
 
 const doLogout = () => {
 	$auth = { token: "", role: "", grants: {} };
+	router.goto('/');
 }
 
 const toggleStatus = () => {
@@ -216,6 +226,10 @@ onMount(() => {
 										</Item>
 									{/if}
 								{/if}
+								<Item>
+									<Graphic class="material-icons" aria-hidden="true">construction</Graphic>
+									<Text>BUILD: {window.pnb['build-date']}</Text>
+								</Item>
 							</List>
 						</Menu>
 					</IconButton>
@@ -266,10 +280,12 @@ onMount(() => {
 							<Text>ADD NEW INSTITUTION</Text>
 						</Item>
 	{/if}
+	{#if $auth['grants']['institutions-history']}
 						<Item href="/institutions-history" on:click={() => { $screen = 'institutionshistory'; }} activated={$screen === 'institutionshistory' }>
 							<Graphic class="material-icons" aria-hidden="true">view_list</Graphic>
 							<Text>INSTITUTIONS HISTORY</Text>
 						</Item>
+	{/if}
 						</details>
 						<Separator />
 {/if}
@@ -293,10 +309,12 @@ onMount(() => {
 							<Text>ADD NEW MEMBER</Text>
 						</Item>
 	{/if}
+	{#if $auth['grants']['members-history']}
 						<Item href="/members-history" on:click={() => { $screen = 'membershistory'; }} activated={$screen === 'membershistory'}>
 							<Graphic class="material-icons" aria-hidden="true">view_list</Graphic>
 							<Text>MEMBERS HISTORY</Text>
 						</Item>
+	{/if}
 						</details>
 						<Separator />
 {/if}
@@ -337,6 +355,29 @@ onMount(() => {
 						<Item href="/new-document" on:click={() => { $screen = 'documentnew'; }} activated={$screen === 'documentnew'}>
 							<Graphic class="material-icons" aria-hidden="true">add_circle</Graphic>
 							<Text>ADD NEW DOCUMENT</Text>
+						</Item>
+	{/if}
+						</details>
+						<Separator />
+{/if}
+
+{#if $auth['grants']['tasks-view']}
+						<details open>
+						<summary class="mdc-deprecated-list-group__subheader">
+							TASKS
+						</summary>
+						<Item href="/tasks" on:click={() => { $screen = 'tasks'; }} activated={$screen === 'tasks' }>
+							<Graphic class="material-icons" aria-hidden="true">task</Graphic>
+							<Text>TASKS</Text>
+						</Item>
+						<Item href="/filter-tasks" on:click={() => { $screen = 'tasksfilter'; }} activated={$screen === 'tasksfilter'}>
+							<Graphic class="material-icons" aria-hidden="true">view_list</Graphic>
+							<Text>FILTER TASKS</Text>
+						</Item>
+	{#if $auth['grants']['tasks-create']}
+						<Item href="/new-task" on:click={() => { $screen = 'tasknew'; }} activated={$screen === 'tasknew'}>
+							<Graphic class="material-icons" aria-hidden="true">add_task</Graphic>
+							<Text>ADD NEW TASK</Text>
 						</Item>
 	{/if}
 						</details>
@@ -391,6 +432,10 @@ onMount(() => {
 							<Graphic class="material-icons" aria-hidden="true">add</Graphic>
 							<Text>DOCUMENT FIELDS</Text>
 						</Item>
+						<Item href="/task-fields" on:click={() => { $screen = 'taskfields'; }} activated={$screen === 'taskfields'}>
+							<Graphic class="material-icons" aria-hidden="true">add</Graphic>
+							<Text>TASK FIELDS</Text>
+						</Item>
 						<Item href="/event-fields" on:click={() => { $screen = 'eventfields'; }} activated={$screen === 'eventfields'}>
 							<Graphic class="material-icons" aria-hidden="true">add</Graphic>
 							<Text>EVENT FIELDS</Text>
@@ -418,6 +463,15 @@ onMount(() => {
 					<Route path="/document-new-field"> <DocumentNewField /> </Route>
 					<Route path="/document-edit-field/:id/*" let:meta> <DocumentEditField {meta} /> </Route>
 					<Route path="/filter-documents"> <DocumentsFilter /> </Route>
+
+					<Route path="/tasks"> <Tasks /> </Route>
+					<Route path="/task/:id/*" let:meta> <Task {meta} /> </Route>
+					<Route path="/new-task"> <TaskNew /> </Route>
+					<Route path="/task-field/:id/*" let:meta> <TaskField {meta} /> </Route>
+					<Route path="/task-fields"> <TaskFields /> </Route>
+					<Route path="/task-new-field"> <TaskNewField /> </Route>
+					<Route path="/task-edit-field/:id/*" let:meta> <TaskEditField {meta} /> </Route>
+					<Route path="/filter-tasks"> <TasksFilter /> </Route>
 
 					<Route path="/events"> <Events /> </Route>
 					<Route path="/event/:id/*" let:meta> <Event {meta} /> </Route>

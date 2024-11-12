@@ -29,12 +29,16 @@ function get_roles() {
         ],
         'ADMIN' => [
 			'documents-view' => 1,
+			'tasks-view' => 1,
 			'events-view' => 1,
 			'documents-create' => 1,
+			'tasks-create' => 1,
 			'events-create' => 1,
 			'documents-edit' => 1,
+			'tasks-edit' => 1,
 			'events-edit' => 1,
 			'documents-history' => 1,
+			'tasks-history' => 1,
 			'events-history' => 1,
             'access-phonebook' => 1,
             'authorlists-view' => 1,
@@ -87,10 +91,20 @@ function get_accounts() {
             'token' => '4IQxk9eOLHrdRay8Zor5'
         ],
         'admin' => [
-            'pass' => '',
+            'pass' => 'epic2030',
             'role' => 'ADMIN',
-            'token' => ''
-        ]
+            'token' => '0fFUQmCWIaAzFcpjR2Hw'
+        ],
+        'cli' => [
+            'pass' => 'cli2030',
+            'role' => 'CLI',
+            'token' => 'cli-J1r7xJuCpwLNeimfzaIC'
+        ],
+		'arkhipkin@bnl.gov' => [
+			'role' => 'ADMIN',
+			'pass' => '415ae036-2ee9-40ff-a6c6-c63fb12349b5',
+			'token'=> 'ddc34a52-a10c-4be0-bbf7-6a78ad4ebfc4'
+		]
     ];
 }
 
@@ -118,8 +132,8 @@ function authenticate() {
 	$token = get_token();
 	$roles = get_roles();
 	$auth = get_accounts();
-	$login = $_POST['login'];
-	$pass  = $_POST['pass'];
+	$login = empty($_POST['login']) ? 'N/A' : $_POST['login'];
+	$pass  = empty($_POST['pass']) ? 'N/A' : $_POST['pass'];
 
 	if ( !empty($token) ) {
 

@@ -31,6 +31,9 @@ function service_modify_handler($params) {
 				case 'documents':
 					return json_encode(modify_documents_fields($params['data']));
 					break;
+				case 'tasks':
+					return json_encode(modify_tasks_fields($params['data']));
+					break;
 				case 'members':
 					return json_encode(modify_members_fields($params['data']));
 					break;
@@ -208,6 +211,49 @@ function modify_documents_fields($data) {
 	$set = array();
 	foreach($data as $k => $v) { // iterate over field ids
 		$query = 'UPDATE `'.$db_name.'`.`documents_fields` SET';
+		foreach($v as $k2 => $v2) { // iterate over column changes for the specific field id
+			$k2 = strtolower(trim($k2));
+			$name = $db->Escape($k2);
+			switch($k2) {
+				case 'weight':
+				case 'size_min':
+				case 'size_max':
+				case 'group':
+					$set[] = '`'.$k2.'` = '.intval($v2);
+					break;
+				case 'name_desc':
+				case 'options':
+				case 'hint_short':
+				case 'hint_full':
+					$v2 = trim($v2);
+					$set[] = '`'.$k2.'` = "'.$db->Escape($v2).'"';
+					break;
+				case 'is_required':
+				case 'is_enabled':
+					$v2 = strtolower(trim($v2));
+					if ($v2 == 'y' || $v2 == 'n') {
+						$set[] = '`'.$k2.'` = "'.$v2.'"';
+					}
+					break;
+				default:
+					break;
+			}
+		}
+		$query .= implode(' , ', $set);
+		$query .= ' WHERE `id` = '.intval($k);
+		$db->Query($query);
+	}
+	return true;
+}
+
+function modify_tasks_fields($data) {
+	$cnf =& ServiceConfig::Instance();
+  	$db =& ServiceDb::Instance('phonebook_api');
+	$db_name = $cnf->Get('phonebook_api','database');
+
+	$set = array();
+	foreach($data as $k => $v) { // iterate over field ids
+		$query = 'UPDATE `'.$db_name.'`.`tasks_fields` SET';
 		foreach($v as $k2 => $v2) { // iterate over column changes for the specific field id
 			$k2 = strtolower(trim($k2));
 			$name = $db->Escape($k2);

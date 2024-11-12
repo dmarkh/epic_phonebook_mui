@@ -39,6 +39,9 @@ function service_create_handler($params) {
 				case 'documents':
 					return json_encode(create_documents_fields($params['data']));
 					break;
+				case 'tasks':
+					return json_encode(create_tasks_fields($params['data']));
+					break;
 				case 'members':
 					return json_encode(create_members_fields($params['data']));
 					break;
@@ -106,6 +109,21 @@ function create_documents_fields($data) {
     $db_name = $cnf->Get('phonebook_api','database');
 
 	$query = 'INSERT INTO `'.$db_name.'`.`documents_fields` (`name_fixed`,`name_desc`,`weight`,`type`,`options`,`size_min`,`size_max`,`hint_short`,`hint_full`, `is_required`, `is_enabled`)'
+		.' VALUES ("'.$db->Escape($data['name_fixed']).'", "'.$db->Escape($data['name_desc']).'", '.intval($data['weight'])
+		.', "'.$db->Escape($data['type']).'", "'.$db->Escape($data['options']).'", '.intval($data['size_min']).', '.intval($data['size_max'])
+		.', "'.$db->Escape($data['hint_short']).'", "'.$db->Escape($data['hint_full']).'", "'.$db->Escape($data['is_required']).'", '
+		.' "'.$db->Escape($data['is_enabled']).'")';
+	$db->Query($query);
+	$id = $db->LastID();
+	return [ 'id' => $id ];
+}
+
+function create_tasks_fields($data) {
+    $cnf =& ServiceConfig::Instance();
+  	$db =& ServiceDb::Instance('phonebook_api');
+    $db_name = $cnf->Get('phonebook_api','database');
+
+	$query = 'INSERT INTO `'.$db_name.'`.`tasks_fields` (`name_fixed`,`name_desc`,`weight`,`type`,`options`,`size_min`,`size_max`,`hint_short`,`hint_full`, `is_required`, `is_enabled`)'
 		.' VALUES ("'.$db->Escape($data['name_fixed']).'", "'.$db->Escape($data['name_desc']).'", '.intval($data['weight'])
 		.', "'.$db->Escape($data['type']).'", "'.$db->Escape($data['options']).'", '.intval($data['size_min']).', '.intval($data['size_max'])
 		.', "'.$db->Escape($data['hint_short']).'", "'.$db->Escape($data['hint_full']).'", "'.$db->Escape($data['is_required']).'", '

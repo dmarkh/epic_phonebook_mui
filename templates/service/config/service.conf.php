@@ -8,9 +8,9 @@ function get_config() {
 		"phonebook_api" => array(
 		    "host" => "127.0.0.1",
 		    "port" => 3306,
-		    "user" => "",
-		    "password" => "",
-		    "database" => ""
+		    "user" => "phonebook_user",
+		    "password" => "phonebook_user",
+		    "database" => "phonebook"
 		)
 	);
 }

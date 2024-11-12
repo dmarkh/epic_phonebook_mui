@@ -11,10 +11,20 @@ import AccessDenied from './AccessDenied.svelte';
 import { getInstitutionHistory } from '../utils/pnb-api.js';
 import { getInstitution, getInstitutionFields, getInstitutionFieldgroups } from '../utils/pnb-api.js';
 import { convertInstitution, convertField } from '../utils/pnb-convert.js';
+import { listInstitutions } from '../utils/pnb-download.js';
 import { institution_id } from '../store.js';
 import { auth } from '../store.js';
 
 let title = '', subtitle = '';
+
+let institution_ids_sorted = [];
+
+const locateInstitutionName = ( inst_id ) => {
+    for( const [k,v] of institution_ids_sorted ) {
+        if ( k == inst_id ) { return v; }
+    }
+    return '';
+}
 
 const downloadInstitution = async ( id ) => {
     let data = [];
@@ -26,11 +36,17 @@ const downloadInstitution = async ( id ) => {
 	subtitle = cidata.country || 'COUNTRY NOT SET';
 	let hidata = await getInstitutionHistory( id );
 
+	institution_ids_sorted = await listInstitutions();
+
 	let idctr = 0;
 	for ( const [k,v] of Object.entries(hidata) ) {
 		v['id'] = ++idctr;
 		v['field'] = ifields[ v['institutions_fields_id'] ]['name_desc'] || '';
-		if ( v['value_to_string'] || v['value_from_string'] ) {
+		if ( ifields[ v['institutions_fields_id'] ]['name_fixed'] == 'associated_id' ) {
+			v['old_value'] = locateInstitutionName( v['value_from_int'] );
+			v['new_value'] = locateInstitutionName( v['value_to_int'] );
+
+		} else if ( v['value_to_string'] || v['value_from_string'] ) {
 			v['old_value'] = convertField( ifields[ v['institutions_fields_id'] ], v['value_from_string'] );
 			v['new_value'] = convertField( ifields[ v['institutions_fields_id'] ], v['value_to_string'] );
 		} else if ( 

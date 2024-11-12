@@ -74,6 +74,31 @@ try {
 }
 }
 
+export const getTask = async ( id ) => {
+	if ( get(show_stop_and_warn) ) { return; }
+try {
+	const token = get(auth)['token'];
+	const url = serviceURI + '?q=/tasks/get/id:' + id;
+	const response = await fetch( url, {
+		method: "GET",
+		cache: "no-cache",
+		credentials: "include",
+		redirect: "error",
+		mode: "cors",
+        headers: {
+            "Authorization": ( token ? "Bearer " + token : "" )
+        }
+	});
+	if ( response.status !== 200 ) {
+		show_stop_and_warn.set(true);
+		return;
+	}
+	return await response.json();
+} catch ( error ) {
+	show_stop_and_warn.set(true);
+}
+}
+
 export const getInstitution = async ( id ) => {
 	if ( get(show_stop_and_warn) ) { return; }
 try {
@@ -174,6 +199,81 @@ try {
 }
 }
 
+export const getTaskMembers = async ( id ) => {
+	if ( get(show_stop_and_warn) ) { return; }
+try {
+	const token = get(auth)['token'];
+	const url = serviceURI + '?q=/tasks/members/id:' + id;
+	const response = await fetch( url, {
+		method: "GET",
+		cache: "no-cache",
+		credentials: "include",
+		redirect: "error",
+		mode: "cors",
+        headers: {
+            "Authorization": ( token ? "Bearer " + token : "" )
+        }
+	});
+	if ( response.status !== 200 ) {
+		show_stop_and_warn.set(true);
+		return;
+	}
+	return await response.json();
+} catch ( error ) {
+	show_stop_and_warn.set(true);
+}
+}
+
+export const getTaskGroups = async ( id ) => {
+	if ( get(show_stop_and_warn) ) { return; }
+try {
+	const token = get(auth)['token'];
+	const url = serviceURI + '?q=/tasks/groups/id:' + id;
+	const response = await fetch( url, {
+		method: "GET",
+		cache: "no-cache",
+		credentials: "include",
+		redirect: "error",
+		mode: "cors",
+        headers: {
+            "Authorization": ( token ? "Bearer " + token : "" )
+        }
+	});
+	if ( response.status !== 200 ) {
+		show_stop_and_warn.set(true);
+		return;
+	}
+	return await response.json();
+} catch ( error ) {
+	show_stop_and_warn.set(true);
+}
+}
+
+export const getTaskInstitutions = async ( id ) => {
+	if ( get(show_stop_and_warn) ) { return; }
+try {
+	const token = get(auth)['token'];
+	const url = serviceURI + '?q=/tasks/institutions/id:' + id;
+	const response = await fetch( url, {
+		method: "GET",
+		cache: "no-cache",
+		credentials: "include",
+		redirect: "error",
+		mode: "cors",
+        headers: {
+            "Authorization": ( token ? "Bearer " + token : "" )
+        }
+	});
+	if ( response.status !== 200 ) {
+		show_stop_and_warn.set(true);
+		return;
+	}
+	return await response.json();
+} catch ( error ) {
+	show_stop_and_warn.set(true);
+}
+}
+
 export const getInstitutionHistory = async ( id ) => {
 	if ( get(show_stop_and_warn) ) { return; }
 try {
@@ -204,6 +304,31 @@ export const getDocumentHistory = async ( id ) => {
 try {
 	const token = get(auth)['token'];
 	const url = serviceURI + '?q=/documents/history/id:' + id;
+	const response = await fetch( url, {
+		method: "GET",
+		cache: "no-cache",
+		credentials: "include",
+		redirect: "error",
+		mode: "cors",
+        headers: {
+            "Authorization": ( token ? "Bearer " + token : "" )
+        }
+	});
+	if ( response.status !== 200 ) {
+		show_stop_and_warn.set(true);
+		return;
+	}
+	return await response.json();
+} catch ( error ) {
+	show_stop_and_warn.set(true);
+}
+}
+
+export const getTaskHistory = async ( id ) => {
+	if ( get(show_stop_and_warn) ) { return; }
+try {
+	const token = get(auth)['token'];
+	const url = serviceURI + '?q=/tasks/history/id:' + id;
 	const response = await fetch( url, {
 		method: "GET",
 		cache: "no-cache",
@@ -376,6 +501,32 @@ try {
 }
 }
 
+export const getTasks = async ( details = 'full', page = 0, rowsPerPage = 25 ) => {
+	if ( get(show_stop_and_warn) ) { return; }
+try {
+	// details: name, compact, full - TBD
+	const token = get(auth)['token'];
+	const url = serviceURI + '?q=/tasks/list/status:' + get(status) + '/details:' + details + '/page:' + page + '/rows-per-page:' + rowsPerPage;
+	const response = await fetch( url, {
+		method: "GET",
+		cache: "no-cache",
+		credentials: "include",
+		redirect: "error",
+		mode: "cors",
+        headers: {
+            "Authorization": ( token ? "Bearer " + token : "" )
+        }
+	});
+	if ( response.status !== 200 ) {
+		show_stop_and_warn.set(true);
+		return;
+	}
+	return await response.json();
+} catch ( error ) {
+	show_stop_and_warn.set(true);
+}
+}
+
 export const getEvents = async ( details = 'full', page = 0, rowsPerPage = 25 ) => {
 	if ( get(show_stop_and_warn) ) { return; }
 try {
@@ -483,6 +634,31 @@ export const getDocumentFields = async () => {
 try {
 	const token = get(auth)['token'];
 	const url = serviceURI + '?q=/service/list/object:fields/type:documents';
+	const response = await fetch( url, {
+		method: "GET",
+		cache: "no-cache",
+		credentials: "include",
+		redirect: "error",
+		mode: "cors",
+        headers: {
+            "Authorization": ( token ? "Bearer " + token : "" )
+        }
+	});
+	if ( response.status !== 200 ) {
+		show_stop_and_warn.set(true);
+		return;
+	}
+	return await response.json();
+} catch ( error ) {
+	show_stop_and_warn.set(true);
+}
+}
+
+export const getTaskFields = async () => {
+	if ( get(show_stop_and_warn) ) { return; }
+try {
+	const token = get(auth)['token'];
+	const url = serviceURI + '?q=/service/list/object:fields/type:tasks';
 	const response = await fetch( url, {
 		method: "GET",
 		cache: "no-cache",
@@ -710,6 +886,34 @@ try {
 }
 }
 
+export const createTaskField = async ( data = false ) => {
+	if ( get(show_stop_and_warn) ) { return; }
+	if ( !data ) { return; }
+try {
+	const token = get(auth)['token'];
+	const url = serviceURI + '?q=/service/create/object:fields/type:tasks';
+	const response = await fetch( url, {
+		method: "POST",
+		cache: "no-cache",
+		credentials: "include",
+		redirect: "error",
+		mode: "cors",
+		headers: {
+			"Content-Type": "application/json; charset=utf-8",
+			"Authorization": ( token ? "Bearer " + token : '' )
+		},
+		body: JSON.stringify({ data })
+	});
+	if ( response.status !== 200 ) {
+		show_stop_and_warn.set(true);
+		return;
+	}
+	return await response.json();
+} catch ( error ) {
+	show_stop_and_warn.set(true);
+}
+}
+
 export const createEventField = async ( data = false ) => {
 	if ( get(show_stop_and_warn) ) { return; }
 	if ( !data ) { return; }
@@ -906,6 +1110,34 @@ try {
 }
 }
 
+export const updateTaskFields = async ( data = false ) => {
+	if ( get(show_stop_and_warn) ) { return; }
+	if ( !data ) { return; }
+try {
+	const token = get(auth)['token'];
+	const url = serviceURI + '?q=/service/modify/object:fields/type:tasks';
+	const response = await fetch( url, {
+		method: "POST",
+		cache: "no-cache",
+		credentials: "include",
+		redirect: "error",
+		mode: "cors",
+		headers: {
+			"Content-Type": "application/json; charset=utf-8",
+			"Authorization": ( token ? "Bearer " + token : '' )
+		},
+		body: JSON.stringify({ data })
+	});
+	if ( response.status !== 200 ) {
+		show_stop_and_warn.set(true);
+		return;
+	}
+	return await response.json();
+} catch ( error ) {
+	show_stop_and_warn.set(true);
+}
+}
+
 export const updateEventFields = async ( data = false ) => {
 	if ( get(show_stop_and_warn) ) { return; }
 	if ( !data ) { return; }
@@ -1046,6 +1278,34 @@ try {
 }
 }
 
+export const updateTask = async ( data = false ) => {
+	if ( get(show_stop_and_warn) ) { return; }
+	if ( !data ) { return; }
+try {
+	const token = get(auth)['token'];
+	const url = serviceURI + '?q=/tasks/update';
+	const response = await fetch( url, {
+		method: "POST",
+		cache: "no-cache",
+		credentials: "include",
+		redirect: "error",
+		mode: "cors",
+		headers: {
+			"Content-Type": "application/json; charset=utf-8",
+			"Authorization": ( token ? "Bearer " + token : "" )
+		},
+		body: JSON.stringify({ data })
+	});
+	if ( response.status !== 200 ) {
+		show_stop_and_warn.set(true);
+		return;
+	}
+	return await response.json();
+} catch ( error ) {
+	show_stop_and_warn.set(true);
+}
+}
+
 export const updateEvent = async ( data = false ) => {
 	if ( get(show_stop_and_warn) ) { return; }
 	if ( !data ) { return; }
@@ -1159,6 +1419,34 @@ try {
 }
 }
 
+export const createTask = async ( data = false ) => {
+	if ( get(show_stop_and_warn) ) { return; }
+	if ( !data ) { return; }
+try {
+	const token = get(auth)['token'];
+	const url = serviceURI + '?q=/tasks/create';
+	const response = await fetch( url, {
+		method: "POST",
+		cache: "no-cache",
+		credentials: "include",
+		redirect: "error",
+		mode: "cors",
+		headers: {
+			"Content-Type": "application/json; charset=utf-8",
+			"Authorization": ( token ? "Bearer " + token : "" )
+		},
+		body: JSON.stringify({ data })
+	});
+	if ( response.status !== 200 ) {
+		show_stop_and_warn.set(true);
+		return;
+	}
+	return await response.json();
+} catch ( error ) {
+	show_stop_and_warn.set(true);
+}
+}
+
 export const createMember = async ( data = false ) => {
 	if ( get(show_stop_and_warn) ) { return; }
 	if ( !data ) { return; }
@@ -1249,6 +1537,32 @@ export const toggleDocument = async ( id = false ) => {
 try {
 	const token = get(auth)['token'];
 	const url = serviceURI + '?q=/documents/toggle/id:' + id;
+	const response = await fetch( url, {
+		method: "GET",
+		cache: "no-cache",
+		credentials: "include",
+		redirect: "error",
+		mode: "cors",
+        headers: {
+            "Authorization": ( token ? "Bearer " + token : "" )
+        }
+	});
+	if ( response.status !== 200 ) {
+		show_stop_and_warn.set(true);
+		return;
+	}
+	return await response.json();
+} catch ( error ) {
+	show_stop_and_warn.set(true);
+}
+}
+
+export const toggleTask = async ( id = false ) => {
+	if ( get(show_stop_and_warn) ) { return; }
+	if ( !id ) { return; }
+try {
+	const token = get(auth)['token'];
+	const url = serviceURI + '?q=/tasks/toggle/id:' + id;
 	const response = await fetch( url, {
 		method: "GET",
 		cache: "no-cache",
@@ -1401,12 +1715,180 @@ try {
 }
 }
 
+export const taskAddMember = async ( data = false ) => {
+	if ( get(show_stop_and_warn) ) { return; }
+    if ( !data ) { return; }
+try {
+    const token = get(auth)['token'];
+    const url = serviceURI + '?q=/tasks/addmember';
+    const response = await fetch( url, {
+        method: "POST",
+        cache: "no-cache",
+        credentials: "include",
+        redirect: "error",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            "Authorization": ( token ? "Bearer " + token : '' )
+        },
+        body: JSON.stringify({ data })
+    });
+	if ( response.status !== 200 ) {
+		show_stop_and_warn.set(true);
+		return;
+	}
+    return await response.json();
+} catch ( error ) {
+	show_stop_and_warn.set(true);
+}
+}
+
+export const taskAddInstitution = async ( data = false ) => {
+	if ( get(show_stop_and_warn) ) { return; }
+    if ( !data ) { return; }
+try {
+    const token = get(auth)['token'];
+    const url = serviceURI + '?q=/tasks/addinstitution';
+    const response = await fetch( url, {
+        method: "POST",
+        cache: "no-cache",
+        credentials: "include",
+        redirect: "error",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            "Authorization": ( token ? "Bearer " + token : '' )
+        },
+        body: JSON.stringify({ data })
+    });
+	if ( response.status !== 200 ) {
+		show_stop_and_warn.set(true);
+		return;
+	}
+    return await response.json();
+} catch ( error ) {
+	show_stop_and_warn.set(true);
+}
+}
+
+export const taskAddGroup = async ( data = false ) => {
+	if ( get(show_stop_and_warn) ) { return; }
+    if ( !data ) { return; }
+try {
+    const token = get(auth)['token'];
+    const url = serviceURI + '?q=/tasks/addgroup';
+    const response = await fetch( url, {
+        method: "POST",
+        cache: "no-cache",
+        credentials: "include",
+        redirect: "error",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            "Authorization": ( token ? "Bearer " + token : '' )
+        },
+        body: JSON.stringify({ data })
+    });
+	if ( response.status !== 200 ) {
+		show_stop_and_warn.set(true);
+		return;
+	}
+    return await response.json();
+} catch ( error ) {
+	show_stop_and_warn.set(true);
+}
+}
+
 export const groupRemoveMember = async ( data = false ) => {
 	if ( get(show_stop_and_warn) ) { return; }
     if ( !data ) { return; }
 try {
     const token = get(auth)['token'];
     const url = serviceURI + '?q=/groups/removemember';
+    const response = await fetch( url, {
+        method: "POST",
+        cache: "no-cache",
+        credentials: "include",
+        redirect: "error",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            "Authorization": ( token ? "Bearer " + token : '' )
+        },
+        body: JSON.stringify({ data })
+    });
+	if ( response.status !== 200 ) {
+		show_stop_and_warn.set(true);
+		return;
+	}
+    return await response.json();
+} catch ( error ) {
+	show_stop_and_warn.set(true);
+}
+}
+
+export const taskRemoveMember = async ( data = false ) => {
+	if ( get(show_stop_and_warn) ) { return; }
+    if ( !data ) { return; }
+try {
+    const token = get(auth)['token'];
+    const url = serviceURI + '?q=/tasks/removemember';
+    const response = await fetch( url, {
+        method: "POST",
+        cache: "no-cache",
+        credentials: "include",
+        redirect: "error",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            "Authorization": ( token ? "Bearer " + token : '' )
+        },
+        body: JSON.stringify({ data })
+    });
+	if ( response.status !== 200 ) {
+		show_stop_and_warn.set(true);
+		return;
+	}
+    return await response.json();
+} catch ( error ) {
+	show_stop_and_warn.set(true);
+}
+}
+
+export const taskRemoveInstitution = async ( data = false ) => {
+	if ( get(show_stop_and_warn) ) { return; }
+    if ( !data ) { return; }
+try {
+    const token = get(auth)['token'];
+    const url = serviceURI + '?q=/tasks/removeinstitution';
+    const response = await fetch( url, {
+        method: "POST",
+        cache: "no-cache",
+        credentials: "include",
+        redirect: "error",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            "Authorization": ( token ? "Bearer " + token : '' )
+        },
+        body: JSON.stringify({ data })
+    });
+	if ( response.status !== 200 ) {
+		show_stop_and_warn.set(true);
+		return;
+	}
+    return await response.json();
+} catch ( error ) {
+	show_stop_and_warn.set(true);
+}
+}
+
+export const taskRemoveGroup = async ( data = false ) => {
+	if ( get(show_stop_and_warn) ) { return; }
+    if ( !data ) { return; }
+try {
+    const token = get(auth)['token'];
+    const url = serviceURI + '?q=/tasks/removegroup';
     const response = await fetch( url, {
         method: "POST",
         cache: "no-cache",

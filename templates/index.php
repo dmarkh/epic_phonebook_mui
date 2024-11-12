@@ -24,6 +24,9 @@ if ( !empty($headers['OIDC_CLAIM_email'] ) ) {
 	<script>
 		window.pnb = {
 			"title": "ePIC COLLABORATION",
+			"collaboration": "ePIC",
+			"graphql": "/graphql/ePIC/",
+			"build-date": "2024-09-24",
 			"basepath": "/phonebook-mui/client",
 			"router": "hash",
 			"service": "service/",
@@ -38,6 +41,12 @@ if ( !empty($headers['OIDC_CLAIM_email'] ) ) {
 				{ "title": "ID", "field": "id", "align": "center", "width": "5%" },
 				{ "title": "CAT", "field": "category", "align": "center", "width": "20%" },
 				{ "title": "TITLE", "field": "title", "align": "center", "width": "75%" }
+			],
+			"tasks": [
+				{ "title": "ID", "field": "id", "align": "center", "width": "5%" },
+				{ "title": "TITLE", "field": "title", "align": "center", "width": "35%" },
+				{ "title": "DECRIPTION", "field": "desc", "align": "center", "width": "50%" },
+				{ "title": "FTE", "field": "fte", "align": "center", "width": "10%" }
 			],
 			"events": [
 				{ "title": "START TIME", "field": "start_time", "align": "center", "width": "10%" },
@@ -72,6 +81,10 @@ if ( !empty($headers['OIDC_CLAIM_email'] ) ) {
 				"display-fields": [ "id", "title" ],
 				"sort-fields": [ "title" ]
 			},
+			"filter-tasks": {
+				"display-fields": [ "id", "title" ],
+				"sort-fields": [ "title" ]
+			},
 			"filter-events": {
 				"display-fields": [ "id", "name" ],
 				"sort-fields": [ "name" ]
@@ -81,6 +94,10 @@ if ( !empty($headers['OIDC_CLAIM_email'] ) ) {
 				"sort-fields": [ "institution__name_full", "name_last", "name_first" ]
 			},
 			"allow-guest-access": 1,
+			"graph": {
+				"nodewidth": 450,
+				"nodeheight": 150
+			},
 			"xlsx": {
 				"institutions-export": "eic-institutions",
 				"members-export": "eic-members",

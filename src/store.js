@@ -9,6 +9,7 @@ export const serviceURI = window.pnb.service; // 'https://127.0.0.1/phonebook-mu
 
 export const event_id = writable(false);
 export const document_id = writable(false);
+export const task_id = writable(false);
 export const member_id = writable(false);
 export const institution_id = writable(false);
 export const group_id = writable(false);
@@ -19,6 +20,7 @@ export const show_stop_and_warn = writable(false); // http error detected, stop 
 
 export const event_mode = writable('view'); // view, history, edit
 export const document_mode = writable('view'); // view, history, edit
+export const task_mode = writable('view'); // view, history, edit
 export const institution_mode = writable('view'); // view, history, edit
 export const member_mode = writable('view'); // view, history, edit
 export const group_mode = writable('view'); // view, edit

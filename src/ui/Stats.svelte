@@ -68,7 +68,7 @@ const getStats = async () => {
 		regions_data_points[k] = ( v * 100. / data.convertedMembers.length ).toFixed(2);
 	}
 	res.regions_data = {
-		labels: Object.keys( regions_data_points ).map( r => r + ', %'),
+		labels: Object.entries( regions_data_points ).map( v => v[0] + ', ' + v[1] +'%'),
 		datasets: [
 			{
 				data: Object.values( regions_data_points ),
@@ -90,7 +90,7 @@ const getStats = async () => {
 		countries_data_points[k] = ( v * 100. / data.convertedMembers.length ).toFixed(2);
 	}
 	res.countries_data = {
-		labels: Object.keys( countries_data_points ).map( c => c + ', %'),
+		labels: Object.entries( countries_data_points ).map( c => c[0] + ', ' + c[1] + '%'),
 		datasets: [
 			{
 				data: Object.values( countries_data_points ),
@@ -100,6 +100,7 @@ const getStats = async () => {
 		]
 	};
 
+/*
 	let gender_data_points = data.convertedMembers.reduce( ( acc, cv, idx ) => {
 		if ( !cv.gender ) { return acc; }
 		if ( acc[ ( cv.gender || 'UNSPECIFIED' ).toUpperCase() ] ) {
@@ -114,7 +115,7 @@ const getStats = async () => {
 	}
 
 	res.gender_data = {
-		labels: Object.keys( gender_data_points ).map( l => l + ', %' ),
+		labels: Object.entries( gender_data_points ).map( l => l[0] + ', ' + l[1] + '%' ),
 		datasets: [
 			{
 				data: Object.values( gender_data_points ),
@@ -123,6 +124,7 @@ const getStats = async () => {
 			}
 		]
 	};
+*/
 
 	return res;
 }
@@ -187,9 +189,9 @@ const getStats = async () => {
 <br />
 <Paper square elevation={1}>
 	<div style="width: 100%;">
-		<div style="width: 33%; display: inline-block;"> <Pie data={data.regions_data} options={{ responsive: true, maintainAspectRatio: true }} /> </div>
-		<div style="width: 33%; display: inline-block;"> <Pie data={data.gender_data} options={{ responsive: true, maintainAspectRatio: true }} /> </div>
-		<div style="width: 33%; display: inline-block;"> <Pie data={data.countries_data} options={{ responsive: true, maintainAspectRatio: true }} /> </div>
+		<div style="width: 49%; display: inline-block;"> <Pie data={data.regions_data} options={{ responsive: true, maintainAspectRatio: true }} /> </div>
+<!--		<div style="width: 33%; display: inline-block;"> <Pie data={data.gender_data} options={{ responsive: true, maintainAspectRatio: true }} /> </div> //-->
+		<div style="width: 49%; display: inline-block;"> <Pie data={data.countries_data} options={{ responsive: true, maintainAspectRatio: true }} /> </div>
 	</div>
 </Paper>
 

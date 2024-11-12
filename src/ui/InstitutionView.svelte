@@ -1,40 +1,101 @@
 <script>
 
+import {router, Route} from 'tinro';
+
 import DataTable, { Head, Body, Row, Cell, Label, SortValue, Pagination } from '@smui/data-table';
 import IconButton from '@smui/icon-button';
 import Select, { Option } from '@smui/select';
 import LinearProgress from '@smui/linear-progress';
 import Paper from '@smui/paper';
 
-import { getInstitution, getInstitutionFields, getInstitutionFieldgroups } from '../utils/pnb-api.js';
+import { getInstitution, getInstitutions, getInstitutionFields, getInstitutionFieldgroups } from '../utils/pnb-api.js';
 import { convertInstitution } from '../utils/pnb-convert.js';
 
-import { institution_id, auth } from '../store.js';
-import { downloadInstitution } from '../utils/pnb-download.js';
+import { screen, institution_mode, institution_id, auth } from '../store.js';
+import { downloadInstitution, listInstitutions } from '../utils/pnb-download.js';
+import { find_field_id } from '../utils/pnb-search.js';
 
 let title = '', subtitle = '';
+
+let institution_ids_sorted = [];
+let virtual_fid = false, virtual_val = false;
+let associated_inst_data = [];
+
+const locateInstitutionName = ( inst_id ) => {
+	for( const [k,v] of institution_ids_sorted ) {
+		if ( k == inst_id ) { return v; }
+	}
+	return '';
+}
+
+const handleRowClick = ( e ) => {
+    $institution_mode = 'view';
+    $institution_id = e.target.dataset.entryId;
+    $screen = 'institution';
+    router.goto('/institution/' + $institution_id + '/view');
+}
 
 const fetchInstitution = async ( id ) => {
 
 	let data = [],
 		i = await downloadInstitution( id );
 
+	let ifields = i.institution_fields;
+
+    let associated_fid = find_field_id( ifields, 'associated_id' );
+
+    virtual_fid = find_field_id( ifields, 'is_virtual' );
+    virtual_val = virtual_fid ? i.cinstitution[ i.institution_fields[ virtual_fid ].name_fixed ] : false;
+
+	institution_ids_sorted = await listInstitutions();
+
     if ( id && i.cinstitution) {
         title = i.cinstitution.name_full || 'N/A';
         subtitle = i.cinstitution.country || 'COUNTRY NOT SET';
     }
 
-	for ( const id of i.institution_fields_ordered ) {
-		if ( i.institution_fields[ id ].is_enabled != 'y' ) { continue; }
-		if ( i.institution_fields[ id ].privacy !== 'public' && !( $auth['role'] == 'ADMIN' || $auth['role'] == 'EDITOR' ) ) { continue; }
+	for ( const fid of i.institution_fields_ordered ) {
+		if ( i.institution_fields[ fid ].is_enabled != 'y' ) { continue; }
+		if ( i.institution_fields[ fid ].privacy !== 'public' && !( $auth['role'] == 'ADMIN' || $auth['role'] == 'EDITOR' ) ) { continue; }
+		if ( virtual_val === 'Yes' && !['name_full', 'is_virtual'].includes( i.institution_fields[ fid ].name_fixed ) ) { continue; }
+		if ( i.institution_fields[ fid ].name_fixed == 'associated_id' ) {
+	       	data.push({
+    	       	id: parseInt(fid),
+        	    desc: i.institution_fields[fid].name_desc,
+            	value: locateInstitutionName( i.cinstitution[ i.institution_fields[fid].name_fixed ] ),
+	            group: i.institution_groups[ i.institution_fields[fid].group ].name_full
+    	    });
 
-       	data.push({
-           	id: parseInt(id),
-            desc: i.institution_fields[id].name_desc,
-            value: i.cinstitution[ i.institution_fields[id].name_fixed ] || '',
-            group: i.institution_groups[ i.institution_fields[id].group ].name_full
-        });
+		} else {
+	       	data.push({
+    	       	id: parseInt(fid),
+        	    desc: i.institution_fields[fid].name_desc,
+            	value: i.cinstitution[ i.institution_fields[fid].name_fixed ] || '',
+	            group: i.institution_groups[ i.institution_fields[fid].group ].name_full
+    	    });
+		}
     }
+
+	// display a list of dependent institutions
+	if ( associated_fid ) {
+		let associated_inst_ids = [];
+    	let name_full_fid = find_field_id( ifields, 'name_full' );
+		let insts = await getInstitutions();
+		for ( const [iid, inst] of Object.entries(insts) ) {
+			if ( !inst.fields[associated_fid] ) { continue; }
+			if ( inst.fields[associated_fid] == id ) {
+				associated_inst_ids.push( parseInt(iid) );
+			}
+		}
+		if ( associated_inst_ids.length ) {
+			for ( const aid of associated_inst_ids ) {
+				associated_inst_data.push({
+					"id": aid,
+					"name_full": insts[aid].fields[name_full_fid]
+				});
+			}
+		}
+	}
 
 	return data;
 }
@@ -76,6 +137,28 @@ const fetchInstitution = async ( id ) => {
     </Body>
 </DataTable>
 </Paper>
+
+{#if associated_inst_data.length}
+<Paper>
+<div style="text-align: center;" class="mdc-typography--headline4">Associated Institutions</div>
+<DataTable table$aria-label="Institution Data" style="width: 100%;" on:SMUIDataTableRow:click={handleRowClick}>
+    <Head>
+        <Row>
+            <Cell columnId="value" style="width: 100%; text-align: left;">
+                <Label>NAME</Label>
+            </Cell>
+        </Row>
+    </Head>
+    <Body>
+    {#each associated_inst_data as iinst (iinst.id)}
+      <Row data-entry-id="{iinst.id}">
+        <Cell style="width: 100%;">{iinst.name_full}</Cell>
+      </Row>
+    {/each}
+    </Body>
+</DataTable>
+</Paper>
+{/if}
 
 {/await}
 

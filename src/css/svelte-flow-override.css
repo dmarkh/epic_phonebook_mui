@@ -1,0 +1,7 @@
+
+.svelte-flow {
+    --xy-edge-stroke-default: #333;
+    --xy-edge-stroke-width-default: 2;
+    --xy-connectionline-stroke-default: #333;
+    --xy-connectionline-stroke-width-default: 2;
+}

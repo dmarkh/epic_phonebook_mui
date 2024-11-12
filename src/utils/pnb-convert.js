@@ -1,5 +1,5 @@
 
-import { getInstitutions, getInstitutionFields, getMemberFields, getDocumentFields, getEventFields } from './pnb-api.js';
+import { getInstitutions, getInstitutionFields, getMemberFields, getDocumentFields, getTaskFields, getEventFields } from './pnb-api.js';
 
 export const convertEvents = async ( data, ifields = false ) => {
 	if ( !ifields) {
@@ -28,6 +28,30 @@ export const convertEvents = async ( data, ifields = false ) => {
 export const convertDocuments = async ( data, ifields = false ) => {
 	if ( !ifields) {
 		ifields = await getDocumentFields();
+	}
+	let items = [], item = {}, opt, tmp1, tmp2;
+	if ( data && typeof data === 'object' ) {
+    for ( const [k,v] of Object.entries( data ) ) {
+		item = { id: parseInt(k) };
+		for ( const [k2,v2] of Object.entries(v.fields) ) {
+			if ( ifields[k2].options.length ) {
+				opt = {};
+				tmp1 = ifields[k2].options.split(',');
+				tmp1.forEach( e => { tmp2 = e.split(':'); opt[tmp2[0]] = tmp2[1]; });
+				item[ ifields[k2].name_fixed.toLowerCase() ] = opt[v2];
+			} else {
+				item[ ifields[k2].name_fixed.toLowerCase() ] = v2;
+			}
+		}
+		items.push( item );
+    }
+	}
+	return items;
+}
+
+export const convertTasks = async ( data, ifields = false ) => {
+	if ( !ifields) {
+		ifields = await getTaskFields();
 	}
 	let items = [], item = {}, opt, tmp1, tmp2;
 	if ( data && typeof data === 'object' ) {
@@ -96,6 +120,25 @@ export const convertDocument = async ( data, ifields = false ) => {
 	}
 	let opt, tmp1, tmp2;
 	let item = { id: data.document ? parseInt(data.document.id) : false };
+	for ( const [k2,v2] of Object.entries(data.fields) ) {
+		if ( ifields[k2].options.length ) {
+			opt = {};
+			tmp1 = ifields[k2].options.split(',');
+			tmp1.forEach( e => { tmp2 = e.split(':'); opt[tmp2[0]] = tmp2[1]; });
+			item[ ifields[k2].name_fixed.toLowerCase() ] = opt[v2];
+		} else {
+			item[ ifields[k2].name_fixed.toLowerCase() ] = v2;
+		}
+	}
+	return item;
+}
+
+export const convertTask = async ( data, ifields = false ) => {
+	if ( !ifields) {
+		ifields = await getTaskFields();
+	}
+	let opt, tmp1, tmp2;
+	let item = { id: data.task ? parseInt(data.task.id) : false };
 	for ( const [k2,v2] of Object.entries(data.fields) ) {
 		if ( ifields[k2].options.length ) {
 			opt = {};

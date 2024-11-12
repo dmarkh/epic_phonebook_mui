@@ -1,0 +1,4485 @@
+{
+    "errors": [
+        {
+            "message": "Internal server error",
+            "locations": [
+                {
+                    "line": 1,
+                    "column": 107
+                }
+            ],
+            "path": [
+                "members",
+                48,
+                "groups",
+                2,
+                "name"
+            ]
+        },
+        {
+            "message": "Internal server error",
+            "locations": [
+                {
+                    "line": 1,
+                    "column": 107
+                }
+            ],
+            "path": [
+                "members",
+                76,
+                "groups",
+                2,
+                "name"
+            ]
+        }
+    ],
+    "data": {
+        "members": [
+            {
+                "id": "2798",
+                "orcid_id": "0000-0001-7198-7402",
+                "name_first": "Larry",
+                "name_last": "Isenhower",
+                "email": "ldi00a@acu.edu",
+                "institution": {
+                    "id": "496",
+                    "ror_id": "https://ror.org/004srrf86",
+                    "name_full": "Abilene Christian University",
+                    "name_short": "ACU"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2799",
+                "orcid_id": "0000-0002-9235-2649",
+                "name_first": "Mariusz",
+                "name_last": "Przybycien",
+                "email": "mariusz.przybycien@agh.edu.pl",
+                "institution": {
+                    "id": "497",
+                    "ror_id": "https://ror.org/00bas1c41",
+                    "name_full": "AGH University of Science and Technology",
+                    "name_short": "AGH"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2800",
+                "orcid_id": "0000-0002-9334-9871",
+                "name_first": "Raktim",
+                "name_last": "Abir",
+                "email": "raktim.ph@amu.ac.in",
+                "institution": {
+                    "id": "498",
+                    "ror_id": "https://ror.org/03kw9gc02",
+                    "name_full": "Aligarh Muslim University",
+                    "name_short": "AMU"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2801",
+                "orcid_id": "0000-0003-4947-877X",
+                "name_first": "Sylvester",
+                "name_last": "Joosten",
+                "email": "sjoosten@anl.gov",
+                "institution": {
+                    "id": "499",
+                    "ror_id": "https://ror.org/05gvnxz63",
+                    "name_full": "Argonne National Laboratory",
+                    "name_short": "ANL"
+                },
+                "groups": [
+                    {
+                        "name": "Barrel ECAL",
+                        "category": "",
+                        "role": "Co-Detector Subsystem Leader"
+                    }
+                ]
+            },
+            {
+                "id": "2802",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Nathan",
+                "name_last": "Grau",
+                "email": "ngrau@augie.edu",
+                "institution": {
+                    "id": "500",
+                    "ror_id": "https://ror.org/03a3qwm26",
+                    "name_full": "Augustana University",
+                    "name_short": "AUGIE"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2803",
+                "orcid_id": "0000-0000-0000-0006",
+                "name_first": "B. K.",
+                "name_last": "Singh",
+                "email": "bksingh@bhu.ac.in",
+                "institution": {
+                    "id": "501",
+                    "ror_id": "https://ror.org/04cdn2797",
+                    "name_full": "Banaras Hindu University",
+                    "name_short": "BHU"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2804",
+                "orcid_id": "0000-0002-5154-3801",
+                "name_first": "Stefan",
+                "name_last": "Bathe",
+                "email": "stefan.bathe@baruch.cuny.edu",
+                "institution": {
+                    "id": "502",
+                    "ror_id": "https://ror.org/023qavy03",
+                    "name_full": "Baruch College, City University of New York",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Barrel HCAL",
+                        "category": "",
+                        "role": "Co-Detector Subsystem Leader"
+                    }
+                ]
+            },
+            {
+                "id": "2805",
+                "orcid_id": "0000-0003-1831-6452",
+                "name_first": "Zvi",
+                "name_last": "Citron",
+                "email": "zhcitron@bgu.ac.il",
+                "institution": {
+                    "id": "503",
+                    "ror_id": "https://ror.org/05tkyf982",
+                    "name_full": "Ben Gurion University of the Negev",
+                    "name_short": "BGU"
+                },
+                "groups": [
+                    {
+                        "name": "Far Forward",
+                        "category": "",
+                        "role": "Detector Subsystem Technical Coordinator (B0)"
+                    }
+                ]
+            },
+            {
+                "id": "2806",
+                "orcid_id": "0000-0000-0000-0003",
+                "name_first": "Thomas",
+                "name_last": "Ullrich",
+                "email": "thomas.ullrich@bnl.gov",
+                "institution": {
+                    "id": "504",
+                    "ror_id": "https://ror.org/02ex6cf31",
+                    "name_full": "Brookhaven National Laboratory",
+                    "name_short": "BNL"
+                },
+                "groups": [
+                    {
+                        "name": "Collaboration Council",
+                        "category": "",
+                        "role": "Vice-Chair"
+                    },
+                    {
+                        "name": "PID (Cerenkov and TOF)",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "2807",
+                "orcid_id": "0000-0002-6974-6201",
+                "name_first": "Liliana",
+                "name_last": "Teodorescu",
+                "email": "Liliana.Teodorescu@brunel.ac.uk",
+                "institution": {
+                    "id": "505",
+                    "ror_id": "https://ror.org/00dn4t376",
+                    "name_full": "Brunel University London",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2808",
+                "orcid_id": "0000-0002-5592-0758",
+                "name_first": "Jennifer",
+                "name_last": "Klay",
+                "email": "jklay@calpoly.edu",
+                "institution": {
+                    "id": "506",
+                    "ror_id": "https://ror.org/001gpfp45",
+                    "name_full": "California Polytechnic State University, San Luis Obispo",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2809",
+                "orcid_id": "0000-0000-0000-0049",
+                "name_first": "Michael",
+                "name_last": "Wood",
+                "email": "wood5@canisius.edu",
+                "institution": {
+                    "id": "507",
+                    "ror_id": "https://ror.org/01056ge55",
+                    "name_full": "Canisius College",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2810",
+                "orcid_id": "0000-0003-1925-9541",
+                "name_first": "Tanja",
+                "name_last": "Horn",
+                "email": "hornt@cua.edu",
+                "institution": {
+                    "id": "508",
+                    "ror_id": "https://ror.org/047yk3s18",
+                    "name_full": "Catholic University of America",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Backwards ECAL",
+                        "category": "",
+                        "role": "Detector Subsystem Leader"
+                    }
+                ]
+            },
+            {
+                "id": "2811",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Francesco",
+                "name_last": "Bossu",
+                "email": "francesco.bossu@cea.fr",
+                "institution": {
+                    "id": "509",
+                    "ror_id": "https://ror.org/03n15ch10",
+                    "name_full": "CEA-Saclay",
+                    "name_short": "CEA"
+                },
+                "groups": [
+                    {
+                        "name": "DE&I Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    }
+                ]
+            },
+            {
+                "id": "2812",
+                "orcid_id": "0000-0000-0000-0107",
+                "name_first": "Yaping",
+                "name_last": "Wang",
+                "email": "wangyaping@mail.ccnu.edu.cn",
+                "institution": {
+                    "id": "510",
+                    "ror_id": "https://ror.org/03x1jna21",
+                    "name_full": "Central China Normal University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2813",
+                "orcid_id": "0000-0000-0000-0003",
+                "name_first": "Deepak",
+                "name_last": "Samuel",
+                "email": "deepaksamuel@cuk.ac.in",
+                "institution": {
+                    "id": "511",
+                    "ror_id": "https://ror.org/02n5f2c60",
+                    "name_full": "Central University of Karnataka",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2814",
+                "orcid_id": "0000-0002-1999-9876",
+                "name_first": "Nirbhay Kumar",
+                "name_last": "Behera",
+                "email": "nirbhaykumar@cutn.ac.in",
+                "institution": {
+                    "id": "512",
+                    "ror_id": "https://ror.org/03ytqnm28",
+                    "name_full": "Central University of Tamil Nadu",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2815",
+                "orcid_id": "0000-0002-7828-9970",
+                "name_first": "Miroslav",
+                "name_last": "Finger",
+                "email": "miroslav.finger@cern.ch",
+                "institution": {
+                    "id": "513",
+                    "ror_id": "https://ror.org/024d6js02",
+                    "name_full": "Charles University, Faculty of Mathematics and Physics",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2816",
+                "orcid_id": "0000-0002-5654-2605",
+                "name_first": "Oumar",
+                "name_last": "KA",
+                "email": "oumar.ka@ucad.edu.sn",
+                "institution": {
+                    "id": "514",
+                    "ror_id": "https://ror.org/04je6yw13",
+                    "name_full": "Cheikh Anta Diop University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2817",
+                "orcid_id": "0000-0002-3480-0394",
+                "name_first": "Edward",
+                "name_last": "Brash",
+                "email": "william.phelps@cnu.edu",
+                "institution": {
+                    "id": "515",
+                    "ror_id": "https://ror.org/00m4rwq02",
+                    "name_full": "Christopher Newport University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2818",
+                "orcid_id": "0000-0002-9871-6511",
+                "name_first": "Bill",
+                "name_last": "Zajc",
+                "email": "waz1@columbia.edu",
+                "institution": {
+                    "id": "516",
+                    "ror_id": "https://ror.org/00hj8s172",
+                    "name_full": "Columbia University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2819",
+                "orcid_id": "0000-0003-1423-6973",
+                "name_first": "Janet",
+                "name_last": "Seger",
+                "email": "jseger@creighton.edu",
+                "institution": {
+                    "id": "517",
+                    "ror_id": "https://ror.org/05wf30g94",
+                    "name_full": "Creighton University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2820",
+                "orcid_id": "0000-0003-4940-2441",
+                "name_first": "Jaroslav",
+                "name_last": "Bielƒç√≠k",
+                "email": "jaroslav.bielcik@fjfi.cvut.cz",
+                "institution": {
+                    "id": "518",
+                    "ror_id": "https://ror.org/03kqpb082",
+                    "name_full": "Czech Technical University in Prague",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2821",
+                "orcid_id": "0000-0002-1259-979X",
+                "name_first": "Roy",
+                "name_last": "Lemmon",
+                "email": "roy.lemmon@stfc.ac.uk",
+                "institution": {
+                    "id": "519",
+                    "ror_id": "https://ror.org/0089bg420",
+                    "name_full": "Daresbury Laboratory",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2822",
+                "orcid_id": "0000-0002-3288-2250",
+                "name_first": "Harleen",
+                "name_last": "Dahiya",
+                "email": "dahiyah@nitj.ac.in",
+                "institution": {
+                    "id": "520",
+                    "ror_id": "https://ror.org/03xt0bg88",
+                    "name_full": "Dr. B.R. Ambedkar National Institute of Technology Jalandhar",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2823",
+                "orcid_id": "0000-0003-0983-4936",
+                "name_first": "Anselm",
+                "name_last": "Vossen",
+                "email": "anselm.vossen@duke.edu",
+                "institution": {
+                    "id": "521",
+                    "ror_id": "https://ror.org/00py81415",
+                    "name_full": "Duke University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2824",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Abdel",
+                "name_last": "Tawfik",
+                "email": "a.tawfik@eng.mti.edu.eg",
+                "institution": {
+                    "id": "522",
+                    "ror_id": "https://ror.org/00746ch50",
+                    "name_full": "Egyptian Center for Theoretical Physics",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2825",
+                "orcid_id": "0000-0002-3154-6925",
+                "name_first": "Mate",
+                "name_last": "Csanad",
+                "email": "csanad@elte.hu",
+                "institution": {
+                    "id": "523",
+                    "ror_id": "https://ror.org/01jsq2704",
+                    "name_full": "Eotvos Lorand University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2826",
+                "orcid_id": "0000-0002-9962-9663",
+                "name_first": "Simon",
+                "name_last": "Sirca",
+                "email": "simon.sirca@fmf.uni-lj.si",
+                "institution": {
+                    "id": "524",
+                    "ror_id": "https://ror.org/05njb9z20",
+                    "name_full": "Faculty of Mathematics and Physics, University of Ljubljana",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2827",
+                "orcid_id": "0000-0003-4578-9319",
+                "name_first": "Marcus",
+                "name_last": "Hohlmann",
+                "email": "hohlmann@fit.edu",
+                "institution": {
+                    "id": "525",
+                    "ror_id": "https://ror.org/04atsbb87",
+                    "name_full": "Florida Institute of Technology",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2828",
+                "orcid_id": "0000-0001-5876-9654",
+                "name_first": "Joerg",
+                "name_last": "Reinhold",
+                "email": "reinhold@fiu.edu",
+                "institution": {
+                    "id": "526",
+                    "ror_id": "https://ror.org/02gz6gg07",
+                    "name_full": "Florida International University",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Jet and Heavy Flavor",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "2829",
+                "orcid_id": "0000-0000-0000-0023",
+                "name_first": "Jinhui",
+                "name_last": "Chen",
+                "email": "chenjinhui@fudan.edu.cn",
+                "institution": {
+                    "id": "527",
+                    "ror_id": "https://ror.org/013q1eq08",
+                    "name_full": "Fudan University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2830",
+                "orcid_id": "0000-0000-0000-0009",
+                "name_first": "Minsuk",
+                "name_last": "Kim",
+                "email": "min.suk.kim@cern.ch",
+                "institution": {
+                    "id": "528",
+                    "ror_id": "https://ror.org/0461cvh40",
+                    "name_full": "Gangneung-Wonju National University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2831",
+                "orcid_id": "0000-0000-0000-0008",
+                "name_first": "Axel",
+                "name_last": "Schmidt",
+                "email": "axelschmidt@gwu.edu",
+                "institution": {
+                    "id": "529",
+                    "ror_id": "https://ror.org/00y4zzh67",
+                    "name_full": "George Washington University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2832",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Murad",
+                "name_last": "Sarsour",
+                "email": "msar@gsu.edu",
+                "institution": {
+                    "id": "530",
+                    "ror_id": "https://ror.org/03qt6ba18",
+                    "name_full": "Georgia State University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2833",
+                "orcid_id": "0000-0003-2670-1553",
+                "name_first": "Jochen",
+                "name_last": "Schwiening",
+                "email": "j.schwiening@gsi.de",
+                "institution": {
+                    "id": "531",
+                    "ror_id": "https://ror.org/02k8cbn47",
+                    "name_full": "GSI Helmholtzzentrum fuer Schwerionenforschung GmbH",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2834",
+                "orcid_id": "0000-0000-0000-0006",
+                "name_first": "Michael",
+                "name_last": "Kohl",
+                "email": "kohlm@jlab.org",
+                "institution": {
+                    "id": "532",
+                    "ror_id": "https://ror.org/05fde5z47",
+                    "name_full": "Hampton University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2835",
+                "orcid_id": "0000-0002-8803-4429",
+                "name_first": "Byunggu",
+                "name_last": "Cheon",
+                "email": "bgcheon@hanyang.ac.kr",
+                "institution": {
+                    "id": "533",
+                    "ror_id": "https://ror.org/046865y68",
+                    "name_full": "Hanyang University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2836",
+                "orcid_id": "0000-0001-8416-8617",
+                "name_first": "Kenta",
+                "name_last": "Shigaki",
+                "email": "shigaki@hiroshima-u.ac.jp",
+                "institution": {
+                    "id": "534",
+                    "ror_id": "https://ror.org/03t78wx29",
+                    "name_full": "Hiroshima University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2837",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Prabhat",
+                "name_last": "Pujahari",
+                "email": "p.pujahari@gmail.com",
+                "institution": {
+                    "id": "535",
+                    "ror_id": "https://ror.org/03v0r5n49",
+                    "name_full": "IIT Madras",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2838",
+                "orcid_id": "0000-0002-0915-1740",
+                "name_first": "Carlos",
+                "name_last": "Munoz Camacho",
+                "email": "munoz@jlab.org",
+                "institution": {
+                    "id": "536",
+                    "ror_id": "https://ror.org/03gc1p724",
+                    "name_full": "IJCLab (Orsay)",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Conference and Talks Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    },
+                    {
+                        "name": "Executive Board",
+                        "category": "Collaboration Committees",
+                        "role": "At-Large Member"
+                    },
+                    {
+                        "name": "Backwards ECAL",
+                        "category": "",
+                        "role": "Detector Subsystem Technical Coordinator"
+                    }
+                ]
+            },
+            {
+                "id": "2839",
+                "orcid_id": "0000-0003-2270-3324",
+                "name_first": "Chitrasen",
+                "name_last": "Jena",
+                "email": "cjena@iisertirupati.ac.in",
+                "institution": {
+                    "id": "537",
+                    "ror_id": "https://ror.org/032d0e990",
+                    "name_full": "Indian Institute of Science Education and Research (IISER) Tirupati",
+                    "name_short": "ISER"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2840",
+                "orcid_id": "0000-0000-0000-0028",
+                "name_first": "Md",
+                "name_last": "Nasim",
+                "email": "nasim@iiserbpr.ac.in",
+                "institution": {
+                    "id": "538",
+                    "ror_id": "https://ror.org/023vrr657",
+                    "name_full": "Indian Institute of Science Education and Research, Berhampur",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2841",
+                "orcid_id": "0000-0000-0000-0003",
+                "name_first": "Asmita",
+                "name_last": "Mukherjee",
+                "email": "asmita@phy.iitb.ac.in",
+                "institution": {
+                    "id": "539",
+                    "ror_id": "https://ror.org/02qyf5152",
+                    "name_full": "Indian Institute of Technology Bombay",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2842",
+                "orcid_id": "0000-0002-6459-7323",
+                "name_first": "Tobias",
+                "name_last": "Toll",
+                "email": "tobiastoll@iitd.ac.in",
+                "institution": {
+                    "id": "540",
+                    "ror_id": "https://ror.org/049tgcd06",
+                    "name_full": "Indian Institute of Technology Delhi",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2843",
+                "orcid_id": "0000-0002-1142-3186",
+                "name_first": "Ankhi",
+                "name_last": "Roy",
+                "email": "ankhi@iiti.ac.in",
+                "institution": {
+                    "id": "541",
+                    "ror_id": "https://ror.org/01hhf7w52",
+                    "name_full": "Indian Institute of Technology Indore",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2844",
+                "orcid_id": "0000-0000-0000-0036",
+                "name_first": "Neha",
+                "name_last": "Shah",
+                "email": "neau2802@gmail.com",
+                "institution": {
+                    "id": "542",
+                    "ror_id": "https://ror.org/01ft5vz71",
+                    "name_full": "Indian Institute of Technology Patna",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2845",
+                "orcid_id": "0000-0002-7697-5731",
+                "name_first": "Scott",
+                "name_last": "Wissink",
+                "email": "wissink@iu.edu",
+                "institution": {
+                    "id": "543",
+                    "ror_id": "https://ror.org/01kg8sb98",
+                    "name_full": "Indiana University",
+                    "name_short": "IU"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2846",
+                "orcid_id": "0000-0002-4321-1946",
+                "name_first": "Salvatore",
+                "name_last": "Fazio",
+                "email": "salvatore.fazio@unical.it",
+                "institution": {
+                    "id": "544",
+                    "ror_id": "https://ror.org/039epzh36",
+                    "name_full": "INFN Gruppo Collegato di Cosenza and Dipartimento di Fisica, Università della Calabria",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Analysis",
+                        "category": "Coordination Offices",
+                        "role": "Coordinator"
+                    },
+                    {
+                        "name": "Executive Board",
+                        "category": "Collaboration Committees",
+                        "role": "Coordinator"
+                    },
+                    null
+                ]
+            },
+            {
+                "id": "2847",
+                "orcid_id": "0000-0002-7055-6181",
+                "name_first": "Daniele",
+                "name_last": "De Gruttola",
+                "email": "degruttola@sa.infn.it",
+                "institution": {
+                    "id": "545",
+                    "ror_id": "https://ror.org/005ta0471",
+                    "name_full": "INFN Gruppo Collegato di Salerno and Dipartimento di Fisica \"E.R. Caianello\", Università di Salerno",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2848",
+                "orcid_id": "0009-0000-6359-8060",
+                "name_first": "Francesco",
+                "name_last": "Noto",
+                "email": "francesco.noto@lns.infn.it",
+                "institution": {
+                    "id": "546",
+                    "ror_id": "https://ror.org/02k1zhm92",
+                    "name_full": "INFN Laboratori Nazionali del Sud",
+                    "name_short": "LNS"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2849",
+                "orcid_id": "0000-0001-6351-2378",
+                "name_first": "Domenico",
+                "name_last": "Elia",
+                "email": "domenico.elia@cern.ch",
+                "institution": {
+                    "id": "547",
+                    "ror_id": "https://ror.org/022hq6c49",
+                    "name_full": "INFN Sezione di Bari, Dipartimento Interateneo di Fisica, Università di Bari and Università di Foggia",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Elections Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    }
+                ]
+            },
+            {
+                "id": "2850",
+                "orcid_id": "0000-0001-7516-3726",
+                "name_first": "Pietro",
+                "name_last": "Antonioli",
+                "email": "pietro.antonioli@bo.infn.it",
+                "institution": {
+                    "id": "548",
+                    "ror_id": "https://ror.org/04j0x0h93",
+                    "name_full": "INFN Sezione di Bologna and Dipartimento di Fisica e Astronomia, Università di Bologna",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Membership Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Vice-Chair"
+                    }
+                ]
+            },
+            {
+                "id": "2851",
+                "orcid_id": "0000-0003-0739-3153",
+                "name_first": "Cristina",
+                "name_last": "Tuve",
+                "email": "cristina.tuve@ct.infn.it",
+                "institution": {
+                    "id": "549",
+                    "ror_id": "https://ror.org/02pq29p90",
+                    "name_full": "INFN Sezione di Catania and Dipartimento di FIsica e Astronomia, Universita di Catania",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2852",
+                "orcid_id": "0000-0002-8612-7998",
+                "name_first": "Marco",
+                "name_last": "Contalbrigo",
+                "email": "contalbrigo@fe.infn.it",
+                "institution": {
+                    "id": "550",
+                    "ror_id": "https://ror.org/00zs3y046",
+                    "name_full": "INFN Sezione di Ferrara and Dipartimento di Fisica e Scienza della Terra, Università di Ferrara",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "dRICH",
+                        "category": "",
+                        "role": "Detector Subsystem Leader"
+                    }
+                ]
+            },
+            {
+                "id": "2853",
+                "orcid_id": "0000-0001-9618-3013",
+                "name_first": "Mikhail",
+                "name_last": "Osipenko",
+                "email": "osipenko@ge.infn.it",
+                "institution": {
+                    "id": "551",
+                    "ror_id": "https://ror.org/02v89pq06",
+                    "name_full": "INFN Sezione di Genova and Dipartimento di FIsica, Università di Genova",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2854",
+                "orcid_id": "0000-0002-5272-337X",
+                "name_first": "Rosario",
+                "name_last": "Turrisi",
+                "email": "rosario.turrisi@pd.infn.it",
+                "institution": {
+                    "id": "552",
+                    "ror_id": "https://ror.org/00z34yn88",
+                    "name_full": "INFN Sezione di Padova and Dipartimento di Fisica e Astronomia \"Galileo Galilei\", Università di Padova",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2855",
+                "orcid_id": "0000-0002-4542-9797",
+                "name_first": "Marco",
+                "name_last": "Radici",
+                "email": "marco.radici0@gmail.com",
+                "institution": {
+                    "id": "553",
+                    "ror_id": "https://ror.org/01st30669",
+                    "name_full": "INFN Sezione di Pavia",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2856",
+                "orcid_id": "0000-0002-7559-0127",
+                "name_first": "Guido Maria",
+                "name_last": "Urciuoli",
+                "email": "guido.maria.urciuoli@roma1.infn.it",
+                "institution": {
+                    "id": "554",
+                    "ror_id": "https://ror.org/05eva6s33",
+                    "name_full": "INFN Sezione di Roma",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2857",
+                "orcid_id": "0000-0003-3050-4907",
+                "name_first": "Annalisa",
+                "name_last": "D'Angelo",
+                "email": "annalisa.dangelo@roma2.infn.it",
+                "institution": {
+                    "id": "555",
+                    "ror_id": "https://ror.org/025rrx658",
+                    "name_full": "INFN Sezione di Roma Tor Vergata and Dipartimento di FIsica, Universita di Roma Tor Vergata",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2858",
+                "orcid_id": "0000-0002-7655-3475",
+                "name_first": "Marta",
+                "name_last": "Ruspa",
+                "email": "marta.ruspa@med.uniupo.it",
+                "institution": {
+                    "id": "556",
+                    "ror_id": "https://ror.org/01vj6ck58",
+                    "name_full": "INFN Sezione di Torino, Università di Torino and Università del Piemonte Orientale",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2859",
+                "orcid_id": "0000-0002-5552-9732",
+                "name_first": "Silvia",
+                "name_last": "Dalla Torre",
+                "email": "silvia.dallatorre@ts.infn.it",
+                "institution": {
+                    "id": "557",
+                    "ror_id": "https://ror.org/05j3snm48",
+                    "name_full": "INFN Sezione di Trieste and Dipartimento di Fisica, Universita di Trieste",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Spokesperson's Office",
+                        "category": "Management",
+                        "role": "Deputy Spokesperson"
+                    },
+                    {
+                        "name": "Technical Coordination Office",
+                        "category": "Coordination Offices",
+                        "role": "Technical coordinator"
+                    }
+                ]
+            },
+            {
+                "id": "2860",
+                "orcid_id": "0000-0002-6190-8376",
+                "name_first": "Janusz",
+                "name_last": "Chwastowski",
+                "email": "Janusz.Chwastowski@ifj.edu.pl",
+                "institution": {
+                    "id": "558",
+                    "ror_id": "https://ror.org/01n78t774",
+                    "name_full": "Institute of Nuclear Physics Polish Academy of Sciences (IFJ PAN)",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2861",
+                "orcid_id": "0000-0000-0000-0002",
+                "name_first": "Wen-Chen",
+                "name_last": "Chang",
+                "email": "changwc@phys.sinica.edu.tw",
+                "institution": {
+                    "id": "559",
+                    "ror_id": "https://ror.org/01tpvdq80",
+                    "name_full": "Institute of Physics, Academia Sinica",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2862",
+                "orcid_id": "0000-0000-0000-0006",
+                "name_first": "Pradip Kumar",
+                "name_last": "Sahu",
+                "email": "pradip@iopb.res.in",
+                "institution": {
+                    "id": "560",
+                    "ror_id": "https://ror.org/04gx72j20",
+                    "name_full": "Institute of Physics, Bhubaneswar",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2863",
+                "orcid_id": "0000-0001-6524-0126",
+                "name_first": "Marzia",
+                "name_last": "Rosati",
+                "email": "mrosati@iastate.edu",
+                "institution": {
+                    "id": "561",
+                    "ror_id": "https://ror.org/04rswrd78",
+                    "name_full": "Iowa State University",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Membership Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    }
+                ]
+            },
+            {
+                "id": "2864",
+                "orcid_id": "0000-0003-3604-3152",
+                "name_first": "Masroor",
+                "name_last": "Bukhari",
+                "email": "mbukhari@jlab.org",
+                "institution": {
+                    "id": "562",
+                    "ror_id": "https://ror.org/02bjnq803",
+                    "name_full": "Jazan University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2865",
+                "orcid_id": "0000-0003-2758-6526",
+                "name_first": "Douglas",
+                "name_last": "Higinbotham",
+                "email": "doug@jlab.org",
+                "institution": {
+                    "id": "563",
+                    "ror_id": "https://ror.org/02vwzrd76",
+                    "name_full": "Jefferson Lab",
+                    "name_short": "TJNAF"
+                },
+                "groups": [
+                    {
+                        "name": "Membership Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    }
+                ]
+            },
+            {
+                "id": "2866",
+                "orcid_id": "0000-0000-0000-0016",
+                "name_first": "Eun-Joo",
+                "name_last": "Kim",
+                "email": "ejkim@jbnu.ac.kr",
+                "institution": {
+                    "id": "564",
+                    "ror_id": "https://ror.org/05q92br09",
+                    "name_full": "Jeonbuk National University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2867",
+                "orcid_id": "0000-0001-8841-3405",
+                "name_first": "Richard",
+                "name_last": "Leys",
+                "email": "richard.leys@kit.edu",
+                "institution": {
+                    "id": "565",
+                    "ror_id": "https://ror.org/04t3en479",
+                    "name_full": "Karlsruhe Institute of Technology",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2868",
+                "orcid_id": "0000-0000-0000-0004",
+                "name_first": "Yuji",
+                "name_last": "Yamazaki",
+                "email": "yamazaki@phys.sci.kobe-u.ac.jp",
+                "institution": {
+                    "id": "566",
+                    "ror_id": "https://ror.org/03tgsfw79",
+                    "name_full": "Kobe University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2869",
+                "orcid_id": "0000-0002-2259-9929",
+                "name_first": "Byungsik",
+                "name_last": "Hong",
+                "email": "bhong@korea.ac.kr",
+                "institution": {
+                    "id": "567",
+                    "ror_id": "https://ror.org/047dqcg40",
+                    "name_full": "Korea University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2870",
+                "orcid_id": "0009-0005-5672-6948",
+                "name_first": "Hyon-Suk",
+                "name_last": "Jo",
+                "email": "hyonsuk@knu.ac.kr",
+                "institution": {
+                    "id": "568",
+                    "ror_id": "https://ror.org/040c17130",
+                    "name_full": "Kyungpook National University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2871",
+                "orcid_id": "0000-0002-7693-0314",
+                "name_first": "John",
+                "name_last": "Dainton",
+                "email": "john.dainton@cockcroft.ac.uk",
+                "institution": {
+                    "id": "568",
+                    "ror_id": "https://ror.org/040c17130",
+                    "name_full": "Kyungpook National University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2872",
+                "orcid_id": "0000-0001-5974-3587",
+                "name_first": "Ernst",
+                "name_last": "Sichtermann",
+                "email": "EPSichtermann@lbl.gov",
+                "institution": {
+                    "id": "570",
+                    "ror_id": "https://ror.org/02jbv0t02",
+                    "name_full": "Lawrence Berkeley National Laboratory",
+                    "name_short": "LBNL"
+                },
+                "groups": [
+                    {
+                        "name": "Collaboration Council",
+                        "category": "",
+                        "role": "Past-Chair"
+                    },
+                    {
+                        "name": "Tracking",
+                        "category": "",
+                        "role": "Convener"
+                    },
+                    {
+                        "name": "Si Trackers",
+                        "category": "",
+                        "role": "DSL"
+                    }
+                ]
+            },
+            {
+                "id": "2873",
+                "orcid_id": "0000-0001-5859-2369",
+                "name_first": "Ron",
+                "name_last": "Soltz",
+                "email": "soltz1@llnl.gov",
+                "institution": {
+                    "id": "571",
+                    "ror_id": "https://ror.org/041nk4h53",
+                    "name_full": "Lawrence Livermore National Laboratory",
+                    "name_short": "LLNL"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2874",
+                "orcid_id": "0000-0002-0821-0139",
+                "name_first": "Rosi",
+                "name_last": "Reed",
+                "email": "rosijreed@lehigh.edu",
+                "institution": {
+                    "id": "572",
+                    "ror_id": "https://ror.org/012afjb06",
+                    "name_full": "Lehigh University",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Analysis",
+                        "category": "Coordination Offices",
+                        "role": "Coordinator"
+                    },
+                    {
+                        "name": "Executive Board",
+                        "category": "Collaboration Committees",
+                        "role": "Coordinator"
+                    },
+                    null
+                ]
+            },
+            {
+                "id": "2875",
+                "orcid_id": "0000-0000-0000-0523",
+                "name_first": "Ming",
+                "name_last": "Liu",
+                "email": "mliu@lanl.gov",
+                "institution": {
+                    "id": "573",
+                    "ror_id": "https://ror.org/01e41cf67",
+                    "name_full": "Los Alamos National Laboratory",
+                    "name_short": "LANL"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2876",
+                "orcid_id": "0000-0001-8983-2169",
+                "name_first": "Gunther",
+                "name_last": "Roland",
+                "email": "rolandg@mit.edu",
+                "institution": {
+                    "id": "574",
+                    "ror_id": "https://ror.org/042nb2s44",
+                    "name_full": "Massachusetts Institute of Technology (MIT)",
+                    "name_short": "MIT"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2877",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Lamiaa",
+                "name_last": "El Fassi",
+                "email": "le334@msstate.edu",
+                "institution": {
+                    "id": "575",
+                    "ror_id": "https://ror.org/0432jq872",
+                    "name_full": "Mississippi State University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2878",
+                "orcid_id": "0000-0002-7294-396X",
+                "name_first": "Kavita",
+                "name_last": "Lalwani",
+                "email": "kavita.phy@mnit.ac.in",
+                "institution": {
+                    "id": "576",
+                    "ror_id": "https://ror.org/0077k1j32",
+                    "name_full": "MNIT Jaipur",
+                    "name_short": "MNIT"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2879",
+                "orcid_id": "0000-0000-0000-0002",
+                "name_first": "Kevin",
+                "name_last": "Adkins",
+                "email": "jkadkins@moreheadstate.edu",
+                "institution": {
+                    "id": "577",
+                    "ror_id": "https://ror.org/018yta094",
+                    "name_full": "Morehead State University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2880",
+                "orcid_id": "0000-0001-7544-0156",
+                "name_first": "Takashi",
+                "name_last": "Hachiya",
+                "email": "hachiya@cc.nara-wu.ac.jp",
+                "institution": {
+                    "id": "578",
+                    "ror_id": "https://ror.org/05kzadn81",
+                    "name_full": "Nara Women's University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2881",
+                "orcid_id": "0000-0002-9280-836X",
+                "name_first": "Regina",
+                "name_last": "Caputo",
+                "email": "regina.caputo@nasa.gov",
+                "institution": {
+                    "id": "579",
+                    "ror_id": "https://ror.org/0171mag52",
+                    "name_full": "NASA Goddard Space Flight Center",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2882",
+                "orcid_id": "0000-0000-0000-0003",
+                "name_first": "Chia-Ming",
+                "name_last": "Kuo",
+                "email": "chia-ming.kuo@cern.ch",
+                "institution": {
+                    "id": "580",
+                    "ror_id": "https://ror.org/00944ve71",
+                    "name_full": "National Central University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2883",
+                "orcid_id": "0000-0000-0000-0826",
+                "name_first": "Yi",
+                "name_last": "Yang",
+                "email": "yiyang@ncku.edu.tw",
+                "institution": {
+                    "id": "581",
+                    "ror_id": "https://ror.org/01b8kcc49",
+                    "name_full": "National Cheng Kung University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2884",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Bedangas",
+                "name_last": "Mohanty",
+                "email": "bedanga@niser.ac.in",
+                "institution": {
+                    "id": "582",
+                    "ror_id": "https://ror.org/02r2k1c68",
+                    "name_full": "National Institute of Science Education and Research (NISER)",
+                    "name_short": "NISER"
+                },
+                "groups": [
+                    {
+                        "name": "Membership Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    }
+                ]
+            },
+            {
+                "id": "2885",
+                "orcid_id": "0000-0001-6828-1695",
+                "name_first": "Rong-Shyang",
+                "name_last": "Lu",
+                "email": "rslu@phys.ntu.edu.tw",
+                "institution": {
+                    "id": "583",
+                    "ror_id": "https://ror.org/05bqach95",
+                    "name_full": "National Taiwan University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2886",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Pai-hsien Jennifer",
+                "name_last": "Hsu",
+                "email": "p.jennifer.hsu@cern.ch",
+                "institution": {
+                    "id": "584",
+                    "ror_id": "https://ror.org/00zdnkx70",
+                    "name_full": "National Tsing Hua University",
+                    "name_short": "NTHU"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2887",
+                "orcid_id": "0009-0005-5498-4804",
+                "name_first": "Toshi-Aki",
+                "name_last": "Shibata",
+                "email": "shibata.toshiaki01@gmail.com",
+                "institution": {
+                    "id": "585",
+                    "ror_id": "https://ror.org/05jk51a88",
+                    "name_full": "Nihon University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2888",
+                "orcid_id": "0000-0003-1659-0394",
+                "name_first": "Jana",
+                "name_last": "Bielcikova",
+                "email": "bielcikova@ujf.cas.cz",
+                "institution": {
+                    "id": "586",
+                    "ror_id": "https://ror.org/04jymbd90",
+                    "name_full": "Nuclear Physics Institute, Czech Academy of Sciences",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2889",
+                "orcid_id": "0000-0003-4185-2093",
+                "name_first": "Friederike",
+                "name_last": "Bock",
+                "email": "bockf@ornl.gov",
+                "institution": {
+                    "id": "587",
+                    "ror_id": "https://ror.org/01qz5mb56",
+                    "name_full": "Oak Ridge National Laboratory",
+                    "name_short": "ORNL"
+                },
+                "groups": [
+                    {
+                        "name": "Membership Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    },
+                    {
+                        "name": "Calorimetry",
+                        "category": "",
+                        "role": "Convener"
+                    },
+                    {
+                        "name": "Forward HCAL",
+                        "category": "",
+                        "role": "Detector Subsystem Leader / Detector Subsystem Technical Coordinator"
+                    }
+                ]
+            },
+            {
+                "id": "2890",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Justin",
+                "name_last": "Frantz",
+                "email": "frantz@ohio.edu",
+                "institution": {
+                    "id": "588",
+                    "ror_id": "https://ror.org/01jr3y717",
+                    "name_full": "Ohio University",
+                    "name_short": "OU"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2891",
+                "orcid_id": "0000-0002-2041-6236",
+                "name_first": "Flera",
+                "name_last": "Rizatdinova",
+                "email": "flera.rizatdinova@okstate.edu",
+                "institution": {
+                    "id": "589",
+                    "ror_id": "https://ror.org/01g9vbr38",
+                    "name_full": "Oklahoma State University",
+                    "name_short": "OSU"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2892",
+                "orcid_id": "0000-0000-0000-0002",
+                "name_first": "Charles",
+                "name_last": "Hyde",
+                "email": "chyde@odu.edu",
+                "institution": {
+                    "id": "590",
+                    "ror_id": "https://ror.org/04zjtrb98",
+                    "name_full": "Old Dominion University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2893",
+                "orcid_id": "0000-0000-0000-0004",
+                "name_first": "Lynn",
+                "name_last": "Wood",
+                "email": "lynn.wood@pnnl.gov",
+                "institution": {
+                    "id": "591",
+                    "ror_id": "https://ror.org/05h992307",
+                    "name_full": "Pacific Northwest National Laboratory",
+                    "name_short": "PNNL"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2894",
+                "orcid_id": "0000-0000-0000-0121",
+                "name_first": "Lokesh",
+                "name_last": "Kumar",
+                "email": "lokesh@pu.ac.in",
+                "institution": {
+                    "id": "592",
+                    "ror_id": "https://ror.org/05t4pvx35",
+                    "name_full": "Panjab University Chandigarh",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Publication Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    }
+                ]
+            },
+            {
+                "id": "2895",
+                "orcid_id": "0000-0000-0000-0031",
+                "name_first": "Fuqiang",
+                "name_last": "Wang",
+                "email": "fqwang@purdue.edu",
+                "institution": {
+                    "id": "593",
+                    "ror_id": "https://ror.org/05p8z3f47",
+                    "name_full": "Purdue University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2896",
+                "orcid_id": "0000-0000-0000-0014",
+                "name_first": "Sanghoon",
+                "name_last": "Lim",
+                "email": "shlim@pusan.ac.kr",
+                "institution": {
+                    "id": "594",
+                    "ror_id": "https://ror.org/01an57a31",
+                    "name_full": "Pusan National University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2897",
+                "orcid_id": "0000-0000-0000-0002",
+                "name_first": "Tapasi",
+                "name_last": "Ghosh",
+                "email": "tapasi03@gmail.com",
+                "institution": {
+                    "id": "595",
+                    "ror_id": "https://ror.org/02anh8x74",
+                    "name_full": "Ramaiah University of Applied Sciences",
+                    "name_short": "MSRUAS"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2898",
+                "orcid_id": "0000-0000-0000-0003",
+                "name_first": "Amal",
+                "name_last": "Sarkar",
+                "email": "amal.iitb@gmail.com",
+                "institution": {
+                    "id": "596",
+                    "ror_id": "https://ror.org/03kp2qt98",
+                    "name_full": "Ramakrishna Mission Residential College (Autonomous)",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2899",
+                "orcid_id": "0000-0000-0000-0002",
+                "name_first": "Frank",
+                "name_last": "Geurts",
+                "email": "geurts@rice.edu",
+                "institution": {
+                    "id": "597",
+                    "ror_id": "https://ror.org/008zs3103",
+                    "name_full": "Rice University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2900",
+                "orcid_id": "0000-0000-0000-0003",
+                "name_first": "Yuji",
+                "name_last": "Goto",
+                "email": "goto@bnl.gov",
+                "institution": {
+                    "id": "598",
+                    "ror_id": "https://ror.org/05tqx4s13",
+                    "name_full": "RIKEN Nishina Center",
+                    "name_short": "RIKEN"
+                },
+                "groups": [
+                    {
+                        "name": "Far Forward",
+                        "category": "",
+                        "role": "Co-DSTC (ZDC)"
+                    }
+                ]
+            },
+            {
+                "id": "2901",
+                "orcid_id": "0000-0002-4995-9285",
+                "name_first": "Sevil",
+                "name_last": "Salur",
+                "email": "salur@physics.rutgers.edu",
+                "institution": {
+                    "id": "599",
+                    "ror_id": "https://ror.org/05vt9qd57",
+                    "name_full": "Rutgers University",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Publication Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    }
+                ]
+            },
+            {
+                "id": "2902",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Sedgwick",
+                "name_last": "Iain",
+                "email": "iain.sedgwick@stfc.ac.uk",
+                "institution": {
+                    "id": "600",
+                    "ror_id": "https://ror.org/03gq8fr08",
+                    "name_full": "Rutherford Appleton Laboratory",
+                    "name_short": "RAL"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2903",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Kim",
+                "name_last": "Yongsun",
+                "email": "kimy@cern.ch",
+                "institution": {
+                    "id": "601",
+                    "ror_id": "https://ror.org/00aft1q37",
+                    "name_full": "Sejong University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2904",
+                "orcid_id": "0000-0000-0000-0002",
+                "name_first": "Inseok",
+                "name_last": "Yoon",
+                "email": "inseok.yoon@cern.ch",
+                "institution": {
+                    "id": "602",
+                    "ror_id": "https://ror.org/04h9pn542",
+                    "name_full": "Seoul National University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2905",
+                "orcid_id": "0000-0000-0000-0019",
+                "name_first": "Qinghua",
+                "name_last": "Xu",
+                "email": "xuqh@sdu.edu.cn",
+                "institution": {
+                    "id": "603",
+                    "ror_id": "https://ror.org/0207yh398",
+                    "name_full": "Shandong University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2906",
+                "orcid_id": "0000-0002-7874-6107",
+                "name_first": "Kentaro",
+                "name_last": "Kawade",
+                "email": "kawade@shinshu-u.ac.jp",
+                "institution": {
+                    "id": "604",
+                    "ror_id": "https://ror.org/0244rem06",
+                    "name_full": "Shinshu University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2907",
+                "orcid_id": "0000-0000-0000-0175",
+                "name_first": "Shuai",
+                "name_last": "Yang",
+                "email": "syang@scnu.edu.cn",
+                "institution": {
+                    "id": "605",
+                    "ror_id": "https://ror.org/01kq0pv72",
+                    "name_full": "South China Normal University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2908",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Fred",
+                "name_last": "Olness",
+                "email": "olness@smu.edu",
+                "institution": {
+                    "id": "606",
+                    "ror_id": "https://ror.org/042tdr378",
+                    "name_full": "Southern Methodist University",
+                    "name_short": "SMU"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2909",
+                "orcid_id": "0000-0002-5725-3397",
+                "name_first": "Jiangyong",
+                "name_last": "Jia",
+                "email": "jjia@bnl.gov",
+                "institution": {
+                    "id": "607",
+                    "ror_id": "https://ror.org/05qghxh33",
+                    "name_full": "Stony Brook University",
+                    "name_short": "SBU"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2910",
+                "orcid_id": "0000-0000-0000-0003",
+                "name_first": "Beomkyu",
+                "name_last": "Kim",
+                "email": "kimbyumkyu@skku.edu",
+                "institution": {
+                    "id": "608",
+                    "ror_id": "https://ror.org/04q78tk20",
+                    "name_full": "Sungkyunkwan University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2911",
+                "orcid_id": "0000-0002-8588-5308",
+                "name_first": "Volodymyr",
+                "name_last": "Aushev",
+                "email": "aushev@mail.desy.de",
+                "institution": {
+                    "id": "609",
+                    "ror_id": "https://ror.org/02aaqv166",
+                    "name_full": "Taras Shevchenko National University of Kyiv",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2912",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Piasetzky",
+                "name_last": "Eli",
+                "email": "eip@tauphy.tau.ac.il",
+                "institution": {
+                    "id": "610",
+                    "ror_id": "https://ror.org/04mhzgx49",
+                    "name_full": "Tel-Aviv University",
+                    "name_short": "TAU"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2913",
+                "orcid_id": "0000-0001-5839-707X",
+                "name_first": "Bernd",
+                "name_last": "Surrow",
+                "email": "tue59914@temple.edu",
+                "institution": {
+                    "id": "611",
+                    "ror_id": "https://ror.org/00kx1jb78",
+                    "name_full": "Temple University",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Collaboration Council",
+                        "category": "",
+                        "role": "Chair"
+                    }
+                ]
+            },
+            {
+                "id": "2914",
+                "orcid_id": "0000-0002-6014-5506",
+                "name_first": "Moshe",
+                "name_last": "Friedman",
+                "email": "moshe.friedman@mail.huji.ac.il",
+                "institution": {
+                    "id": "612",
+                    "ror_id": "https://ror.org/03qxff017",
+                    "name_full": "The Hebrew University of Jerusalem",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2915",
+                "orcid_id": "0000-0000-0000-0005",
+                "name_first": "Daniel",
+                "name_last": "Brandenburg",
+                "email": "brandenburg.89@osu.edu",
+                "institution": {
+                    "id": "613",
+                    "ror_id": "https://ror.org/00rs6vg23",
+                    "name_full": "The Ohio State University",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Conference and Talks Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    },
+                    {
+                        "name": "Publication Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Ex-officio w. Conferences and Talks Committee"
+                    }
+                ]
+            },
+            {
+                "id": "2916",
+                "orcid_id": "0009-0005-4425-586X",
+                "name_first": "Joakim",
+                "name_last": "Nystrand",
+                "email": "Joakim.Nystrand@uib.no",
+                "institution": {
+                    "id": "614",
+                    "ror_id": "https://ror.org/03zga2b32",
+                    "name_full": "The University of Bergen",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2917",
+                "orcid_id": "0000-0000-0000-0014",
+                "name_first": "Zhihong",
+                "name_last": "Ye",
+                "email": "yez@tsinghua.edu.cn",
+                "institution": {
+                    "id": "615",
+                    "ror_id": "https://ror.org/03cve4549",
+                    "name_full": "Tsinghua University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2918",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Motoi",
+                "name_last": "Inaba",
+                "email": "inaba@a.tsukuba-tech.ac.jp",
+                "institution": {
+                    "id": "616",
+                    "ror_id": "https://ror.org/057bx9y85",
+                    "name_full": "Tsukuba University of Technology",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2919",
+                "orcid_id": "0000-0002-9551-0251",
+                "name_first": "Mohamed",
+                "name_last": "Gouighri",
+                "email": "mohamed.gouighri@cern.ch",
+                "institution": {
+                    "id": "617",
+                    "ror_id": "https://ror.org/02wj89n04",
+                    "name_full": "University Ibn Tofail in Kénitra",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2920",
+                "orcid_id": "0000-0003-2233-9120",
+                "name_first": "Abdelilah",
+                "name_last": "Moussa",
+                "email": "abdelilah.moussa@cern.ch",
+                "institution": {
+                    "id": "618",
+                    "ror_id": "https://ror.org/01ejxf797",
+                    "name_full": "University Mohammed Premier in Oujda",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2921",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Charlotte",
+                "name_last": "Van Hulse",
+                "email": "cvanhuls@mail.cern.ch",
+                "institution": {
+                    "id": "619",
+                    "ror_id": "https://ror.org/04pmn0e78",
+                    "name_full": "University of Alcala",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Semi-inclusive Physics",
+                        "category": "",
+                        "role": "convener"
+                    }
+                ]
+            },
+            {
+                "id": "2922",
+                "orcid_id": "0000-0000-0000-0088",
+                "name_first": "Peter",
+                "name_last": "Jones",
+                "email": "p.g.jones@bham.ac.uk",
+                "institution": {
+                    "id": "620",
+                    "ror_id": "https://ror.org/03angcq70",
+                    "name_full": "University of Birmingham",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2923",
+                "orcid_id": "0000-0003-2889-2234",
+                "name_first": "Barbara",
+                "name_last": "Jacak",
+                "email": "bvjacak@lbl.gov",
+                "institution": {
+                    "id": "621",
+                    "ror_id": "https://ror.org/01an7q238",
+                    "name_full": "University of California, Berkeley",
+                    "name_short": "UCB"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2924",
+                "orcid_id": "0000-0001-7883-6375",
+                "name_first": "Daniel",
+                "name_last": "Cebra",
+                "email": "dacebra@ucdavis.edu",
+                "institution": {
+                    "id": "622",
+                    "ror_id": "https://ror.org/05rrcem69",
+                    "name_full": "University of California, Davis",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2925",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Huan Zhong",
+                "name_last": "Huang",
+                "email": "huang@physics.ucla.edu",
+                "institution": {
+                    "id": "623",
+                    "ror_id": "https://ror.org/046rm7j60",
+                    "name_full": "University of California, Los Angeles",
+                    "name_short": "UCLA"
+                },
+                "groups": [
+                    {
+                        "name": "Forward ECAL",
+                        "category": "",
+                        "role": "Co-Detector Subsystem Leader"
+                    }
+                ]
+            },
+            {
+                "id": "2926",
+                "orcid_id": "0000-0000-0000-0002",
+                "name_first": "Miguel",
+                "name_last": "Arratia",
+                "email": "miguel.arratia@ucr.edu",
+                "institution": {
+                    "id": "624",
+                    "ror_id": "https://ror.org/03nawhv43",
+                    "name_full": "University of California, Riverside",
+                    "name_short": "UCR"
+                },
+                "groups": [
+                    {
+                        "name": "Forward HCAL",
+                        "category": "",
+                        "role": "Deputy Detector Subsystem Leader / Detector Subsystem Technical Coordinator"
+                    },
+                    {
+                        "name": "Far Forward",
+                        "category": "",
+                        "role": "Co-DSTC (ZDC)"
+                    }
+                ]
+            },
+            {
+                "id": "2927",
+                "orcid_id": "0000-0003-0154-4328",
+                "name_first": "Vitaliy",
+                "name_last": "Fadeyev",
+                "email": "fadeyev@ucsc.edu",
+                "institution": {
+                    "id": "625",
+                    "ror_id": "https://ror.org/03s65by71",
+                    "name_full": "University of California, Santa Cruz",
+                    "name_short": "UCSC"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2928",
+                "orcid_id": "0000-0001-8732-6908",
+                "name_first": "Dennis",
+                "name_last": "Perepelitsa",
+                "email": "dvp@colorado.edu",
+                "institution": {
+                    "id": "626",
+                    "ror_id": "https://ror.org/02ttsq026",
+                    "name_full": "University of Colorado Boulder",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2929",
+                "orcid_id": "0000-0002-5265-6867",
+                "name_first": "Kyungseon",
+                "name_last": "Joo",
+                "email": "kyungseon.joo@uconn.edu",
+                "institution": {
+                    "id": "627",
+                    "ror_id": "https://ror.org/02der9h97",
+                    "name_full": "University of Connecticut",
+                    "name_short": "Uconn"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2930",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Bal√°zs",
+                "name_last": "Ujv√°ri",
+                "email": "balazs.ujvari@science.unideb.hu",
+                "institution": {
+                    "id": "628",
+                    "ror_id": "https://ror.org/02xf66n48",
+                    "name_full": "University of Debrecen",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2931",
+                "orcid_id": "0000-0000-0000-0004",
+                "name_first": "Rachel",
+                "name_last": "Montgomery",
+                "email": "rachel.montgomery@glasgow.ac.uk",
+                "institution": {
+                    "id": "629",
+                    "ror_id": "https://ror.org/00vtgdb53",
+                    "name_full": "University of Glasgow",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Exlusive Diffraction and Tagging",
+                        "category": "",
+                        "role": "convener"
+                    }
+                ]
+            },
+            {
+                "id": "2932",
+                "orcid_id": "0000-0002-3156-0188",
+                "name_first": "Rene",
+                "name_last": "Bellwied",
+                "email": "bellwied@uh.edu",
+                "institution": {
+                    "id": "630",
+                    "ror_id": "https://ror.org/048sx0r50",
+                    "name_full": "University of Houston",
+                    "name_short": "UH"
+                },
+                "groups": [
+                    {
+                        "name": "Publication Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Chair"
+                    }
+                ]
+            },
+            {
+                "id": "2933",
+                "orcid_id": "0000-0001-5310-3466",
+                "name_first": "Austin",
+                "name_last": "Baty",
+                "email": "abaty@uic.edu",
+                "institution": {
+                    "id": "631",
+                    "ror_id": "https://ror.org/02mpq6x41",
+                    "name_full": "University of Illinois Chicago",
+                    "name_short": "UIC"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2934",
+                "orcid_id": "0000-0002-3246-0330",
+                "name_first": "Anne",
+                "name_last": "Sickles",
+                "email": "sickles@illinois.edu",
+                "institution": {
+                    "id": "632",
+                    "ror_id": "https://ror.org/047426m28",
+                    "name_full": "University of Illinois Urbana-Champaign",
+                    "name_short": "UIUC"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2935",
+                "orcid_id": "0000-0002-0098-4279",
+                "name_first": "Daniel",
+                "name_last": "Tapia Takaki",
+                "email": "jdtt@ku.edu",
+                "institution": {
+                    "id": "633",
+                    "ror_id": "https://ror.org/001tmjg57",
+                    "name_full": "University of Kansas",
+                    "name_short": "KU"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2936",
+                "orcid_id": "0000-0002-9112-9963",
+                "name_first": "Renee",
+                "name_last": "Fatemi",
+                "email": "rhfate2@g.uky.edu",
+                "institution": {
+                    "id": "634",
+                    "ror_id": "https://ror.org/02k3smh20",
+                    "name_full": "University of Kentucky",
+                    "name_short": "UKY"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2937",
+                "orcid_id": "0000-0003-0578-5567",
+                "name_first": "Marielle",
+                "name_last": "Chartier",
+                "email": "chartier@liverpool.ac.uk",
+                "institution": {
+                    "id": "635",
+                    "ror_id": "https://ror.org/04xs57h96",
+                    "name_full": "University of Liverpool",
+                    "name_short": "UOL"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2938",
+                "orcid_id": "0000-0000-0000-0002",
+                "name_first": "Savino",
+                "name_last": "Longo",
+                "email": "Savino.Longo@umanitoba.ca",
+                "institution": {
+                    "id": "636",
+                    "ror_id": "https://ror.org/02gfys938",
+                    "name_full": "University of Manitoba",
+                    "name_short": "UM"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2939",
+                "orcid_id": "0000-0000-0000-0417",
+                "name_first": "Krishna",
+                "name_last": "Kumar",
+                "email": "kkumar@umass.edu",
+                "institution": {
+                    "id": "637",
+                    "ror_id": "https://ror.org/0072zz521",
+                    "name_full": "University of Massachusetts, Amherst",
+                    "name_short": "UMass"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2940",
+                "orcid_id": "0000-0001-9540-4988",
+                "name_first": "Christine",
+                "name_last": "Aidala",
+                "email": "caidala@umich.edu",
+                "institution": {
+                    "id": "638",
+                    "ror_id": "https://ror.org/00jmfr291",
+                    "name_full": "University of Michigan",
+                    "name_short": "UMich"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2941",
+                "orcid_id": "0000-0001-8760-7259",
+                "name_first": "Yahya",
+                "name_last": "Tayalati",
+                "email": "yahya.tayalati@cern.ch",
+                "institution": {
+                    "id": "639",
+                    "ror_id": "https://ror.org/00r8w8f84",
+                    "name_full": "University of Mohammed V in Rabat",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2942",
+                "orcid_id": "0000-0001-6500-7762",
+                "name_first": "Abdelouahad",
+                "name_last": "El Fatimy",
+                "email": "abdelouahed.elfatimy@um6p.ma",
+                "institution": {
+                    "id": "640",
+                    "ror_id": "https://ror.org/03xc55g68",
+                    "name_full": "University of Mohammed VI Poytechnic in Bengurir",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2943",
+                "orcid_id": "0000-0002-6069-6287",
+                "name_first": "Karl",
+                "name_last": "Slifer",
+                "email": "karl.slifer@unh.edu",
+                "institution": {
+                    "id": "641",
+                    "ror_id": "https://ror.org/01rmh9n78",
+                    "name_full": "University of New Hampshire",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2944",
+                "orcid_id": "0000-0003-3712-2194",
+                "name_first": "Sonny",
+                "name_last": "Mantry",
+                "email": "Sonny.Mantry@ung.edu",
+                "institution": {
+                    "id": "642",
+                    "ror_id": "https://ror.org/001pe5g24",
+                    "name_full": "University of North Georgia",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2945",
+                "orcid_id": "0000-0003-2316-9565",
+                "name_first": "Ionut Cristian",
+                "name_last": "Arsene",
+                "email": "i.c.arsene@fys.uio.no",
+                "institution": {
+                    "id": "643",
+                    "ror_id": "https://ror.org/01xtthb56",
+                    "name_full": "University of Oslo, Physics Department",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2946",
+                "orcid_id": "0000-0002-3518-0617",
+                "name_first": "Claire",
+                "name_last": "Gwenlan",
+                "email": "claire.gwenlan@physics.ox.ac.uk",
+                "institution": {
+                    "id": "644",
+                    "ror_id": "https://ror.org/052gg0110",
+                    "name_full": "University of Oxford",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Inclusive Physics",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "2947",
+                "orcid_id": "0000-0000-0000-0002",
+                "name_first": "Zisis",
+                "name_last": "Papandreou",
+                "email": "zisis@uregina.ca",
+                "institution": {
+                    "id": "645",
+                    "ror_id": "https://ror.org/03dzc0485",
+                    "name_full": "University of Regina",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Barrel ECAL",
+                        "category": "",
+                        "role": "Detector Subsystem Technical Coordinator (SciFi/Pb)"
+                    }
+                ]
+            },
+            {
+                "id": "2948",
+                "orcid_id": "0000-0000-0000-0115",
+                "name_first": "Yifei",
+                "name_last": "Zhang",
+                "email": "ephy@ustc.edu.cn",
+                "institution": {
+                    "id": "646",
+                    "ror_id": "https://ror.org/04c4dkn09",
+                    "name_full": "University of Science and Technology of China",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2949",
+                "orcid_id": "0000-0000-0000-0097",
+                "name_first": "Jason",
+                "name_last": "Lee",
+                "email": "jason.lee@uos.ac.kr",
+                "institution": {
+                    "id": "647",
+                    "ror_id": "https://ror.org/05en5nh73",
+                    "name_full": "University of Seoul",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2950",
+                "orcid_id": "0000-0000-0000-0004",
+                "name_first": "Yordanka",
+                "name_last": "Ilieva",
+                "email": "ilieva@sc.edu",
+                "institution": {
+                    "id": "648",
+                    "ror_id": "https://ror.org/02b6qw903",
+                    "name_full": "University of South Carolina",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2951",
+                "orcid_id": "0000-0002-8768-6468",
+                "name_first": "Christine",
+                "name_last": "Nattrass",
+                "email": "christine.nattrass@utk.edu",
+                "institution": {
+                    "id": "649",
+                    "ror_id": "https://ror.org/020f3ap87",
+                    "name_full": "University of Tennessee, Knoxville",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "DE&I Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Vice-Chair"
+                    }
+                ]
+            },
+            {
+                "id": "2952",
+                "orcid_id": "0000-0000-0000-0008",
+                "name_first": "Deepa",
+                "name_last": "Thomas",
+                "email": "deepa.thomas@utexas.edu",
+                "institution": {
+                    "id": "650",
+                    "ror_id": "https://ror.org/00hj54h04",
+                    "name_full": "University of Texas at Austin",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2953",
+                "orcid_id": "0000-0002-6769-599X",
+                "name_first": "Taku",
+                "name_last": "Gunji",
+                "email": "gunji@cns.s.u-tokyo.ac.jp",
+                "institution": {
+                    "id": "651",
+                    "ror_id": "https://ror.org/057zh3y96",
+                    "name_full": "University of Tokyo",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Executive Board",
+                        "category": "Collaboration Committees",
+                        "role": "At-Large Member"
+                    }
+                ]
+            },
+            {
+                "id": "2954",
+                "orcid_id": "0000-0001-5433-969X",
+                "name_first": "Tatsuya",
+                "name_last": "Chujo",
+                "email": "chujo.tatsuya.fw@u.tsukuba.ac.jp",
+                "institution": {
+                    "id": "652",
+                    "ror_id": "https://ror.org/02956yf07",
+                    "name_full": "University of Tsukuba",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2955",
+                "orcid_id": "0000-0002-8983-0902",
+                "name_first": "Nilanga",
+                "name_last": "Liyanage",
+                "email": "nilanga@virginia.edu",
+                "institution": {
+                    "id": "653",
+                    "ror_id": "https://ror.org/0153tk833",
+                    "name_full": "University of Virginia",
+                    "name_short": "UVA"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2956",
+                "orcid_id": "0000-0003-3596-5331",
+                "name_first": "Frank",
+                "name_last": "Ellinghaus",
+                "email": "ellinghaus@uni-wuppertal.de",
+                "institution": {
+                    "id": "654",
+                    "ror_id": "https://ror.org/00613ak93",
+                    "name_full": "University of Wuppertal",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2957",
+                "orcid_id": "0000-0000-0000-0002",
+                "name_first": "Nicholas",
+                "name_last": "Zachariou",
+                "email": "nick.zachariou@york.ac.uk",
+                "institution": {
+                    "id": "655",
+                    "ror_id": "https://ror.org/04m01e293",
+                    "name_full": "University of York",
+                    "name_short": "Ebor"
+                },
+                "groups": [
+                    {
+                        "name": "Conference and Talks Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    },
+                    {
+                        "name": "Luminosity",
+                        "category": "",
+                        "role": "Co-DSL"
+                    }
+                ]
+            },
+            {
+                "id": "2958",
+                "orcid_id": "0000-0000-0000-0009",
+                "name_first": "Adam",
+                "name_last": "Gibson",
+                "email": "adam.gibson-even@valpo.edu",
+                "institution": {
+                    "id": "656",
+                    "ror_id": "https://ror.org/01pp0fx48",
+                    "name_full": "Valparaiso University",
+                    "name_short": "VU"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2959",
+                "orcid_id": "0000-0000-0000-0002",
+                "name_first": "Julia",
+                "name_last": "Velkovska",
+                "email": "julia.velkovska@vanderbilt.edu",
+                "institution": {
+                    "id": "657",
+                    "ror_id": "https://ror.org/02vm5rt34",
+                    "name_full": "Vanderbilt University",
+                    "name_short": "VU"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2960",
+                "orcid_id": "0000-0002-4229-3935",
+                "name_first": "Marie",
+                "name_last": "Boer",
+                "email": "mboer@vt.edu",
+                "institution": {
+                    "id": "658",
+                    "ror_id": "https://ror.org/02smfhw86",
+                    "name_full": "Virginia Tech",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2961",
+                "orcid_id": "0000-0002-1493-669X",
+                "name_first": "Narbe",
+                "name_last": "Kalantarians",
+                "email": "nkalantarians@vuu.edu",
+                "institution": {
+                    "id": "659",
+                    "ror_id": "https://ror.org/02zwyfg51",
+                    "name_full": "Virginia Union University",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "DE&I Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    }
+                ]
+            },
+            {
+                "id": "2962",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Daniel",
+                "name_last": "Kikola",
+                "email": "daniel.kikola@pw.edu.pl",
+                "institution": {
+                    "id": "660",
+                    "ror_id": "https://ror.org/00y0xnp53",
+                    "name_full": "Warsaw University of Technology, Faculty of Physics",
+                    "name_short": "WUT"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2963",
+                "orcid_id": "0000-0002-5093-3760",
+                "name_first": "W.J.",
+                "name_last": "Llope",
+                "email": "wjllope@wayne.edu",
+                "institution": {
+                    "id": "661",
+                    "ror_id": "https://ror.org/01070mq45",
+                    "name_full": "Wayne State University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2964",
+                "orcid_id": "0000-0003-3863-3607",
+                "name_first": "Alexander",
+                "name_last": "Milov",
+                "email": "sasha.milov@gmail.com",
+                "institution": {
+                    "id": "662",
+                    "ror_id": "https://ror.org/0316ej306",
+                    "name_full": "Weizmann Institute of Science",
+                    "name_short": "WIS"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2965",
+                "orcid_id": "0000-0002-4639-1364",
+                "name_first": "Cristiano",
+                "name_last": "Fanelli",
+                "email": "cfanelli@wm.edu",
+                "institution": {
+                    "id": "663",
+                    "ror_id": "https://ror.org/03hsf0573",
+                    "name_full": "William & Mary",
+                    "name_short": "WM"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2966",
+                "orcid_id": "0000-0002-1595-411X",
+                "name_first": "Helen",
+                "name_last": "Caines",
+                "email": "helen.caines@yale.edu",
+                "institution": {
+                    "id": "664",
+                    "ror_id": "https://ror.org/03v76x132",
+                    "name_full": "Yale University",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Elections Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Chair"
+                    },
+                    {
+                        "name": "Membership Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    }
+                ]
+            },
+            {
+                "id": "2967",
+                "orcid_id": "0000-0002-8502-3177",
+                "name_first": "Yoshiyuki",
+                "name_last": "Miyachi",
+                "email": "miyachi@sci.kj.yamagata-u.ac.jp",
+                "institution": {
+                    "id": "665",
+                    "ror_id": "https://ror.org/00xy44n04",
+                    "name_full": "Yamagata University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2968",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Ayman",
+                "name_last": "Al-bataineh",
+                "email": "abataineh@yu.edu.jo",
+                "institution": {
+                    "id": "666",
+                    "ror_id": "https://ror.org/004mbaj56",
+                    "name_full": "Yarmouk University",
+                    "name_short": ""
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2969",
+                "orcid_id": "0000-0002-3892-3500",
+                "name_first": "Hwidong",
+                "name_last": "Yoo",
+                "email": "hdyoo@cern.ch",
+                "institution": {
+                    "id": "667",
+                    "ror_id": "https://ror.org/01wjejq96",
+                    "name_full": "Yonsei University",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Barrel ECAL",
+                        "category": "",
+                        "role": "Co-Detector Subsystem Leader"
+                    }
+                ]
+            },
+            {
+                "id": "2970",
+                "orcid_id": "0000-0001-8853-0409",
+                "name_first": "Zhangbu",
+                "name_last": "Xu",
+                "email": "xzb@bnl.gov",
+                "institution": {
+                    "id": "668",
+                    "ror_id": "https://ror.org/049pfb863",
+                    "name_full": "Kent State University",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "AC-LGAD TOF",
+                        "category": "",
+                        "role": "Detector Subsystem Leader"
+                    }
+                ]
+            },
+            {
+                "id": "2971",
+                "orcid_id": "0000-0002-5349-8370",
+                "name_first": "Peter",
+                "name_last": "Steinberg",
+                "email": "steinberg@bnl.gov",
+                "institution": {
+                    "id": "504",
+                    "ror_id": "https://ror.org/02ex6cf31",
+                    "name_full": "Brookhaven National Laboratory",
+                    "name_short": "BNL"
+                },
+                "groups": [
+                    {
+                        "name": "Membership Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Chair"
+                    }
+                ]
+            },
+            {
+                "id": "2972",
+                "orcid_id": "0000-0002-5820-1054",
+                "name_first": "Maria",
+                "name_last": "Stefaniak",
+                "email": "stefaniak.9@osu.edu",
+                "institution": {
+                    "id": "613",
+                    "ror_id": "https://ror.org/00rs6vg23",
+                    "name_full": "The Ohio State University",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Collaboration Council",
+                        "category": "",
+                        "role": "Early-Career Representative"
+                    },
+                    {
+                        "name": "Elections Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    }
+                ]
+            },
+            {
+                "id": "2973",
+                "orcid_id": "0000-0000-0000-0004",
+                "name_first": "Nicolas",
+                "name_last": "Schmidt",
+                "email": "schmidtnv@ornl.gov",
+                "institution": {
+                    "id": "587",
+                    "ror_id": "https://ror.org/01qz5mb56",
+                    "name_full": "Oak Ridge National Laboratory",
+                    "name_short": "ORNL"
+                },
+                "groups": [
+                    {
+                        "name": "Collaboration Council",
+                        "category": "",
+                        "role": "Early-Career Representative"
+                    }
+                ]
+            },
+            {
+                "id": "2974",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Aranya",
+                "name_last": "Giri",
+                "email": "aranyagiri230597@gmail.com",
+                "institution": {
+                    "id": "630",
+                    "ror_id": "https://ror.org/048sx0r50",
+                    "name_full": "University of Houston",
+                    "name_short": "UH"
+                },
+                "groups": [
+                    {
+                        "name": "Collaboration Council",
+                        "category": "",
+                        "role": "Early-Career Representative"
+                    }
+                ]
+            },
+            {
+                "id": "2975",
+                "orcid_id": "0000-0001-9032-1999",
+                "name_first": "Yulia",
+                "name_last": "Furletova",
+                "email": "yulia@jlab.org",
+                "institution": {
+                    "id": "563",
+                    "ror_id": "https://ror.org/02vwzrd76",
+                    "name_full": "Jefferson Lab",
+                    "name_short": "TJNAF"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2976",
+                "orcid_id": "0000-0002-5348-0664",
+                "name_first": "Kondo",
+                "name_last": "Gnanvo",
+                "email": "kagnanvo@jlab.org",
+                "institution": {
+                    "id": "563",
+                    "ror_id": "https://ror.org/02vwzrd76",
+                    "name_full": "Jefferson Lab",
+                    "name_short": "TJNAF"
+                },
+                "groups": [
+                    {
+                        "name": "Gaseous Trackers",
+                        "category": "",
+                        "role": "DSL"
+                    }
+                ]
+            },
+            {
+                "id": "2977",
+                "orcid_id": "0000-0000-0000-0002",
+                "name_first": "John",
+                "name_last": "Arrington",
+                "email": "JArrington@lbl.gov",
+                "institution": {
+                    "id": "570",
+                    "ror_id": "https://ror.org/02jbv0t02",
+                    "name_full": "Lawrence Berkeley National Laboratory",
+                    "name_short": "LBNL"
+                },
+                "groups": [
+                    {
+                        "name": "Elections Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Past-Chair"
+                    }
+                ]
+            },
+            {
+                "id": "2978",
+                "orcid_id": "0000-0000-0000-0005",
+                "name_first": "Richard",
+                "name_last": "Milner",
+                "email": "milner@mit.edu",
+                "institution": {
+                    "id": "574",
+                    "ror_id": "https://ror.org/042nb2s44",
+                    "name_full": "Massachusetts Institute of Technology (MIT)",
+                    "name_short": "MIT"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2979",
+                "orcid_id": "0000-0000-0000-0005",
+                "name_first": "Or",
+                "name_last": "Hen",
+                "email": "hen@mit.edu",
+                "institution": {
+                    "id": "574",
+                    "ror_id": "https://ror.org/042nb2s44",
+                    "name_full": "Massachusetts Institute of Technology (MIT)",
+                    "name_short": "MIT"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2980",
+                "orcid_id": "0000-0000-0000-0002",
+                "name_first": "Kenneth",
+                "name_last": "Barish",
+                "email": "barish@ucr.edu",
+                "institution": {
+                    "id": "624",
+                    "ror_id": "https://ror.org/03nawhv43",
+                    "name_full": "University of California, Riverside",
+                    "name_short": "UCR"
+                },
+                "groups": [
+                    {
+                        "name": "Elections Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Vice-Chair"
+                    }
+                ]
+            },
+            {
+                "id": "2981",
+                "orcid_id": "0000-0001-9450-2914",
+                "name_first": "Zein-Eddine",
+                "name_last": "Meziani",
+                "email": "zmeziani@anl.gov",
+                "institution": {
+                    "id": "499",
+                    "ror_id": "https://ror.org/05gvnxz63",
+                    "name_full": "Argonne National Laboratory",
+                    "name_short": "ANL"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2982",
+                "orcid_id": "0000-0002-3358-7667",
+                "name_first": "Kenneth",
+                "name_last": "Read",
+                "email": "readkf@ornl.gov",
+                "institution": {
+                    "id": "587",
+                    "ror_id": "https://ror.org/01qz5mb56",
+                    "name_full": "Oak Ridge National Laboratory",
+                    "name_short": "ORNL"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2983",
+                "orcid_id": "0000-0001-9229-578X",
+                "name_first": "Thomas",
+                "name_last": "Hemmick",
+                "email": "thomas.hemmick@stonybrook.edu",
+                "institution": {
+                    "id": "607",
+                    "ror_id": "https://ror.org/05qghxh33",
+                    "name_full": "Stony Brook University",
+                    "name_short": "SBU"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2984",
+                "orcid_id": "0000-0000-0000-0006",
+                "name_first": "Abhay",
+                "name_last": "Deshpande",
+                "email": "abhay.deshpande@stonybrook.edu",
+                "institution": {
+                    "id": "607",
+                    "ror_id": "https://ror.org/05qghxh33",
+                    "name_full": "Stony Brook University",
+                    "name_short": "SBU"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "2985",
+                "orcid_id": "0000-0000-0000-0009",
+                "name_first": "Brian",
+                "name_last": "Page",
+                "email": "bpage@bnl.gov",
+                "institution": {
+                    "id": "504",
+                    "ror_id": "https://ror.org/02ex6cf31",
+                    "name_full": "Brookhaven National Laboratory",
+                    "name_short": "BNL"
+                },
+                "groups": [
+                    {
+                        "name": "Conference and Talks Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Vice-Chair"
+                    },
+                    {
+                        "name": "Jet and Heavy Flavor",
+                        "category": "",
+                        "role": "Convener"
+                    },
+                    {
+                        "name": "Backward RICH",
+                        "category": "",
+                        "role": "Deputy Detector Subsystem Leader"
+                    }
+                ]
+            },
+            {
+                "id": "2986",
+                "orcid_id": "0000-0001-6472-1905",
+                "name_first": "John",
+                "name_last": "Lajoie",
+                "email": "lajoiejg@ornl.gov",
+                "institution": {
+                    "id": "587",
+                    "ror_id": "https://ror.org/01qz5mb56",
+                    "name_full": "Oak Ridge National Laboratory",
+                    "name_short": "ORNL"
+                },
+                "groups": [
+                    {
+                        "name": "Spokesperson's Office",
+                        "category": "Management",
+                        "role": "Spokesperson"
+                    }
+                ]
+            },
+            {
+                "id": "2987",
+                "orcid_id": "0000-0001-5143-4384",
+                "name_first": "Prakhar",
+                "name_last": "Garg",
+                "email": "prakhar.garg@yale.edu",
+                "institution": {
+                    "id": "664",
+                    "ror_id": "https://ror.org/03v76x132",
+                    "name_full": "Yale University",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Technical Coordination Office",
+                        "category": "Coordination Offices",
+                        "role": "Deputy Technical Coordinator"
+                    }
+                ]
+            },
+            {
+                "id": "2988",
+                "orcid_id": "0000-0001-7741-4381",
+                "name_first": "Oskar",
+                "name_last": "Hartbrich",
+                "email": " hartbricho@ornl.gov",
+                "institution": {
+                    "id": "587",
+                    "ror_id": "https://ror.org/01qz5mb56",
+                    "name_full": "Oak Ridge National Laboratory",
+                    "name_short": "ORNL"
+                },
+                "groups": [
+                    {
+                        "name": "Technical Coordination Office",
+                        "category": "Coordination Offices",
+                        "role": "Deputy Technical Coordinator"
+                    },
+                    {
+                        "name": "PID (Cerenkov and TOF)",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "2989",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Matt",
+                "name_last": "Posik",
+                "email": "posik@temple.edu",
+                "institution": {
+                    "id": "611",
+                    "ror_id": "https://ror.org/00kx1jb78",
+                    "name_full": "Temple University",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Technical Coordination Office",
+                        "category": "Coordination Offices",
+                        "role": "Deputy Technical Coordinator"
+                    }
+                ]
+            },
+            {
+                "id": "2990",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Silvia",
+                "name_last": "Niccolai",
+                "email": "silvia.niccolai@ijclab.in2p3.fr",
+                "institution": {
+                    "id": "536",
+                    "ror_id": "https://ror.org/03gc1p724",
+                    "name_full": "IJCLab (Orsay)",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Membership Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    }
+                ]
+            },
+            {
+                "id": "2991",
+                "orcid_id": "0000-0002-4717-4484",
+                "name_first": "Markus",
+                "name_last": "Diefenthaler",
+                "email": "",
+                "institution": {
+                    "id": "563",
+                    "ror_id": "https://ror.org/02vwzrd76",
+                    "name_full": "Jefferson Lab",
+                    "name_short": "TJNAF"
+                },
+                "groups": [
+                    {
+                        "name": "Software and Computing",
+                        "category": "Coordination Offices",
+                        "role": "Coordinator"
+                    },
+                    {
+                        "name": "Publication Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    },
+                    {
+                        "name": "Executive Board",
+                        "category": "Collaboration Committees",
+                        "role": "Coordinator"
+                    }
+                ]
+            },
+            {
+                "id": "2992",
+                "orcid_id": "0000-0003-4033-6716",
+                "name_first": "Wouter",
+                "name_last": "Deconinck",
+                "email": "",
+                "institution": {
+                    "id": "636",
+                    "ror_id": "https://ror.org/02gfys938",
+                    "name_full": "University of Manitoba",
+                    "name_short": "UM"
+                },
+                "groups": [
+                    {
+                        "name": "Conference and Talks Committee",
+                        "category": "Collaboration Committees",
+                        "role": "DE&I Liaison"
+                    },
+                    {
+                        "name": "Software and Computing",
+                        "category": "Coordination Offices",
+                        "role": "Deputy"
+                    },
+                    {
+                        "name": "DE&I Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    }
+                ]
+            },
+            {
+                "id": "2993",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Dmitry",
+                "name_last": "Kalinkin",
+                "email": "",
+                "institution": {
+                    "id": "499",
+                    "ror_id": "https://ror.org/05gvnxz63",
+                    "name_full": "Argonne National Laboratory",
+                    "name_short": "ANL"
+                },
+                "groups": [
+                    {
+                        "name": "Conference and Talks Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    },
+                    {
+                        "name": "Software and Computing",
+                        "category": "Coordination Offices",
+                        "role": "Deputy"
+                    },
+                    {
+                        "name": "Validation",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "2994",
+                "orcid_id": "0000-0002-8678-893X",
+                "name_first": "Torre",
+                "name_last": "Wenaus",
+                "email": "",
+                "institution": {
+                    "id": "504",
+                    "ror_id": "https://ror.org/02ex6cf31",
+                    "name_full": "Brookhaven National Laboratory",
+                    "name_short": "BNL"
+                },
+                "groups": [
+                    {
+                        "name": "Software and Computing",
+                        "category": "Coordination Offices",
+                        "role": "Deputy"
+                    }
+                ]
+            },
+            {
+                "id": "2995",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Maria",
+                "name_last": "Zurek",
+                "email": "zurek@anl.gov",
+                "institution": {
+                    "id": "499",
+                    "ror_id": "https://ror.org/05gvnxz63",
+                    "name_full": "Argonne National Laboratory",
+                    "name_short": "ANL"
+                },
+                "groups": [
+                    {
+                        "name": "Conference and Talks Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Chair"
+                    },
+                    {
+                        "name": "Barrel ECAL",
+                        "category": "",
+                        "role": "Deputy Detector Subsystem Leader"
+                    }
+                ]
+            },
+            {
+                "id": "2996",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Xuan",
+                "name_last": "Li",
+                "email": "",
+                "institution": {
+                    "id": "573",
+                    "ror_id": "https://ror.org/01e41cf67",
+                    "name_full": "Los Alamos National Laboratory",
+                    "name_short": "LANL"
+                },
+                "groups": [
+                    {
+                        "name": "Conference and Talks Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    }
+                ]
+            },
+            {
+                "id": "2997",
+                "orcid_id": "0000-0001-9874-7249",
+                "name_first": "Nicola",
+                "name_last": "Rubini",
+                "email": "",
+                "institution": {
+                    "id": "548",
+                    "ror_id": "https://ror.org/04j0x0h93",
+                    "name_full": "INFN Sezione di Bologna and Dipartimento di Fisica e Astronomia, Università di Bologna",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Conference and Talks Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    }
+                ]
+            },
+            {
+                "id": "2998",
+                "orcid_id": "0000-0002-8588-1657",
+                "name_first": "Megan Elizabeth",
+                "name_last": "Connors",
+                "email": "mconnors@gsu.edu",
+                "institution": {
+                    "id": "530",
+                    "ror_id": "https://ror.org/03qt6ba18",
+                    "name_full": "Georgia State University",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "DE&I Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Chair"
+                    },
+                    {
+                        "name": "Executive Board",
+                        "category": "Collaboration Committees",
+                        "role": "DEI Member"
+                    },
+                    {
+                        "name": "Barrel HCAL",
+                        "category": "",
+                        "role": "Co-Detector Subsystem Leader"
+                    }
+                ]
+            },
+            {
+                "id": "3000",
+                "orcid_id": "0000-0001-9392-7136",
+                "name_first": "Iris",
+                "name_last": "Ponce Pinto",
+                "email": "",
+                "institution": {
+                    "id": "664",
+                    "ror_id": "https://ror.org/03v76x132",
+                    "name_full": "Yale University",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "DE&I Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    }
+                ]
+            },
+            {
+                "id": "3001",
+                "orcid_id": "0000-0001-9598-779X",
+                "name_first": "Maya",
+                "name_last": "Shimomura",
+                "email": "",
+                "institution": {
+                    "id": "578",
+                    "ror_id": "https://ror.org/05kzadn81",
+                    "name_full": "Nara Women's University",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "DE&I Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    }
+                ]
+            },
+            {
+                "id": "3002",
+                "orcid_id": "0000-0003-2207-5487",
+                "name_first": "Allison",
+                "name_last": "Zec",
+                "email": "",
+                "institution": {
+                    "id": "641",
+                    "ror_id": "https://ror.org/01rmh9n78",
+                    "name_full": "University of New Hampshire",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "DE&I Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    }
+                ]
+            },
+            {
+                "id": "3003",
+                "orcid_id": "0000-0003-3711-8902",
+                "name_first": "Annalisa",
+                "name_last": "Mastroserio",
+                "email": "",
+                "institution": {
+                    "id": "547",
+                    "ror_id": "https://ror.org/022hq6c49",
+                    "name_full": "INFN Sezione di Bari, Dipartimento Interateneo di Fisica, Università di Bari and Università di Foggia",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Publication Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Vice-Chair"
+                    }
+                ]
+            },
+            {
+                "id": "3004",
+                "orcid_id": "0000-0001-6994-8551",
+                "name_first": "Michela",
+                "name_last": "Chiosso",
+                "email": "",
+                "institution": {
+                    "id": "556",
+                    "ror_id": "https://ror.org/01vj6ck58",
+                    "name_full": "INFN Sezione di Torino, Università di Torino and Università del Piemonte Orientale",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Publication Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    }
+                ]
+            },
+            {
+                "id": "3005",
+                "orcid_id": "0000-0002-7654-6021",
+                "name_first": "Prithwish",
+                "name_last": "Tribedy",
+                "email": "",
+                "institution": {
+                    "id": "504",
+                    "ror_id": "https://ror.org/02ex6cf31",
+                    "name_full": "Brookhaven National Laboratory",
+                    "name_short": "BNL"
+                },
+                "groups": [
+                    {
+                        "name": "Publication Committee",
+                        "category": "Collaboration Committees",
+                        "role": "Member"
+                    }
+                ]
+            },
+            {
+                "id": "3006",
+                "orcid_id": "0000-0002-6252-266X",
+                "name_first": "Paul",
+                "name_last": "Newman",
+                "email": "",
+                "institution": {
+                    "id": "620",
+                    "ror_id": "https://ror.org/03angcq70",
+                    "name_full": "University of Birmingham",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Executive Board",
+                        "category": "Collaboration Committees",
+                        "role": "At-Large Member"
+                    }
+                ]
+            },
+            {
+                "id": "3007",
+                "orcid_id": "0000-0002-0194-1318",
+                "name_first": "Fernando",
+                "name_last": "Flor",
+                "email": "",
+                "institution": {
+                    "id": "664",
+                    "ror_id": "https://ror.org/03v76x132",
+                    "name_full": "Yale University",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Executive Board",
+                        "category": "Collaboration Committees",
+                        "role": "Early-Career Member"
+                    }
+                ]
+            },
+            {
+                "id": "3009",
+                "orcid_id": "0000-0002-3206-1997",
+                "name_first": "Tyler",
+                "name_last": "Kutz",
+                "email": "tkutz@mit.edu",
+                "institution": {
+                    "id": "574",
+                    "ror_id": "https://ror.org/042nb2s44",
+                    "name_full": "Massachusetts Institute of Technology (MIT)",
+                    "name_short": "MIT"
+                },
+                "groups": [
+                    {
+                        "name": "Inclusive Physics",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "3010",
+                "orcid_id": "0000-0001-9965-2874",
+                "name_first": "Stefan",
+                "name_last": "Diehl",
+                "email": "stefan.diehl@uconn.edu",
+                "institution": {
+                    "id": "627",
+                    "ror_id": "https://ror.org/02der9h97",
+                    "name_full": "University of Connecticut",
+                    "name_short": "Uconn"
+                },
+                "groups": [
+                    {
+                        "name": "Semi-inclusive Physics",
+                        "category": "",
+                        "role": "convener"
+                    }
+                ]
+            },
+            {
+                "id": "3011",
+                "orcid_id": "0000-0002-1250-8931",
+                "name_first": "Olga",
+                "name_last": "Evdokimov",
+                "email": " evdolga@uic.edu",
+                "institution": {
+                    "id": "631",
+                    "ror_id": "https://ror.org/02mpq6x41",
+                    "name_full": "University of Illinois Chicago",
+                    "name_short": "UIC"
+                },
+                "groups": [
+
+                ]
+            },
+            {
+                "id": "3012",
+                "orcid_id": "0000-0001-7935-8221",
+                "name_first": "Raphael",
+                "name_last": "Dupre",
+                "email": "raphael.dupre@ijclab.in2p3.fr",
+                "institution": {
+                    "id": "536",
+                    "ror_id": "https://ror.org/03gc1p724",
+                    "name_full": "IJCLab (Orsay)",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Exlusive Diffraction and Tagging",
+                        "category": "",
+                        "role": "convener"
+                    }
+                ]
+            },
+            {
+                "id": "3013",
+                "orcid_id": "0000-0003-0076-2120",
+                "name_first": "Ciprian",
+                "name_last": "Gal",
+                "email": "ciprian@jlab.org",
+                "institution": {
+                    "id": "563",
+                    "ror_id": "https://ror.org/02vwzrd76",
+                    "name_full": "Jefferson Lab",
+                    "name_short": "TJNAF"
+                },
+                "groups": [
+                    {
+                        "name": "BSM and Precision EW",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "3014",
+                "orcid_id": "0000-0000-0000-0003",
+                "name_first": "Michael",
+                "name_last": "Nycz",
+                "email": "dfe3ks@virginia.edu",
+                "institution": {
+                    "id": "653",
+                    "ror_id": "https://ror.org/0153tk833",
+                    "name_full": "University of Virginia",
+                    "name_short": "UVA"
+                },
+                "groups": [
+                    {
+                        "name": "BSM and Precision EW",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "3015",
+                "orcid_id": "0000-0001-6844-2786",
+                "name_first": "Sakib",
+                "name_last": "Rahman",
+                "email": "srahman1@bnl.gov",
+                "institution": {
+                    "id": "504",
+                    "ror_id": "https://ror.org/02ex6cf31",
+                    "name_full": "Brookhaven National Laboratory",
+                    "name_short": "BNL"
+                },
+                "groups": [
+                    {
+                        "name": "Production",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "3016",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Thomas",
+                "name_last": "Britton",
+                "email": "tbritton@jlab.org",
+                "institution": {
+                    "id": "563",
+                    "ror_id": "https://ror.org/02vwzrd76",
+                    "name_full": "Jefferson Lab",
+                    "name_short": "TJNAF"
+                },
+                "groups": [
+                    {
+                        "name": "Production",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "3017",
+                "orcid_id": "0000-0003-2548-4016",
+                "name_first": "Holly",
+                "name_last": "Szumila-Vance",
+                "email": "hszumila@jlab.org",
+                "institution": {
+                    "id": "563",
+                    "ror_id": "https://ror.org/02vwzrd76",
+                    "name_full": "Jefferson Lab",
+                    "name_short": "TJNAF"
+                },
+                "groups": [
+                    {
+                        "name": "User Learning",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "3018",
+                "orcid_id": "0000-0003-1784-1263",
+                "name_first": "Kolja",
+                "name_last": "Kauder",
+                "email": "kkauder@bnl.gov",
+                "institution": {
+                    "id": "504",
+                    "ror_id": "https://ror.org/02ex6cf31",
+                    "name_full": "Brookhaven National Laboratory",
+                    "name_short": "BNL"
+                },
+                "groups": [
+                    {
+                        "name": "User Learning",
+                        "category": "",
+                        "role": "Convener"
+                    },
+                    {
+                        "name": "Physics and Detector Simulation",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "3019",
+                "orcid_id": "0000-0002-5191-0501",
+                "name_first": "Torri",
+                "name_last": "Jeske",
+                "email": "roark@jlab.org",
+                "institution": {
+                    "id": "563",
+                    "ror_id": "https://ror.org/02vwzrd76",
+                    "name_full": "Jefferson Lab",
+                    "name_short": "TJNAF"
+                },
+                "groups": [
+                    {
+                        "name": "Validation",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "3020",
+                "orcid_id": "0009-0002-3353-0510",
+                "name_first": "Chao",
+                "name_last": "Peng",
+                "email": "",
+                "institution": {
+                    "id": "499",
+                    "ror_id": "https://ror.org/05gvnxz63",
+                    "name_full": "Argonne National Laboratory",
+                    "name_short": "ANL"
+                },
+                "groups": [
+                    {
+                        "name": "Physics and Detector Simulation",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "3021",
+                "orcid_id": "0000-0003-1252-5392",
+                "name_first": "Shujie",
+                "name_last": "Li",
+                "email": "ShujieLi@lbl.gov",
+                "institution": {
+                    "id": "570",
+                    "ror_id": "https://ror.org/02jbv0t02",
+                    "name_full": "Lawrence Berkeley National Laboratory",
+                    "name_short": "LBNL"
+                },
+                "groups": [
+                    {
+                        "name": "Reconstruction",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "3022",
+                "orcid_id": "0000-0003-3845-230",
+                "name_first": "Derek",
+                "name_last": "Anderson",
+                "email": " dmawxc@iastate.edu",
+                "institution": {
+                    "id": "561",
+                    "ror_id": "https://ror.org/04rswrd78",
+                    "name_full": "Iowa State University",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Reconstruction",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "3023",
+                "orcid_id": "0000-0001-5002-8771",
+                "name_first": "Marco",
+                "name_last": "Battaglieri",
+                "email": "battaglieri@ge.infn.it",
+                "institution": {
+                    "id": "551",
+                    "ror_id": "https://ror.org/02v89pq06",
+                    "name_full": "INFN Sezione di Genova and Dipartimento di FIsica, Università di Genova",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Streaming Computing Model",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "3024",
+                "orcid_id": "0000-0002-6261-6172",
+                "name_first": "Jin",
+                "name_last": "Huang",
+                "email": "jhuang@bnl.gov",
+                "institution": {
+                    "id": "504",
+                    "ror_id": "https://ror.org/02ex6cf31",
+                    "name_full": "Brookhaven National Laboratory",
+                    "name_short": "BNL"
+                },
+                "groups": [
+                    {
+                        "name": "Streaming Computing Model",
+                        "category": "",
+                        "role": "Convener"
+                    },
+                    {
+                        "name": "Electronics, Readout and DAQ",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "3025",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Fernando",
+                "name_last": "Barbosa",
+                "email": "barbosa@jlab.org",
+                "institution": {
+                    "id": "563",
+                    "ror_id": "https://ror.org/02vwzrd76",
+                    "name_full": "Jefferson Lab",
+                    "name_short": "TJNAF"
+                },
+                "groups": [
+                    {
+                        "name": "Electronics, Readout and DAQ",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "3026",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Jeff",
+                "name_last": "Landgraf",
+                "email": "jml@bnl.gov",
+                "institution": {
+                    "id": "504",
+                    "ror_id": "https://ror.org/02ex6cf31",
+                    "name_full": "Brookhaven National Laboratory",
+                    "name_short": "BNL"
+                },
+                "groups": [
+                    {
+                        "name": "Electronics, Readout and DAQ",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "3027",
+                "orcid_id": "0000-0001-6995-5532",
+                "name_first": "Simon",
+                "name_last": "Gardner",
+                "email": "",
+                "institution": {
+                    "id": "629",
+                    "ror_id": "https://ror.org/00vtgdb53",
+                    "name_full": "University of Glasgow",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Far Forward/Far Backward",
+                        "category": "",
+                        "role": "Convener"
+                    },
+                    {
+                        "name": "Far Backward High Rate Tracker",
+                        "category": "",
+                        "role": "DSTC"
+                    }
+                ]
+            },
+            {
+                "id": "3028",
+                "orcid_id": "0000-0001-5920-6546",
+                "name_first": "Nathaly",
+                "name_last": "Santiesteban",
+                "email": "",
+                "institution": {
+                    "id": "641",
+                    "ror_id": "https://ror.org/01rmh9n78",
+                    "name_full": "University of New Hampshire",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Far Forward/Far Backward",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "3029",
+                "orcid_id": "0000-0001-6770-4908",
+                "name_first": "Barak",
+                "name_last": "Schmookler",
+                "email": "barak.schmookler@ucr.edu",
+                "institution": {
+                    "id": "624",
+                    "ror_id": "https://ror.org/03nawhv43",
+                    "name_full": "University of California, Riverside",
+                    "name_short": "UCR"
+                },
+                "groups": [
+                    {
+                        "name": "Tracking",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            },
+            {
+                "id": "3030",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Oleg",
+                "name_last": "Tsai",
+                "email": "tsai@physics.ucla.edu",
+                "institution": {
+                    "id": "623",
+                    "ror_id": "https://ror.org/046rm7j60",
+                    "name_full": "University of California, Los Angeles",
+                    "name_short": "UCLA"
+                },
+                "groups": [
+                    {
+                        "name": "Calorimetry",
+                        "category": "",
+                        "role": "Convener"
+                    },
+                    {
+                        "name": "Forward ECAL",
+                        "category": "",
+                        "role": "Co-Detector Subsystem Leader / Detector Subsystem Technical Coordinator"
+                    }
+                ]
+            },
+            {
+                "id": "3031",
+                "orcid_id": "0000-0003-0356-5632",
+                "name_first": "Greg",
+                "name_last": "Kalicy",
+                "email": "kalicy@cua.edu",
+                "institution": {
+                    "id": "508",
+                    "ror_id": "https://ror.org/047yk3s18",
+                    "name_full": "Catholic University of America",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "hpDIRC",
+                        "category": "",
+                        "role": "Detector Subsystem Leader"
+                    }
+                ]
+            },
+            {
+                "id": "3032",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Alexander",
+                "name_last": "Kiselev",
+                "email": "ayk@bnl.gov",
+                "institution": {
+                    "id": "504",
+                    "ror_id": "https://ror.org/02ex6cf31",
+                    "name_full": "Brookhaven National Laboratory",
+                    "name_short": "BNL"
+                },
+                "groups": [
+                    {
+                        "name": "Backward RICH",
+                        "category": "",
+                        "role": "Detector Subsystem Leader"
+                    }
+                ]
+            },
+            {
+                "id": "3033",
+                "orcid_id": "0000-0000-0000-0000",
+                "name_first": "Satoshi",
+                "name_last": "Yano",
+                "email": "syanohiroshima-u.ac.jp",
+                "institution": {
+                    "id": "534",
+                    "ror_id": "https://ror.org/03t78wx29",
+                    "name_full": "Hiroshima University",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "AC-LGAD TOF",
+                        "category": "",
+                        "role": "Deputy Detector Subsystem Leader"
+                    }
+                ]
+            },
+            {
+                "id": "3035",
+                "orcid_id": "0000-0001-5454-3017",
+                "name_first": "Jessica",
+                "name_last": "Metcalfe",
+                "email": "jmetcalfe@anl.gov",
+                "institution": {
+                    "id": "499",
+                    "ror_id": "https://ror.org/05gvnxz63",
+                    "name_full": "Argonne National Laboratory",
+                    "name_short": "ANL"
+                },
+                "groups": [
+                    {
+                        "name": "Barrel ECAL",
+                        "category": "",
+                        "role": "Detector Subsystem Technical Coordinator (Si)"
+                    }
+                ]
+            },
+            {
+                "id": "3036",
+                "orcid_id": "0000-0002-4100-9939",
+                "name_first": "Leszek",
+                "name_last": "Kosarzewski",
+                "email": "kosarzewski.1@osu.edu",
+                "institution": {
+                    "id": "588",
+                    "ror_id": "https://ror.org/01jr3y717",
+                    "name_full": "Ohio University",
+                    "name_short": "OU"
+                },
+                "groups": [
+                    {
+                        "name": "Backwards HCAL",
+                        "category": "",
+                        "role": "Detector Subsystem Leader / Technical Coordinator"
+                    }
+                ]
+            },
+            {
+                "id": "3037",
+                "orcid_id": "0000-0001-7326-6991",
+                "name_first": "Alexander",
+                "name_last": "Jentsch",
+                "email": "ajentsch@bnl.gov",
+                "institution": {
+                    "id": "504",
+                    "ror_id": "https://ror.org/02ex6cf31",
+                    "name_full": "Brookhaven National Laboratory",
+                    "name_short": "BNL"
+                },
+                "groups": [
+                    {
+                        "name": "Far Forward",
+                        "category": "",
+                        "role": "DSL / DSTC (Roman Pots/OMD)"
+                    }
+                ]
+            },
+            {
+                "id": "3038",
+                "orcid_id": "0000-0003-4696-0691",
+                "name_first": "Jaroslav",
+                "name_last": "Adam",
+                "email": "jaroslav.adam@fjfi.cvut.cz",
+                "institution": {
+                    "id": "518",
+                    "ror_id": "https://ror.org/03kqpb082",
+                    "name_full": "Czech Technical University in Prague",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Far Backward High Rate Tracker",
+                        "category": "",
+                        "role": "DSL"
+                    }
+                ]
+            },
+            {
+                "id": "3039",
+                "orcid_id": "0000-0002-6226-957X",
+                "name_first": "Krzysztof",
+                "name_last": "Piotrzkowski",
+                "email": "krzysztof.piotrzkowski@cern.ch",
+                "institution": {
+                    "id": "497",
+                    "ror_id": "https://ror.org/00bas1c41",
+                    "name_full": "AGH University of Science and Technology",
+                    "name_short": "AGH"
+                },
+                "groups": [
+                    {
+                        "name": "Luminosity",
+                        "category": "",
+                        "role": "Co-DSL"
+                    }
+                ]
+            },
+            {
+                "id": "3040",
+                "orcid_id": "0000-0002-8698-3647",
+                "name_first": "Dhevan",
+                "name_last": "Gangadharan",
+                "email": "dhevan.raja.gangadharan@cern.ch",
+                "institution": {
+                    "id": "630",
+                    "ror_id": "https://ror.org/048sx0r50",
+                    "name_full": "University of Houston",
+                    "name_short": "UH"
+                },
+                "groups": [
+                    {
+                        "name": "Luminosity",
+                        "category": "",
+                        "role": "DSTC"
+                    }
+                ]
+            },
+            {
+                "id": "3041",
+                "orcid_id": "0000-0002-4919-0808",
+                "name_first": "Laura",
+                "name_last": "Gonella",
+                "email": "l.gonella@bham.ac.uk",
+                "institution": {
+                    "id": "620",
+                    "ror_id": "https://ror.org/03angcq70",
+                    "name_full": "University of Birmingham",
+                    "name_short": ""
+                },
+                "groups": [
+                    {
+                        "name": "Si Trackers",
+                        "category": "",
+                        "role": "DSTC"
+                    }
+                ]
+            },
+            {
+                "id": "3042",
+                "orcid_id": "0000-0001-9055-4020",
+                "name_first": "Maxence",
+                "name_last": "Vandenbroucke",
+                "email": "maxence.vandenbroucke@cea.fr",
+                "institution": {
+                    "id": "509",
+                    "ror_id": "https://ror.org/03n15ch10",
+                    "name_full": "CEA-Saclay",
+                    "name_short": "CEA"
+                },
+                "groups": [
+                    {
+                        "name": "Gaseous Trackers",
+                        "category": "",
+                        "role": "DSTC"
+                    }
+                ]
+            },
+            {
+                "id": "3043",
+                "orcid_id": "0000-0001-8784-5134",
+                "name_first": "Zhoudunming",
+                "name_last": "Tu",
+                "email": "zhoudunming@bnl.gov",
+                "institution": {
+                    "id": "504",
+                    "ror_id": "https://ror.org/02ex6cf31",
+                    "name_full": "Brookhaven National Laboratory",
+                    "name_short": "BNL"
+                },
+                "groups": [
+                    {
+                        "name": "Analysis Tools",
+                        "category": "",
+                        "role": "Convener"
+                    }
+                ]
+            }
+        ]
+    }
+}

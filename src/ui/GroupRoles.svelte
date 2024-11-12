@@ -16,7 +16,7 @@ import HelperText from '@smui/textfield/helper-text';
 import CharacterCounter from '@smui/textfield/character-counter';
 import Dialog, { Title as DialogTitle, Content as DialogContent, Actions as DialogActions, InitialFocus as DialogInitialFocus } from '@smui/dialog';
 
-import { groupUpdateRole, getGroupRoles, groupAddRole, groupRemoveRole } from '../utils/pnb-api.js';
+import { getGroup, groupUpdateRole, getGroupRoles, groupAddRole, groupRemoveRole } from '../utils/pnb-api.js';
 
 import { group_id, auth, screen } from '../store.js';
 import { sleep } from '../utils/sleep.js';
@@ -28,6 +28,7 @@ let roleupdate_name = '';
 let roleupdate_weight = 0;
 
 let new_role_name = '';
+let group;
 
 let pleaseWait = false;
 
@@ -77,6 +78,7 @@ const removeRoleFromGroup = async ( role_id ) => {
 }
 
 const fetchRoles = async () => {
+	group = await getGroup( $group_id );
 	data = await getGroupRoles( $group_id );
 	return data;
 }
@@ -136,7 +138,7 @@ const findRole = ( id ) => {
         <Option value="-5">-5</Option>
         <Option value="-4">-4</Option>
         <Option value="-3">-3</Option>
-        <Option value="-2">-3</Option>
+        <Option value="-2">-2</Option>
         <Option value="-1">-1</Option>
         <Option value="0">0</Option>
         <Option value="1">1</Option>
@@ -166,7 +168,7 @@ const findRole = ( id ) => {
   </DialogActions>
 </Dialog>
 
-<div style="text-align: center;" class="mdc-typography--headline4">GROUP ROLES: {title}</div>
+<div style="text-align: center;" class="mdc-typography--headline4">Group Roles: {group.name}</div>
 <Paper>
 
 <!-- ADD NEW ROLE //-->
@@ -193,7 +195,7 @@ const findRole = ( id ) => {
 <!-- LIST OF GROUP ROLES //-->
 
 {#if data.length}
-<div style="text-align: center;" class="mdc-typography--headline4">ROLES</div>
+<div style="text-align: center;" class="mdc-typography--headline4">Roles</div>
 <DataTable table$aria-label="Role Data" style="width: 100%;">
     <Head>
         <Row>

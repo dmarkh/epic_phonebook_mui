@@ -1,7 +1,7 @@
 
-import { getMember, getMemberFields, getMemberFieldgroups, getDocument, getEvent, getDocumentFields, getEventFields } from './pnb-api.js';
+import { getMember, getMemberFields, getMemberFieldgroups, getDocument, getDocumentFields, getTask, getTaskFields, getEvent, getEventFields } from './pnb-api.js';
 import { getInstitutions, getInstitution, getInstitutionFields, getInstitutionFieldgroups } from './pnb-api.js';
-import { convertInstitution, convertMember, convertDocument, convertEvent } from './pnb-convert.js';
+import { convertInstitution, convertMember, convertDocument, convertTask, convertEvent } from './pnb-convert.js';
 import { getCountries } from './pnb-api.js';
 import { find_field_id } from './pnb-search.js';
 
@@ -106,6 +106,45 @@ export const downloadDocument = async ( id = false ) => {
 		document_fields_ordered: orderKeys( ifields, (a,b) => ( a.weight - b.weight ) )
 	};
 }
+
+export const downloadTask = async ( id = false ) => {
+    let ifields = await getTaskFields();
+
+	for( const [k,v] of Object.entries(ifields) ) {
+		if ( v.options.length ) {
+			ifields[k].decoded_options = {};
+			v.options.split(',')
+				.map( t => { const tmp = t.split(':'); return [ [tmp[0].trim()], tmp[1].trim() ]; })
+				.reduce( (acc,cval) => { acc[ cval[0] ] = cval[1]; return acc; }, ifields[k].decoded_options );
+		}
+	}
+
+    let idata = id ? await getTask( id ) : { "fields": {} };
+
+	for( const [k,v] of Object.entries(idata.fields) ) {
+		if ( ifields[k].type === 'date' && v && v.length ) {
+            let tmp = v.split(' ');
+            if ( tmp.length > 1 ) {
+                idata.fields[k] = tmp[0];
+            } else {
+				tmp  = v.split('T');
+	            if ( tmp.length > 1 ) {
+    	            idata.fields[k] = tmp[0];
+				}
+			}
+		}
+	}
+
+    let cidata = await convertTask( idata, ifields );
+
+    return {
+		task: idata,
+		ctask: cidata,
+		task_fields: ifields,
+		task_fields_ordered: orderKeys( ifields, (a,b) => ( a.weight - b.weight ) )
+	};
+}
+
 
 export const downloadInstitution = async ( id = false ) => {
     let ifields = await getInstitutionFields();

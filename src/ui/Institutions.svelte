@@ -185,6 +185,9 @@ onDestroy(() => {
 			<img src="images/flags_iso_3166/24/{item['country_code'].toLowerCase()}.png" style="vertical-align: text-bottom;"/>
 			{/if}
 			{item[ inst.field ] || ''}
+				{#if item['is_virtual'] && item['is_virtual'] === 'Yes' && inst.field == 'name_full' }
+					( virtual )
+				{/if}
 		</Cell>
 		{/each}
       </Row>

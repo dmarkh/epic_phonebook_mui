@@ -16,6 +16,7 @@ import GroupEdit from './GroupEdit.svelte';
 
 import GroupMembers from './GroupMembers.svelte';
 import GroupRoles from './GroupRoles.svelte';
+import GroupGraph from './GroupGraph.svelte';
 
 export let meta;
 
@@ -27,7 +28,8 @@ if ( $auth['grants']['groups-edit'] ) {
 	tabs = [ ...tabs,
     	{ "label": "edit", "icon": "edit", "mode": "/edit" },
     	{ "label": "members", "icon": "edit", "mode": "/members" },
-    	{ "label": "roles", "icon": "edit", "mode": "/roles" }
+    	{ "label": "roles", "icon": "edit", "mode": "/roles" },
+    	{ "label": "graph", "icon": "edit", "mode": "/graph" }
 	];
 }
 
@@ -59,6 +61,7 @@ afterUpdate( () => {
 
     <Route path="/members"> <GroupMembers /> </Route>
     <Route path="/roles"> <GroupRoles /> </Route>
+    <Route path="/graph"> <GroupGraph /> </Route>
 
     <Route fallback> <GroupView /> </Route>
 

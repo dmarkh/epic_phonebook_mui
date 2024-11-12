@@ -15,6 +15,7 @@ import Paper from '@smui/paper';
 import AccessDenied from './AccessDenied.svelte';
 
 import { getGroups } from '../utils/pnb-api.js';
+import { invenio_search_community, invenio_create_community } from '../utils/pnb-graphql.js';
 
 import { screen } from '../store.js';
 import { auth, group_id, group_mode } from '../store.js';
@@ -69,6 +70,7 @@ const downloadGroups = async () => {
 }
 
 const handleSort = () => {
+	console.log('filteredItems', filteredItems);
 	filteredItems = ( filterItemsQuick() ).sort((a, b) => {
 		const [aVal, bVal] = [a[sort], b[sort]][
 			sortDirection === 'ascending' ? 'slice' : 'reverse'
@@ -126,27 +128,27 @@ onDestroy(() => {
 >
 	<Head>
 		<Row>
-			<Cell columnId="group_name" style="text-align: center;">
+			<Cell columnId="name" style="text-align: center;">
 				<Label>NAME</Label>
 				<IconButton class="material-icons">arrow_upward</IconButton>
 			</Cell>
-			<Cell columnId="group_email" style="text-align: center;">
+			<Cell columnId="parent" style="text-align: center;">
 				<Label>PARENT GROUP</Label>
 				<IconButton class="material-icons">arrow_upward</IconButton>
 			</Cell>
-			<Cell columnId="group_email" style="text-align: center;">
+			<Cell columnId="email" style="text-align: center;">
 				<Label>EMAIL</Label>
 				<IconButton class="material-icons">arrow_upward</IconButton>
 			</Cell>
-			<Cell columnId="group_email" style="text-align: center;">
+			<Cell columnId="private" style="text-align: center;">
 				<Label>PRIVACY</Label>
 				<IconButton class="material-icons">arrow_upward</IconButton>
 			</Cell>
-			<Cell columnId="group_members" style="text-align: center;">
+			<Cell columnId="member-count" style="text-align: center;">
 				<Label>MEMBERS</Label>
 				<IconButton class="material-icons">arrow_upward</IconButton>
 			</Cell>
-			<Cell columnId="group_subgroups" style="text-align: center;">
+			<Cell columnId="group-count" style="text-align: center;">
 				<Label>SUBGROUPS</Label>
 				<IconButton class="material-icons">arrow_upward</IconButton>
 			</Cell>
@@ -186,7 +188,7 @@ onDestroy(() => {
       </Select>
     </svelte:fragment>
     <svelte:fragment slot="total">
-      {start + 1}-{end} of {items.length}
+      {start + 1}-{end} of {filteredItems.length}
     </svelte:fragment>
 
     <IconButton
@@ -221,6 +223,23 @@ onDestroy(() => {
 
 </DataTable>
 </Paper>
+
+{#if window.pnb && window.pnb.collaboration}
+        {#await invenio_search_community( 'members' ) then idata}
+            {#if idata.invenioSearchCommunity == ''}
+                {#await invenio_create_community( 'members' ) then iidata}
+					<div>
+	                	<a href="{iidata.invenioCreateCommunity}">{iidata.invenioCreateCommunity}</a>
+					</div>
+                {/await}
+            {:else}
+				<div>
+	                <a href="{idata.invenioSearchCommunity}">{idata.invenioSearchCommunity}</a>
+				</div>
+            {/if}
+        {/await}
+{/if}
+
 {/await}
 
 {:else}

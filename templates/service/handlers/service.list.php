@@ -24,6 +24,9 @@ function service_list_handler($params) {
 				case 'documents':
 					return json_encode(get_documents_fields());
 					break;
+				case 'tasks':
+					return json_encode(get_tasks_fields());
+					break;
 				case 'members':
 					return json_encode(get_members_fields());
 					break;

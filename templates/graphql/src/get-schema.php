@@ -17,6 +17,9 @@ type Query {
 	institution(rorid: String!): Institution
 	groups: [Group]
 	memberGroups(orcid: String!): [Group]
+	invenioGroups(orcid: String!): [Group]
+	invenioSearchCommunity(slug: String!): String!
+	invenioCreateCommunity(name: String!, slug: String!): String!
 }
 
 type Event {
@@ -83,7 +86,8 @@ $schema .= '}
 type Member {
 	id: ID!
 	institution: Institution!
-	groups: [Group]'."\n";
+	groups: [Group]
+	igroups: [Group]'."\n";
 
 	foreach( $metadata['member_fields'] as $k => $v ) {
 		switch( $v['type'] ) {
@@ -108,6 +112,7 @@ type Group {
 	id: ID!
 	name: String!
 	category: String
+	url: String,
 	role: String
 	roles: [String]
 }'."\n";

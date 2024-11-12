@@ -86,7 +86,7 @@ const fetchEvent = async ( id ) => {
     {#each data as item (item.id)}
       <Row data-entry-id="{item.id}">
         <Cell style="width: 30%; font-weight: bold;">{item.desc}</Cell>
-        <Cell style="width: 70%;">
+        <Cell style="width: 70%; white-space: normal;">
 			{#if item.id == member_ids_fid}
 				{ item.value.split(',').reduce( (acc,cur) => { acc.push( find_member(cur) ); return acc; }, [] ).join(', ') }
 			{:else}

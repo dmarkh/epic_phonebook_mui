@@ -268,8 +268,8 @@ const fetchGroup = async () => {
 	{#each data.members as member ( member.member_id )}
       <Row data-entry-id="member">
        	<Cell style="text-align: center;">{findRole( member.role_id )}</Cell>
-   	    <Cell style="text-align: center;">{findMember( member.member_id ).name_first} {findMember( member.member_id ).name_last}</Cell>
-       	<Cell style="text-align: center;">{findMember( member.member_id ).email}</Cell>
+   	    <Cell style="text-align: center;">{findMember( member.member_id ).name_first || ''} {findMember( member.member_id ).name_last || ''}</Cell>
+       	<Cell style="text-align: center;">{findMember( member.member_id ).email || ''}</Cell>
        	<Cell style="text-align: center;">{findMember( member.member_id ).institution__name_full}</Cell>
        	<Cell style="text-align: center;">
         <Button on:click={() => { removeMemberFromGroup( member.member_id ); }} variant="raised">
